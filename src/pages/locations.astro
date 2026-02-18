@@ -1,0 +1,34 @@
+---
+import { serviceAreas } from '../data/siteContent.js';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="Website Marketing Help Areas | Lancaster, Harrisburg, York, Allentown, Philadelphia, Reading"
+	description="Explore the Pennsylvania areas AI Wise Spaces serves with website audits, local SEO, and lead-focused website improvements for contractors and service businesses."
+	keywords="Lancaster contractor marketing, Harrisburg website help, York PA local SEO, Allentown website leads, Philadelphia contractor marketing, Reading website help, Pennsylvania local SEO"
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">SERVICE AREAS</p>
+			<h1 class="page-title">Website marketing help for businesses across Pennsylvania.</h1>
+			<p class="page-lede">We help contractors and local service businesses in Lancaster, Harrisburg, York, Allentown, Philadelphia, Reading, and nearby Pennsylvania markets improve website clarity, local SEO, and lead flow.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="detail-grid">
+				{serviceAreas.map((area) => (
+					<article class="detail-card">
+						<p class="case-label">{area.city}, {area.state}</p>
+						<h2>{area.headline}</h2>
+						<p>{area.intro}</p>
+						<ul class="bullet-list">
+							{area.problems.map((problem) => <li>{problem}</li>)}
+						</ul>
+						<a class="button button-secondary" href={`/locations/${area.slug}`}>View {area.city} page</a>
+					</article>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>

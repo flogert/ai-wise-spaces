@@ -1,0 +1,113 @@
+---
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import Layout from '../layouts/Layout.astro';
+
+const faqItems = [
+	{
+		question: 'Can you help Pennsylvania contractors get better website leads?',
+		answer: 'Yes. We help contractors improve service pages, local SEO, trust signals, and conversion paths so more of the right visitors turn into inquiries.',
+	},
+	{
+		question: 'Do you only work in Lancaster?',
+		answer: 'No. Lancaster is a core market, but we also support businesses across Pennsylvania including Harrisburg, York, Allentown, Philadelphia, Reading, Bethlehem, and Lebanon.',
+	},
+	{
+		question: 'What should a contractor website do better?',
+		answer: 'A strong contractor website should explain services clearly, show proof, answer common questions, and make the next step obvious for a local buyer.',
+	},
+];
+
+const pageSchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		name: 'Contractor Lead Generation in Pennsylvania',
+		description: 'Website, local SEO, and service-page help for Pennsylvania contractors who want more local jobs and better leads.',
+		areaServed: { '@type': 'AdministrativeArea', name: 'Pennsylvania' },
+		provider: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com/',
+		},
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqItems.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
+	},
+];
+---
+
+<Layout
+	title="Contractor Leads Pennsylvania | Get More Local Jobs From Your Website"
+	description="Website, local SEO, and service-page help for Pennsylvania contractors who want more local jobs, better calls, and stronger lead flow."
+	keywords="contractor leads Pennsylvania, contractor marketing Pennsylvania, contractor website SEO, local service business leads PA, get more contractor calls"
+	schema={pageSchema}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">CONTRACTORS</p>
+			<h1 class="page-title">Get more local jobs from a website built for lead flow, not just design.</h1>
+			<p class="page-lede">We help Pennsylvania contractors fix weak messaging, unclear service pages, and local SEO gaps so the website does a better job of bringing in qualified leads.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">SIMPLE EXPLANATION</p>
+					<h2>What creates better contractor leads.</h2>
+				</div>
+				<ul class="bullet-list">
+					<li>A clear headline that explains what you do and where you work.</li>
+					<li>Service pages that match real search intent.</li>
+					<li>Trust signals and calls to action that make it easy to reach out.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">WHO THIS FITS</p>
+				<h2>Best for contractors who rely on local trust and estimate requests.</h2>
+			</div>
+			<div class="detail-grid">
+				<article class="detail-card">
+					<h2>Roofing</h2>
+					<p>Clear service pages and stronger proof help roofers earn more estimate requests from local homeowners.</p>
+				</article>
+				<article class="detail-card">
+					<h2>General contracting</h2>
+					<p>Broader service offers need stronger structure so buyers can understand exactly what work you handle.</p>
+				</article>
+				<article class="detail-card">
+					<h2>Trades</h2>
+					<p>Plumbers, HVAC companies, electricians, and landscapers benefit from clearer pages and faster lead paths.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">FAQ</p>
+				<h2>Questions Pennsylvania contractors ask.</h2>
+			</div>
+			<div class="faq-list">
+				{faqItems.map((item) => (
+					<details class="faq-item">
+						<summary>{item.question}</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

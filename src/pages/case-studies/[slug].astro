@@ -1,0 +1,60 @@
+---
+import { caseStudies } from '../../data/siteContent.js';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+	return caseStudies.map((study) => ({
+		params: { slug: study.slug },
+		props: { study },
+	}));
+}
+
+const { study } = Astro.props;
+---
+
+<Layout
+	title={`${study.title} | AI Wise Spaces Case Study`}
+	description={study.summary}
+	keywords={`${study.title}, case study, local service business website improvement`}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">CASE STUDY</p>
+			<h1 class="page-title">{study.title}</h1>
+			<p class="page-lede">{study.summary}</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="detail-grid">
+				<article class="detail-card compact-detail-card">
+					<p class="case-label">Industry</p>
+					<h2>{study.industry}</h2>
+					<p>{study.problem}</p>
+				</article>
+				<article class="detail-card compact-detail-card">
+					<p class="case-label">Outcome</p>
+					<h2>What improved</h2>
+					<p>{study.result}</p>
+					<ul class="bullet-list compact-bullet-list">
+						{study.highlights.map((highlight) => <li>{highlight}</li>)}
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="info-stack">
+				{study.sections.map((section) => (
+					<article class="stack-card article-card">
+						<h2>{section.heading}</h2>
+						<p>{section.content}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<a class="button button-secondary" href="/case-studies">Back to Case Studies</a>
+		</section>
+	</main>
+</Layout>

@@ -1,0 +1,48 @@
+---
+import { blogPosts } from '../../data/siteContent.js';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout
+	title={`${post.title} | AI Wise Spaces`}
+	description={post.summary}
+	keywords={`${post.title}, local service business blog, website visibility advice`}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">{post.category}</p>
+			<h1 class="page-title">{post.title}</h1>
+			<p class="page-lede">{post.summary}</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<p>{post.preview}</p>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="info-stack">
+				{post.sections.map((section) => (
+					<article class="stack-card article-card">
+						<h2>{section.heading}</h2>
+						<p>{section.content}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<a class="button button-secondary" href="/blog">Back to Articles</a>
+		</section>
+	</main>
+</Layout>

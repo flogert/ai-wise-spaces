@@ -1,0 +1,113 @@
+---
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import Layout from '../layouts/Layout.astro';
+
+const faqItems = [
+	{
+		question: 'Can you help a Lancaster roofer get more leads without paying for ads?',
+		answer: 'Yes. We improve the service pages, local SEO, trust signals, and calls to action that help roofing companies earn more calls from organic traffic.',
+	},
+	{
+		question: 'What is usually wrong with a roofing website?',
+		answer: 'Most roofing sites have weak service pages, unclear proof, generic copy, and no FAQ structure to support search intent or conversions.',
+	},
+	{
+		question: 'Do I need a whole new website?',
+		answer: 'Not always. Some roofers only need stronger pages, better copy, and technical cleanup. Others need a rebuild because the current site is slow or unclear.',
+	},
+];
+
+const pageSchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		name: 'Roofing Marketing in Lancaster, PA',
+		description: 'Roofing marketing and website help for Lancaster roofers who want more local calls, stronger service pages, and better lead flow.',
+		areaServed: { '@type': 'City', name: 'Lancaster' },
+		provider: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com/',
+		},
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqItems.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
+	},
+];
+---
+
+<Layout
+	title="Roofing Marketing Lancaster PA | Get More Roofing Leads"
+	description="Roofing marketing for Lancaster, PA roofers who want more local calls, stronger website messaging, and better local SEO without paying for ads."
+	keywords="roofing marketing Lancaster PA, Lancaster roofer SEO, roofing leads Lancaster, roofer website Lancaster, Lancaster roofers marketing"
+	schema={pageSchema}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">ROOFERS</p>
+			<h1 class="page-title">Get more roofing leads in Lancaster without paying for ads.</h1>
+			<p class="page-lede">We help Lancaster roofers fix weak website messaging, service pages, and local SEO so more homeowners call when they need an estimate.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">SIMPLE EXPLANATION</p>
+					<h2>What this page is really about.</h2>
+				</div>
+				<ul class="bullet-list">
+					<li>Clearer roofing service pages so homeowners know what you do.</li>
+					<li>Local SEO that helps Lancaster buyers find and trust your business.</li>
+					<li>Calls to action that turn visits into estimate requests.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">COMMON PROBLEMS</p>
+				<h2>What usually holds roofing websites back.</h2>
+			</div>
+			<div class="detail-grid">
+				<article class="detail-card">
+					<h2>Generic copy</h2>
+					<p>Too many roofing sites sound exactly the same, which weakens trust and makes it harder to convert local traffic.</p>
+				</article>
+				<article class="detail-card">
+					<h2>Weak proof</h2>
+					<p>Missing reviews, project examples, and FAQs keep buyers from taking the next step.</p>
+				</article>
+				<article class="detail-card">
+					<h2>Poor lead flow</h2>
+					<p>If the next step is not obvious, the site leaks calls and estimate requests you already paid to attract.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">FAQ</p>
+				<h2>Questions Lancaster roofers ask.</h2>
+			</div>
+			<div class="faq-list">
+				{faqItems.map((item) => (
+					<details class="faq-item">
+						<summary>{item.question}</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

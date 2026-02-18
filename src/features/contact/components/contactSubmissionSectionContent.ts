@@ -1,6 +1,6 @@
 export const contactSubmissionSectionContent = {
-	eyebrow: 'READY WHEN YOU ARE',
-	title: 'Ready to improve your AI visibility?',
+	eyebrow: 'FREE WEBSITE REVIEW',
+	title: 'Start with a simple website review.',
 	description:
-		'Submit your inquiry and see how clearly AI assistants can understand, cite, and recommend your business.',
+		'Send your website details and we will reply with simple, plain-English improvement points. The full Visibility Audit is the paid $150 tier shown on the pricing page.',
 };

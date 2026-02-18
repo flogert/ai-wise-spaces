@@ -1,28 +1,46 @@
 ---
 import UiIcon from '../components/UiIcon.astro';
-import { process, services } from '../data/siteContent.js';
+import { process, serviceAreas, services } from '../data/siteContent.js';
 import Layout from '../layouts/Layout.astro';
+
+const seoPages = [
+	{
+		title: 'Roofing Marketing Lancaster, PA',
+		description: 'SEO and website help for Lancaster roofers who want more local leads.',
+		href: '/roofing-marketing-lancaster-pa',
+	},
+	{
+		title: 'Plumber Website Lancaster, PA',
+		description: 'Website and local SEO help for Lancaster plumbers who need more calls.',
+		href: '/plumber-website-lancaster-pa',
+	},
+	{
+		title: 'Contractor Leads Pennsylvania',
+		description: 'A statewide page for contractors who need a better website and stronger lead flow.',
+		href: '/contractor-leads-pennsylvania',
+	},
+];
 ---
 
 <Layout
-	title="Lancaster PA AI SEO Services | AI Audits, Websites, and Growth Systems"
-	description="Explore AI Wise Spaces services for Lancaster PA and Pennsylvania businesses, including AI visibility audits, local SEO structure, AI-optimized website builds, and structured content systems."
-	keywords="Lancaster PA SEO services, Lancaster PA marketing help, Pennsylvania local SEO, AI visibility audit, AI-optimized website, AI presence, structured content strategy"
+	title="Contractor Website Marketing Services | Lancaster SEO and Lead Generation"
+	description="Explore AI Wise Spaces services for contractors and local service businesses in Lancaster and across Pennsylvania, including website audits, local SEO, service-page strategy, and rebuilds built to get more calls."
+	keywords="contractor website marketing Lancaster, roofer marketing services Lancaster PA, plumber website help Lancaster, local SEO services Pennsylvania, contractor lead generation website"
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">SERVICES</p>
-			<h1 class="page-title">AI websites, SEO structure, and visibility systems for Lancaster PA and Pennsylvania businesses.</h1>
-			<p class="page-lede">We help local businesses improve semantic clarity, trust, service-page structure, and AI visibility without turning the work into jargon or unnecessary complexity.</p>
+			<h1 class="page-title">Website marketing services built to get more calls and better local leads.</h1>
+			<p class="page-lede">We help contractors, roofers, plumbers, and local service businesses improve website clarity, trust, local SEO, and lead generation without turning the work into jargon or empty marketing talk.</p>
 		</section>
 
 		<section class="container page-section">
 			<div class="page-band">
 				<div class="section-heading compact">
 					<p class="eyebrow">LOCAL FOCUS</p>
-					<h2>Built for businesses that want to be found in Lancaster, across Pennsylvania, and inside AI-driven discovery.</h2>
+					<h2>Built for businesses that need a website customers and AI tools can trust faster.</h2>
 				</div>
-				<p class="page-lede">We structure service pages, local signals, and content systems so nearby customers and AI assistants can understand what your business does and when to recommend it.</p>
+				<p class="page-lede">We structure service pages, local signals, and content systems so nearby customers can understand what your business does and so Google and AI tools can recommend it more confidently.</p>
 			</div>
 		</section>
 
@@ -48,7 +66,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="page-band">
 				<div class="section-heading compact">
 					<p class="eyebrow">HOW WE WORK</p>
-					<h2>Each service is scoped to give you a clearer site, not more noise.</h2>
+					<h2>Each service is built to make your offer clearer and your site easier to trust.</h2>
 				</div>
 				<div class="mini-process-grid">
 					{process.map((item) => (
@@ -59,6 +77,44 @@ import Layout from '../layouts/Layout.astro';
 							<h3>{item.title}</h3>
 							<p>{item.description}</p>
 						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">LOCAL PAGES</p>
+					<h2>Explore city-specific website marketing help pages across Pennsylvania.</h2>
+				</div>
+				<div class="detail-grid">
+					{serviceAreas.map((area) => (
+						<article class="detail-card">
+							<p class="case-label">{area.city}, {area.state}</p>
+							<h2>{area.city} Website Marketing Help</h2>
+							<p>{area.description}</p>
+							<a class="button button-secondary" href={`/locations/${area.slug}`}>View local page</a>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">SEO PAGES</p>
+					<h2>High-intent search pages built around real service and location terms.</h2>
+				</div>
+				<div class="detail-grid">
+					{seoPages.map((page) => (
+						<article class="detail-card">
+							<p class="case-label">Targeted search page</p>
+							<h2>{page.title}</h2>
+							<p>{page.description}</p>
+							<a class="button button-secondary" href={page.href}>View page</a>
+						</article>
 					))}
 				</div>
 			</div>

@@ -1,0 +1,37 @@
+# AI Wise Spaces
+
+AI Wise Spaces builds AI-optimized websites for local businesses that want to be discovered by AI assistants, search engines, and local customers.
+
+## Main Pages
+
+- Homepage: https://aiwisespaces.com/
+- Services: https://aiwisespaces.com/services
+- Free Website Review: https://aiwisespaces.com/book-a-free-audit
+- Pricing: https://aiwisespaces.com/pricing
+
+## Services
+
+- AI-ready website development
+- Local AI visibility optimization
+- JSON-LD schema setup
+- llms.txt setup
+- robots.txt optimization
+- local service page creation
+- website migration from WordPress, Wix, and Squarespace
+
+## Service Areas
+
+- Lancaster, PA
+- York, PA
+- Harrisburg, PA
+- Reading, PA
+- Allentown, PA
+- West Chester, PA
+- King of Prussia, PA
+- Fairfax, DE
+- Wilmington, DE
+- United States
+
+## Business Summary
+
+AI Wise Spaces helps service businesses replace bloated website builders with fast, structured, AI-readable websites.

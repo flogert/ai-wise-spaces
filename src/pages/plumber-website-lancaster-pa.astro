@@ -1,0 +1,113 @@
+---
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import Layout from '../layouts/Layout.astro';
+
+const faqItems = [
+	{
+		question: 'Can you help Lancaster plumbers get more calls from their website?',
+		answer: 'Yes. We improve the service pages, local SEO, and conversion path that help plumbing companies earn more calls from high-intent local traffic.',
+	},
+	{
+		question: 'What makes a plumber website convert better?',
+		answer: 'Clear service pages, trust-building proof, FAQ content, fast load times, and a strong call to action all help plumbing sites convert better.',
+	},
+	{
+		question: 'Can you improve an existing plumbing site?',
+		answer: 'Yes. We can improve an existing site when the structure is usable, or recommend a rebuild when the current site is holding back growth.',
+	},
+];
+
+const pageSchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		name: 'Plumber Website Help in Lancaster, PA',
+		description: 'Website and local SEO help for Lancaster plumbers who want more calls, stronger service pages, and better lead flow.',
+		areaServed: { '@type': 'City', name: 'Lancaster' },
+		provider: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com/',
+		},
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqItems.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
+	},
+];
+---
+
+<Layout
+	title="Plumber Website Lancaster PA | Get More Plumbing Calls"
+	description="Website and local SEO help for Lancaster plumbers who need more calls, stronger service pages, and a better conversion path."
+	keywords="plumber website Lancaster PA, Lancaster plumber SEO, plumbing leads Lancaster, plumber marketing Lancaster, plumbing website help"
+	schema={pageSchema}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">PLUMBERS</p>
+			<h1 class="page-title">Get more plumbing calls from a website that actually converts.</h1>
+			<p class="page-lede">We help Lancaster plumbers fix weak service pages, confusing messaging, and local SEO gaps so more of the right people call when they need help fast.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">SIMPLE EXPLANATION</p>
+					<h2>What improves a plumber website.</h2>
+				</div>
+				<ul class="bullet-list">
+					<li>Separate pages for the services you actually want to rank for.</li>
+					<li>Clear proof and FAQs so homeowners trust you faster.</li>
+					<li>A simpler path from search to call, form, or booked job.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">COMMON PROBLEMS</p>
+				<h2>What usually holds plumbing websites back.</h2>
+			</div>
+			<div class="detail-grid">
+				<article class="detail-card">
+					<h2>No service depth</h2>
+					<p>If the site only has one generic page, it is harder to match specific search intent like drain cleaning, water heaters, or emergency repairs.</p>
+				</article>
+				<article class="detail-card">
+					<h2>Weak local trust</h2>
+					<p>Missing proof, missing location signals, and vague copy make it harder for homeowners to choose you.</p>
+				</article>
+				<article class="detail-card">
+					<h2>Bad conversion flow</h2>
+					<p>If visitors have to guess what to do next, the site will lose calls even when traffic is decent.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">FAQ</p>
+				<h2>Questions Lancaster plumbers ask.</h2>
+			</div>
+			<div class="faq-list">
+				{faqItems.map((item) => (
+					<details class="faq-item">
+						<summary>{item.question}</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

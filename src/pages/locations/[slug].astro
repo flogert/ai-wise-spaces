@@ -1,0 +1,130 @@
+---
+import ContactSubmissionSection from '../../features/contact/components/ContactSubmissionSection.astro';
+import { process, serviceAreas, services } from '../../data/siteContent.js';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+	return serviceAreas.map((area) => ({
+		params: { slug: area.slug },
+		props: { area },
+	}));
+}
+
+const { area } = Astro.props;
+
+const faqItems = [
+	{
+		question: `Can you help ${area.city} businesses get more calls from their website?`,
+		answer: `Yes. We help ${area.city} businesses improve website messaging, local SEO, FAQ content, and lead capture so more of the right visitors turn into inquiries.`,
+	},
+	{
+		question: `Do you work with contractors, roofers, and plumbers in ${area.city}?`,
+		answer: `Yes. We work best with local service businesses that rely on calls, estimate requests, and a strong local reputation to win work.`,
+	},
+	{
+		question: `Do I need a full rebuild to improve my website in ${area.city}?`,
+		answer: 'Not always. Some businesses need a rebuild, while others only need stronger service pages, local SEO improvements, and clearer calls to action.',
+	},
+];
+
+const pageSchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		name: `Contractor Website Marketing in ${area.city}, ${area.state}`,
+		areaServed: { '@type': 'City', name: area.city },
+		description: area.description,
+		provider: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com/',
+		},
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqItems.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
+	},
+];
+---
+
+<Layout
+	title={`${area.city}, ${area.state} Contractor Website Marketing | AI Wise Spaces`}
+	description={area.description}
+	keywords={area.keywords}
+	schema={pageSchema}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">{area.city.toUpperCase()}</p>
+			<h1 class="page-title">Get more local jobs with a better website in {area.city}, {area.state}.</h1>
+			<p class="page-lede">{area.intro} We focus on contractors, roofers, plumbers, and other local service businesses that need a clearer offer and stronger lead flow.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">LOCAL NEEDS</p>
+					<h2>Common website and marketing issues we help fix for {area.city} contractors and service businesses.</h2>
+				</div>
+				<ul class="bullet-list">
+					{area.problems.map((problem) => <li>{problem}</li>)}
+				</ul>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="detail-grid">
+				{services.map((service) => (
+					<article class="detail-card">
+						<p class="case-label">Built for {area.city} businesses</p>
+						<h2>{service.title}</h2>
+						<p>{service.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">NEARBY MARKETS</p>
+					<h2>We also support nearby service businesses around {area.city}.</h2>
+				</div>
+				<p class="page-lede">Nearby markets we often think about when structuring local visibility: {area.nearby.join(', ')}.</p>
+				<div class="mini-process-grid">
+					{process.map((item) => (
+						<div class="mini-process-step">
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">FAQ</p>
+				<h2>Simple answers for businesses in {area.city}.</h2>
+			</div>
+			<div class="faq-list">
+				{faqItems.map((item) => (
+					<details class="faq-item">
+						<summary>{item.question}</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

@@ -4,7 +4,7 @@ import ContactSubmissionSection from '../features/contact/components/ContactSubm
 import Layout from '../layouts/Layout.astro';
 
 function getPricingDisplay(tier: { name: string; price: string }) {
-	if (tier.name === 'AI Builds') {
+	if (tier.name === 'Website Rebuild') {
 		return {
 			prefix: 'Starting from',
 			amount: '$1,500',
@@ -12,7 +12,7 @@ function getPricingDisplay(tier: { name: string; price: string }) {
 		};
 	}
 
-	if (tier.name === 'AI Growth System') {
+	if (tier.name === 'Growth System') {
 		return {
 			prefix: '',
 			amount: '$450',
@@ -29,15 +29,23 @@ function getPricingDisplay(tier: { name: string; price: string }) {
 ---
 
 <Layout
-	title="AI Wise Spaces Pricing | Lancaster PA AI Website and SEO Packages"
-	description="Review AI Wise Spaces pricing for Lancaster PA and Pennsylvania businesses, from one-time audits to website builds and ongoing AI visibility support."
-	keywords="Lancaster PA pricing, website pricing Lancaster, local SEO packages Pennsylvania, AI visibility pricing"
+	title="Website Pricing for Contractors | Lancaster SEO, Websites, and Lead Systems"
+	description="Review AI Wise Spaces pricing for contractors and local service businesses in Lancaster and across Pennsylvania, from focused audits to website rebuilds and ongoing growth support."
+	keywords="contractor website pricing Lancaster, roofer marketing pricing Lancaster PA, plumber website audit cost, local SEO pricing Pennsylvania, website rebuild pricing contractors"
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">PRICING</p>
-			<h1 class="page-title">Choose the level of AI visibility support your business needs.</h1>
-			<p class="page-lede">From a low-risk audit to a full build or monthly growth support, each tier is designed to help local businesses in Lancaster PA and across Pennsylvania improve clarity, trust, and lead flow.</p>
+			<h1 class="page-title">Choose the level of website help your business needs next.</h1>
+			<p class="page-lede">From a low-risk audit to a full rebuild or monthly growth support, each tier is designed to help local businesses improve clarity, trust, and lead flow.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band pricing-note-band">
+				<p class="eyebrow">IMPORTANT</p>
+				<h2>The free request sends quick improvement notes. The full Visibility Audit is $150.</h2>
+				<p>The pricing tier below is the paid, deeper audit. The free request form is only the first step for simple guidance.</p>
+			</div>
 		</section>
 
 		<section class="container page-section">
@@ -65,7 +73,9 @@ function getPricingDisplay(tier: { name: string; price: string }) {
 							<ul class="pricing-features">
 								{tier.features.map((feature) => <li>{feature}</li>)}
 							</ul>
-							<a class="button button-primary" href="/#final-cta">Book a Free Audit</a>
+							<a class="button button-primary" href="/book-a-free-audit">
+								{tier.name === 'Visibility Audit' ? 'Ask About The $150 Audit' : 'Start With A Free Review'}
+							</a>
 						</article>
 					);
 				})}

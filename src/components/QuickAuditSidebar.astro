@@ -1,0 +1,52 @@
+<aside class="hero-sidebar quick-audit-sidebar" aria-label="Quick website score preview">
+	<div class="quick-audit-header">
+		<p class="eyebrow">QUICK SNEAK PEEK</p>
+		<h2>See if Google and AI tools can recommend your business.</h2>
+		<p>Enter your URL for a fast score preview. This is not the full paid audit.</p>
+	</div>
+	<form id="quick-audit-form" class="quick-audit-form">
+		<div class="quick-audit-entry-row">
+			<label>
+				<span>Website URL</span>
+				<input type="text" name="websiteUrl" inputmode="url" placeholder="yourwebsite.com" required />
+			</label>
+			<div class="quick-audit-actions">
+				<button class="button button-preview-score" type="submit">Preview My Score</button>
+			</div>
+		</div>
+		<p id="quick-audit-status" class="form-status" role="status" aria-live="polite"></p>
+	</form>
+	<div class="quick-audit-stage">
+		<figure id="quick-audit-mission" class="quick-audit-mission-panel">
+			<img
+				class="quick-audit-mission-image"
+				src="/mission.png"
+				alt="AI Wise Spaces mission graphic showing AI platforms and website systems connected through one optimized digital presence"
+				loading="eager"
+			/>
+			<figcaption class="quick-audit-mission-copy">
+				<p class="quick-audit-mission-label">Our mission</p>
+				<p>Build clear, fast, AI-readable websites that help local businesses earn trust, get discovered, and win more qualified leads.</p>
+			</figcaption>
+		</figure>
+		<div id="quick-audit-result" class="quick-audit-result" hidden>
+			<div class="quick-audit-score-row">
+				<div class="quick-audit-score-copy">
+					<p class="quick-audit-label">Estimated score</p>
+					<strong id="quick-audit-overall">0/100</strong>
+					<p id="quick-audit-summary" class="quick-audit-model-note">
+						Preview based on live page signals that affect visibility in Google, ChatGPT, Perplexity, Gemini, and other AI search tools.
+					</p>
+				</div>
+				<div class="quick-audit-metrics">
+					<span id="quick-audit-local-seo">Local SEO: 0</span>
+					<span id="quick-audit-conversion">Conversion: 0</span>
+				</div>
+			</div>
+			<p id="quick-audit-issue" class="quick-audit-note"></p>
+			<a id="quick-audit-cta" class="button button-secondary" href="/book-a-free-audit">
+				Request Free Website Review
+			</a>
+		</div>
+	</div>
+</aside>

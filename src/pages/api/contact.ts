@@ -14,12 +14,14 @@ import {
 } from '../../features/contact/server/contactRouteResponses.ts';
 import { sendLeadNotification } from '../../features/contact/server/sendLeadNotification.ts';
 
+const DEFAULT_CONTACT_TO_EMAIL = 'flogertbardhi@gmail.com';
+
 export const POST: APIRoute = async ({ request }) => {
 	try {
 		const apiKey = import.meta.env.RESEND_API_KEY;
-		const toEmail = import.meta.env.CONTACT_TO_EMAIL;
+		const toEmail = import.meta.env.CONTACT_TO_EMAIL || DEFAULT_CONTACT_TO_EMAIL;
 
-		if (!apiKey || !toEmail) {
+		if (!apiKey) {
 			console.error('Missing env variables');
 			return missingEmailSettingsResponse();
 		}

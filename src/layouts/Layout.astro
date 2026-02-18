@@ -4,9 +4,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 
 const {
-	title = 'AI Wise Spaces | AI-Ready Websites for the New Search Era',
-	description = 'AI Wise Spaces builds fast, structured websites that improve AI visibility through semantic clarity, structured content, and machine-readable design.',
-	keywords = 'AI visibility, AI-optimized websites, structured content, semantic clarity, Astro website agency, AI discovery',
+	title = 'AI Wise Spaces | AI-Optimized Websites for Local Businesses',
+	description = 'AI Wise Spaces builds AI-ready websites that help local businesses become more visible in AI assistants, search engines, and local discovery.',
+	keywords = 'AI optimized websites, AI visibility, local SEO Lancaster PA, answer engine optimization, AI-ready websites, Astro websites, WordPress alternative, Wix alternative, Squarespace alternative',
 	schema,
 } = Astro.props as {
 	title?: string;
@@ -16,7 +16,7 @@ const {
 };
 
 const currentPath = Astro.url.pathname;
-const siteUrl = Astro.site ?? new URL('https://www.aiwisespaces.com');
+const siteUrl = Astro.site ?? new URL('https://aiwisespaces.com');
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const socialImage = new URL('/aiwisespaces.png', siteUrl).toString();
 ---

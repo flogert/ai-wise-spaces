@@ -9,29 +9,12 @@ import {
 	stats,
 } from '../data/siteContent.js';
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import QuickAuditSidebar from '../components/QuickAuditSidebar.astro';
 import Layout from '../layouts/Layout.astro';
 import UiIcon from '../components/UiIcon.astro';
 
-const heroStories = [
-	{
-		id: 'clarity',
-		title: 'Clarify The Offer',
-		text: 'Show Lancaster-area buyers and AI systems exactly what you do, where you work, and why they should trust your business.',
-	},
-	{
-		id: 'authority',
-		title: 'Build Local Authority',
-		text: 'Layer in service structure, local proof, and semantic signals that strengthen visibility across Pennsylvania searches and AI answers.',
-	},
-	{
-		id: 'convert',
-		title: 'Capture Better Leads',
-		text: 'Turn a generic brochure site into a local growth system that attracts better-fit inquiries and moves buyers faster.',
-	},
-];
-
 function getPricingDisplay(tier: { name: string; price: string }) {
-	if (tier.name === 'AI Builds') {
+	if (tier.name === 'Website Rebuild') {
 		return {
 			prefix: 'Starting from',
 			amount: '$1,500',
@@ -39,7 +22,7 @@ function getPricingDisplay(tier: { name: string; price: string }) {
 		};
 	}
 
-	if (tier.name === 'AI Growth System') {
+	if (tier.name === 'Growth System') {
 		return {
 			prefix: '',
 			amount: '$450',
@@ -57,67 +40,127 @@ function getPricingDisplay(tier: { name: string; price: string }) {
 const homeSchema = [
 	{
 		'@context': 'https://schema.org',
-		'@type': 'Organization',
+		'@type': 'LocalBusiness',
+		'@id': 'https://aiwisespaces.com/#localbusiness',
 		name: 'AI Wise Spaces',
-		url: 'https://www.aiwisespaces.com/',
-		logo: 'https://www.aiwisespaces.com/aiwisespaces.png',
+		url: 'https://aiwisespaces.com',
+		image: 'https://aiwisespaces.com/aiwisespaces.png',
 		description:
-			'AI Wise Spaces builds AI-optimized websites, machine-readable content systems, and semantic clarity for businesses that want to be understood and recommended by AI in Lancaster, Pennsylvania, and beyond.',
-		areaServed: ['Lancaster, PA', 'Pennsylvania'],
-	},
-	{
-		'@context': 'https://schema.org',
-		'@type': 'ProfessionalService',
-		name: 'AI Wise Spaces',
-		url: 'https://www.aiwisespaces.com/',
-		image: 'https://www.aiwisespaces.com/aiwisespaces.png',
-		description:
-			'AI marketing help, AI-optimized websites, local SEO structure, and visibility systems for businesses in Lancaster PA and across Pennsylvania.',
-		areaServed: [
-			{ '@type': 'City', name: 'Lancaster' },
-			{ '@type': 'AdministrativeArea', name: 'Pennsylvania' },
+			'AI Wise Spaces builds AI-optimized websites that help local businesses become more visible in AI assistants, search engines, and local discovery.',
+		areaServed: ['Lancaster PA', 'York PA', 'Harrisburg PA', 'Reading PA', 'Allentown PA', 'West Chester PA', 'King of Prussia PA', 'Wilmington DE', 'United States'],
+		serviceType: [
+			'AI-ready website development',
+			'AI visibility optimization',
+			'Local SEO',
+			'Answer Engine Optimization',
+			'Website migration from WordPress',
+			'Website migration from Wix',
+			'Website migration from Squarespace',
+			'JSON-LD schema setup',
+			'llms.txt setup',
+			'robots.txt optimization',
 		],
-		serviceType: ['AI-optimized websites', 'Local SEO strategy', 'Structured content systems'],
+		knowsAbout: [
+			'AI search visibility',
+			'Answer Engine Optimization',
+			'Local SEO',
+			'Astro websites',
+			'Tailwind CSS websites',
+			'Structured data',
+			'Schema markup',
+			'Website performance',
+		],
+		makesOffer: [
+			{
+				'@type': 'Offer',
+				itemOffered: {
+					'@type': 'Service',
+					name: 'AI Visibility Audit',
+					description:
+						'An audit that checks whether a local business website is structured for AI discovery and local recommendations.',
+				},
+			},
+			{
+				'@type': 'Offer',
+				itemOffered: {
+					'@type': 'Service',
+					name: 'AI-Ready Website Development',
+					description:
+						'Custom website development focused on fast performance, structured content, local visibility, and AI-readable pages.',
+				},
+			},
+		],
 	},
 	{
 		'@context': 'https://schema.org',
-		'@type': 'WebSite',
+		'@type': 'Organization',
+		'@id': 'https://aiwisespaces.com/#organization',
 		name: 'AI Wise Spaces',
-		url: 'https://www.aiwisespaces.com/',
+		url: 'https://aiwisespaces.com',
+		logo: 'https://aiwisespaces.com/aiwisespaces.png',
 		description:
-			'AI visibility systems, Lancaster PA SEO support, structured content, and AI-optimized website builds for modern businesses.',
+			'AI Wise Spaces helps businesses upgrade from traditional website builders to AI-optimized websites.',
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: 'What is an AI-ready website?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'An AI-ready website is structured so search engines and AI assistants can clearly understand the business, services, location, expertise, and customer value.',
+				},
+			},
+			{
+				'@type': 'Question',
+				name: 'Can you migrate a website from WordPress, Wix, or Squarespace?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Yes. AI Wise Spaces helps businesses move from WordPress, Wix, and Squarespace to faster, cleaner, AI-optimized websites.',
+				},
+			},
+			{
+				'@type': 'Question',
+				name: 'Do you help local businesses show up in AI search?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Yes. AI Wise Spaces improves website structure, schema, content clarity, local pages, and AI-readable files to improve local AI visibility.',
+				},
+			},
+		],
 	},
 ];
 ---
 
 <Layout
-	title="AI Wise Spaces | Lancaster PA AI Websites, SEO, and Growth Systems"
-	description="AI Wise Spaces helps Lancaster PA and Pennsylvania businesses improve AI visibility with AI-optimized websites, local SEO structure, semantic clarity, and lead-capture systems."
-	keywords="Lancaster PA SEO, Lancaster PA marketing agency, Pennsylvania local SEO, AI visibility, AI-optimized website, structured content, semantic clarity, recommended by AI, AI growth system"
+	title="AI Wise Spaces | AI-Optimized Websites for Local Businesses"
+	description="AI Wise Spaces builds AI-ready websites that help local businesses become more visible in AI assistants, search engines, and local discovery."
+	keywords="AI optimized websites, AI visibility, local SEO Lancaster PA, answer engine optimization, AI-ready websites, Astro websites, WordPress alternative, Wix alternative, Squarespace alternative"
 	schema={homeSchema}
 >
 	<main id="main-content" tabindex="-1">
 			<section class="hero-section container">
 				<div class="hero-copy">
-					<p class="eyebrow">AI VISIBILITY. STRUCTURED FOR TRUST.</p>
+					<p class="eyebrow">GOOGLE SEARCH. AI SEARCH. BETTER LEADS.</p>
 					<h1>
-						<span class="hero-line hero-line-tight">Websites Designed to Be</span>
-						<strong class="gradient-text hero-strong">Understood and Recommended by AI.</strong>
+						<span class="hero-line hero-line-tight">We Help Local Service Businesses</span>
+						<strong class="gradient-text hero-strong">Show Up in Google and AI Search.</strong>
 					</h1>
 					<p class="hero-text">
-						We build AI-optimized websites with structured content, semantic clarity, and
-						lead-capture systems that help businesses become visible across recommendation surfaces.
+						From contractors and salons to restaurants, gyms, yoga studios, photographers, and coffee shops, we structure your website so customers and AI tools can understand, trust, and recommend your business.
 					</p>
 					<div class="hero-actions">
-						<a class="button button-primary" href="#final-cta">Book an AI Visibility Audit</a>
-						<a class="button button-secondary" href="/services">Explore Services</a>
+						<a class="button button-primary" href="/book-a-free-audit">Get Your Free AI Visibility Audit</a>
+						<a class="button button-secondary" href="/services">See How We Help</a>
 					</div>
 					<div class="proof-row">
 						<div class="avatar-stack" aria-hidden="true">
 							{proofAvatars.map((avatar) => <span>{avatar}</span>)}
 						</div>
 						<div class="proof-block">
-							<p>Trusted by businesses improving AI visibility and AI presence</p>
+							<p>Trusted by local businesses improving visibility, trust, and lead flow</p>
 						</div>
 						<div class="proof-block proof-rating">
 							<span class="proof-stars">★★★★★</span>
@@ -125,32 +168,7 @@ const homeSchema = [
 						</div>
 					</div>
 				</div>
-				<div class="hero-visual" role="group" aria-label="Website improvement story cards">
-					<div class="hero-glow"></div>
-					<div class="panel-stack" data-active-story="clarity">
-						<div class="panel panel-one"></div>
-						<div class="panel panel-two"></div>
-						<div class="panel panel-three"></div>
-						<div class="panel panel-four"></div>
-						<div class="panel panel-five"></div>
-						<div class="panel panel-six"></div>
-						<div class="story-card-stack" data-story-stack>
-							{heroStories.map((story, index) => (
-								<button
-									type="button"
-									class={`story-card${index === 0 ? ' is-active' : ''}`}
-									data-story-trigger
-									data-story-id={story.id}
-									aria-pressed={index === 0 ? 'true' : 'false'}
-								>
-									<span class="story-card-step">0{index + 1}</span>
-									<strong>{story.title}</strong>
-									<small>{story.text}</small>
-								</button>
-							))}
-						</div>
-					</div>
-				</div>
+				<QuickAuditSidebar />
 			</section>
 
 			<section class="container logo-strip-section">
@@ -173,12 +191,11 @@ const homeSchema = [
 						<p class="eyebrow">OUR SERVICES</p>
 						<h2>
 							Everything Your Business Needs to
-							<span class="gradient-text">Improve AI Visibility</span>
+							<span class="gradient-text">Get More Calls</span>
 						</h2>
 					</div>
 					<p class="services-summary">
-						From audits to structured content systems, we make your business machine-readable
-						 and easier for AI to interpret at every layer.
+						From audits to service pages and technical cleanup, we help local service businesses turn their website into a clearer, more trusted sales tool for Google and AI search.
 					</p>
 				</div>
 				<div class="services-grid">
@@ -197,7 +214,7 @@ const homeSchema = [
 
 			<section class="container stats-section">
 				<div class="stats-card">
-					<p class="eyebrow stats-eyebrow">WHY AI VISIBILITY MATTERS</p>
+					<p class="eyebrow stats-eyebrow">WHAT THIS SHOULD DO</p>
 					<div class="stats-grid">
 						{stats.map((stat) => (
 							<div class="stat-item">
@@ -215,7 +232,7 @@ const homeSchema = [
 			<section id="process" class="container content-section">
 				<div class="section-heading">
 					<p class="eyebrow">OUR PROCESS</p>
-					<h2>Simple. Strategic. Effective.</h2>
+					<h2>Simple. Clear. Built to get better leads.</h2>
 				</div>
 				<div class="process-timeline">
 					{process.map((item) => (
@@ -234,7 +251,7 @@ const homeSchema = [
 			<section id="pricing" class="container content-section">
 				<div class="section-heading">
 					<p class="eyebrow">PRICING</p>
-					<h2>Choose the level of AI visibility support your business needs.</h2>
+					<h2>Choose the support level that fits your next growth move.</h2>
 				</div>
 				<div class="pricing-grid">
 					{pricing.map((tier) => {
@@ -260,7 +277,7 @@ const homeSchema = [
 							<ul class="pricing-features">
 								{tier.features.map((feature) => <li>{feature}</li>)}
 							</ul>
-							<a class="button button-primary" href="#final-cta">Book a Free Audit</a>
+							<a class="button button-primary" href="/book-a-free-audit">Book a Free Audit</a>
 						</article>
 						);
 					})}
@@ -284,5 +301,5 @@ const homeSchema = [
 
 			<ContactSubmissionSection />
 	</main>
-	<script is:inline type="module" src="/scripts/home-story-cards.js"></script>
+	<script is:inline type="module" src="/scripts/quick-audit-sidebar.js"></script>
 </Layout>

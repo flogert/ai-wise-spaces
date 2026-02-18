@@ -14,7 +14,7 @@ const mobileMenuId = 'primary-mobile-menu';
 			<img class="brand-logo" src="/aiwisespaces.png" alt="AI Wise Spaces logo" />
 			<span class="brand-copy">
 				<strong>AI Wise Spaces</strong>
-				<small>AI visibility systems</small>
+				<small>Local visibility systems</small>
 			</span>
 		</a>
 		<nav class="desktop-nav" aria-label="Primary navigation">
@@ -22,7 +22,7 @@ const mobileMenuId = 'primary-mobile-menu';
 				<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
 			))}
 		</nav>
-		<a class="button button-primary header-cta" href="/#final-cta">Book a Free Audit</a>
+		<a class="button button-primary header-cta" href="/book-a-free-audit">Book a Free Audit</a>
 		<details class="mobile-nav" data-mobile-nav>
 			<summary aria-label="Toggle navigation menu" aria-controls={mobileMenuId} aria-expanded="false">
 				<span class="sr-only">Open navigation menu</span>
@@ -34,7 +34,7 @@ const mobileMenuId = 'primary-mobile-menu';
 				{navigation.map((item) => (
 					<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
 				))}
-				<a class="button button-primary" href="/#final-cta">Book a Free Audit</a>
+				<a class="button button-primary" href="/book-a-free-audit">Book a Free Audit</a>
 			</div>
 		</details>
 	</div>

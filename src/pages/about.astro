@@ -1,29 +1,52 @@
 ---
-import { process, services } from '../data/siteContent.js';
+import { aboutPillars, process, services } from '../data/siteContent.js';
 import UiIcon from '../components/UiIcon.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-	title="About AI Wise Spaces | How We Improve Websites and AI Discoverability"
-	description="Learn the process AI Wise Spaces uses to improve websites, strengthen trust, and increase AI discoverability for local businesses."
-	keywords="improve website discoverability, AI discoverability process, website improvement process, AI-ready website strategy"
+	title="About AI Wise Spaces | Website Marketing for Contractors and Local Service Businesses"
+	description="Learn how AI Wise Spaces helps contractors and local service businesses improve website messaging, local SEO, and lead generation without agency fluff."
+	keywords="about AI Wise Spaces, contractor website marketing Lancaster, local service business SEO help, website lead generation process"
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">ABOUT</p>
-			<h1 class="page-title">How we improve websites so people and AI systems can understand them faster.</h1>
-			<p class="page-lede">Our work is focused on one outcome: making websites clearer, more trustworthy, and easier for AI systems to interpret, surface, and recommend.</p>
+			<h1 class="page-title">We help local service businesses turn weak websites into better lead systems.</h1>
+			<p class="page-lede">Our work is focused on one outcome: making websites clearer, more trustworthy, and more likely to turn local traffic into calls, form fills, and booked jobs.</p>
 		</section>
 
 		<section class="container page-section two-column-callout">
-			<div class="about-card">
-				<p>We start by identifying where a website is unclear, where trust is weak, and where structure makes it difficult for AI tools to understand what the business offers.</p>
-				<p>From there, we improve messaging, page structure, service clarity, local relevance, and lead capture so the website performs better for both buyers and recommendation systems.</p>
+			<div class="page-band about-intro-card">
+				<div class="section-heading compact">
+					<p class="eyebrow">HOW WE WORK</p>
+					<h2>Compact, practical, and built around lead quality.</h2>
+				</div>
+				<p>We start by identifying where a website is unclear, where trust is weak, and where structure makes it difficult for the right customer to understand what the business offers.</p>
+				<p>Then we simplify the message, tighten the page structure, strengthen local trust signals, and make the next step easier to take.</p>
+				<ul class="bullet-list compact-bullet-list">
+					<li>Clearer service messaging</li>
+					<li>Stronger local SEO structure</li>
+					<li>Better lead capture paths</li>
+					<li>Less fluff and less confusion</li>
+				</ul>
 			</div>
-			<div class="info-stack">
+			<div class="about-pillars-grid">
+				{aboutPillars.map((pillar) => (
+					<article class="stack-card about-pillar-card">
+						<p class="case-label">Core principle</p>
+						<h2>{pillar.title}</h2>
+						<p>{pillar.text}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="detail-grid">
 				{services.map((service) => (
-					<article class="stack-card">
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">Service focus</p>
 						<h2>{service.title}</h2>
 						<p>{service.description}</p>
 					</article>
@@ -34,7 +57,7 @@ import Layout from '../layouts/Layout.astro';
 		<section class="container page-section">
 			<div class="section-heading">
 				<p class="eyebrow">OUR PROCESS</p>
-				<h2>The sequence we use to improve website clarity and AI discoverability.</h2>
+				<h2>The sequence we use to turn unclear websites into better sales tools.</h2>
 			</div>
 			<div class="process-timeline">
 				{process.map((item) => (
@@ -54,14 +77,14 @@ import Layout from '../layouts/Layout.astro';
 			<div class="page-band">
 				<div class="section-heading compact">
 					<p class="eyebrow">WHAT CHANGES</p>
-					<h2>Every improvement is designed to make the website easier to parse, trust, and act on.</h2>
+					<h2>Every improvement is designed to make the website easier to trust, find, and contact.</h2>
 				</div>
-				<ul>
+				<ul class="bullet-list compact-bullet-list">
 					<li>Service pages become clearer and more specific.</li>
 					<li>Local signals are stronger for Lancaster and Pennsylvania searches.</li>
-					<li>Content structure becomes easier for AI systems to cite and recommend.</li>
+					<li>FAQ content and proof make the site easier to trust.</li>
 					<li>Calls to action and lead capture paths become simpler and more persuasive.</li>
-					<li>The site gains a more durable foundation for long-term visibility.</li>
+					<li>The site gains a more durable foundation for long-term lead generation.</li>
 				</ul>
 			</div>
 		</section>
