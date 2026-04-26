@@ -4,6 +4,7 @@ import { navigation } from '../data/siteContent.js';
 const { currentPath = '/' } = Astro.props;
 
 const isActive = (item) => Boolean(item.match && currentPath === item.match);
+const mobileMenuId = 'primary-mobile-menu';
 ---
 
 <header class="site-header">
@@ -16,19 +17,20 @@ const isActive = (item) => Boolean(item.match && currentPath === item.match);
 		</a>
 		<nav class="desktop-nav" aria-label="Primary navigation">
 			{navigation.map((item) => (
-				<a href={item.href} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
+				<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
 			))}
 		</nav>
 		<a class="button button-primary header-cta" href="/#final-cta">Book a Free Audit</a>
 		<details class="mobile-nav" data-mobile-nav>
-			<summary aria-label="Open navigation menu">
+			<summary aria-label="Toggle navigation menu" aria-controls={mobileMenuId} aria-expanded="false">
+				<span class="sr-only">Open navigation menu</span>
 				<span></span>
 				<span></span>
 				<span></span>
 			</summary>
-			<div class="mobile-panel">
+			<div class="mobile-panel" id={mobileMenuId}>
 				{navigation.map((item) => (
-					<a href={item.href} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
+					<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
 				))}
 				<a class="button button-primary" href="/#final-cta">Book a Free Audit</a>
 			</div>
@@ -40,9 +42,21 @@ const isActive = (item) => Boolean(item.match && currentPath === item.match);
 	const mobileNav = document.querySelector('[data-mobile-nav]');
 
 	if (mobileNav instanceof HTMLDetailsElement) {
+		const summary = mobileNav.querySelector('summary');
+
+		const syncExpandedState = () => {
+			if (summary instanceof HTMLElement) {
+				summary.setAttribute('aria-expanded', mobileNav.open ? 'true' : 'false');
+			}
+		};
+
 		const closeMenu = () => {
 			mobileNav.open = false;
+			syncExpandedState();
 		};
+
+		syncExpandedState();
+		mobileNav.addEventListener('toggle', syncExpandedState);
 
 		document.addEventListener('click', (event) => {
 			if (!mobileNav.open) {

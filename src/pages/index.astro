@@ -10,9 +10,6 @@ import {
 } from '../data/siteContent.js';
 import Layout from '../layouts/Layout.astro';
 import UiIcon from '../components/UiIcon.astro';
-
-const renderFormEndpoint = import.meta.env.PUBLIC_RENDER_FORM_ENDPOINT ?? '';
-const renderApiKey = import.meta.env.PUBLIC_RENDER_API_KEY ?? '';
 const homeSchema = [
 	{
 		'@context': 'https://schema.org',
@@ -40,7 +37,7 @@ const homeSchema = [
 	keywords="AI audit, AI-ready website, AI visibility, recommended by AI, technical SEO for AI, Astro website build, AI growth system"
 	schema={homeSchema}
 >
-	<main id="top">
+	<main id="main-content" tabindex="-1">
 			<section class="hero-section container">
 				<div class="hero-copy">
 					<p class="eyebrow">AI VISIBILITY. REAL RESULTS.</p>
@@ -215,9 +212,7 @@ const homeSchema = [
 					</p>
 					<form
 						class="audit-form"
-						data-render-form
-						data-endpoint={renderFormEndpoint}
-						data-api-key={renderApiKey}
+						data-contact-form
 					>
 						<div class="form-grid">
 							<label>
@@ -243,7 +238,7 @@ const homeSchema = [
 						</label>
 						<div class="form-actions">
 							<button class="button button-primary" type="submit">Request Free Audit</button>
-							<p class="form-note">Render-ready. Paste your endpoint and API key into `.env` when you are ready.</p>
+							<p class="form-note">Requests are delivered privately through our secure contact endpoint.</p>
 						</div>
 						<p class="form-status" data-form-status role="status" aria-live="polite"></p>
 					</form>
@@ -253,23 +248,16 @@ const homeSchema = [
 </Layout>
 
 <script>
-	const auditForm = document.querySelector('[data-render-form]');
+	const auditForm = document.querySelector('[data-contact-form]');
 
 	if (auditForm instanceof HTMLFormElement) {
 		const statusNode = auditForm.querySelector('[data-form-status]');
 		const submitButton = auditForm.querySelector('button[type="submit"]');
-		const endpoint = auditForm.dataset.endpoint?.trim() ?? '';
-		const apiKey = auditForm.dataset.apiKey?.trim() ?? '';
 
 		auditForm.addEventListener('submit', async (event) => {
 			event.preventDefault();
 
 			if (!(statusNode instanceof HTMLElement) || !(submitButton instanceof HTMLButtonElement)) {
-				return;
-			}
-
-			if (!endpoint || !apiKey) {
-				statusNode.textContent = 'Add your Render endpoint and API key to `.env` before submitting the form.';
 				return;
 			}
 
@@ -280,23 +268,25 @@ const homeSchema = [
 			const payload = Object.fromEntries(formData.entries());
 
 			try {
-				const response = await fetch(endpoint, {
+				const response = await fetch('/api/contact', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-API-Key': apiKey,
 					},
 					body: JSON.stringify(payload),
 				});
 
 				if (!response.ok) {
-					throw new Error('Request failed');
+					const errorPayload = await response.json().catch(() => null);
+					throw new Error(errorPayload?.error ?? 'Request failed');
 				}
 
 				auditForm.reset();
 				statusNode.textContent = 'Thanks. Your audit request was sent successfully.';
-			} catch {
-				statusNode.textContent = 'The form could not be sent. Check your Render endpoint and API key, then try again.';
+			} catch (error) {
+				statusNode.textContent = error instanceof Error
+					? error.message
+					: 'The form could not be sent. Please try again in a moment.';
 			} finally {
 				submitButton.disabled = false;
 			}
