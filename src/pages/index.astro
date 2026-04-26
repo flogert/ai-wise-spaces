@@ -42,18 +42,55 @@ const homeSchema = [
 				<div class="hero-copy">
 					<p class="eyebrow">AI VISIBILITY. REAL RESULTS.</p>
 					<h1>
-						<span class="hero-line">
-							Make <span class="gradient-text hero-emphasis">Your Business</span>
-						</span>
+						id="contact-form"
+						class="audit-form"
 						<span class="hero-line hero-line-tight">Visible. Understandable.</span>
 						<strong class="gradient-text hero-strong">Recommended by AI.</strong>
 					</h1>
 					<p class="hero-text">
 						We help businesses build AI-ready websites that are easy for people to trust and
+						<p id="form-status" class="form-status" role="status" aria-live="polite"></p>
 						 easy for AI assistants to understand, cite, and recommend.
 					</p>
 					<div class="hero-actions">
 						<a class="button button-primary" href="#final-cta">Book a Free Audit</a>
+
+<script>
+	const form = document.querySelector('#contact-form');
+	const status = document.querySelector('#form-status');
+
+	form?.addEventListener('submit', async (event) => {
+		event.preventDefault();
+
+		if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) {
+			return;
+		}
+
+		status.textContent = 'Sending...';
+
+		const formData = new FormData(form);
+
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				body: formData,
+			});
+
+			const data = await response.json().catch(() => ({}));
+
+			if (!response.ok) {
+				status.textContent = typeof data.message === 'string' ? data.message : 'Something went wrong.';
+				return;
+			}
+
+			status.textContent = 'Message sent successfully!';
+			form.reset();
+		} catch (error) {
+			console.error(error);
+			status.textContent = 'Could not send message. Please try again.';
+		}
+	});
+</script>
 						<a class="button button-secondary" href="/services">Explore Services</a>
 					</div>
 					<div class="proof-row">
@@ -211,10 +248,8 @@ const homeSchema = [
 						 recommend your business.
 					</p>
 					<form
+						id="contact-form"
 						class="audit-form"
-						data-contact-form
-						method="POST"
-						action="/api/contact"
 					>
 						<div class="form-grid">
 							<label>
@@ -227,7 +262,7 @@ const homeSchema = [
 							</label>
 							<label>
 								<span>Business</span>
-								<input type="text" name="business" autocomplete="organization" placeholder="Business name" required />
+								<input type="text" name="business" autocomplete="organization" placeholder="Business name" />
 							</label>
 							<label>
 								<span>Website</span>
@@ -242,8 +277,46 @@ const homeSchema = [
 							<button class="button button-primary" type="submit">Request Free Audit</button>
 							<p class="form-note">Requests are delivered privately through our secure contact endpoint.</p>
 						</div>
+						<p id="form-status" class="form-status" role="status" aria-live="polite"></p>
 					</form>
 				</div>
 			</section>
 	</main>
 </Layout>
+
+<script>
+	const form = document.querySelector('#contact-form');
+	const status = document.querySelector('#form-status');
+
+	form?.addEventListener('submit', async (event) => {
+		event.preventDefault();
+
+		if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) {
+			return;
+		}
+
+		status.textContent = 'Sending...';
+
+		const formData = new FormData(form);
+
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				body: formData,
+			});
+
+			const data = await response.json().catch(() => ({}));
+
+			if (!response.ok) {
+				status.textContent = typeof data.message === 'string' ? data.message : 'Something went wrong.';
+				return;
+			}
+
+			status.textContent = 'Message sent successfully!';
+			form.reset();
+		} catch (error) {
+			console.error(error);
+			status.textContent = 'Could not send message. Please try again.';
+		}
+	});
+</script>
