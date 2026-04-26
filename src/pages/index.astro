@@ -213,6 +213,8 @@ const homeSchema = [
 					<form
 						class="audit-form"
 						data-contact-form
+						method="POST"
+						action="/api/contact"
 					>
 						<div class="form-grid">
 							<label>
@@ -240,56 +242,8 @@ const homeSchema = [
 							<button class="button button-primary" type="submit">Request Free Audit</button>
 							<p class="form-note">Requests are delivered privately through our secure contact endpoint.</p>
 						</div>
-						<p class="form-status" data-form-status role="status" aria-live="polite"></p>
 					</form>
 				</div>
 			</section>
 	</main>
 </Layout>
-
-<script>
-	const auditForm = document.querySelector('[data-contact-form]');
-
-	if (auditForm instanceof HTMLFormElement) {
-		const statusNode = auditForm.querySelector('[data-form-status]');
-		const submitButton = auditForm.querySelector('button[type="submit"]');
-
-		auditForm.addEventListener('submit', async (event) => {
-			event.preventDefault();
-
-			if (!(statusNode instanceof HTMLElement) || !(submitButton instanceof HTMLButtonElement)) {
-				return;
-			}
-
-			statusNode.textContent = 'Sending your request...';
-			submitButton.disabled = true;
-
-			const formData = new FormData(auditForm);
-			const payload = Object.fromEntries(formData.entries());
-
-			try {
-				const response = await fetch('/api/contact', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(payload),
-				});
-
-				if (!response.ok) {
-					const errorPayload = await response.json().catch(() => null);
-					throw new Error(errorPayload?.error ?? 'Request failed');
-				}
-
-				auditForm.reset();
-				statusNode.textContent = 'Thanks. Your audit request was sent successfully.';
-			} catch (error) {
-				statusNode.textContent = error instanceof Error
-					? error.message
-					: 'The form could not be sent. Please try again in a moment.';
-			} finally {
-				submitButton.disabled = false;
-			}
-		});
-	}
-</script>

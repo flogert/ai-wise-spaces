@@ -95,7 +95,12 @@ export default async function handler(request: Request): Promise<Response> {
 			return Response.json({ error: 'Email delivery failed.' }, { status: 502 });
 		}
 
-		return Response.json({ ok: true });
+		return new Response(null, {
+			status: 302,
+			headers: {
+				Location: '/thank-you',
+			},
+		});
 	} catch {
 		return Response.json({ error: 'The contact service is temporarily unavailable.' }, { status: 502 });
 	}
