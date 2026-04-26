@@ -1,0 +1,67 @@
+---
+import { navigation } from '../data/siteContent.js';
+
+const { currentPath = '/' } = Astro.props;
+
+const isActive = (item) => Boolean(item.match && currentPath === item.match);
+---
+
+<header class="site-header">
+	<div class="container nav-bar">
+		<a href="/" class="brand-mark" aria-label="AI Wise Spaces home">
+			<img class="brand-logo" src="/aiwisespaces.png" alt="AI Wise Spaces logo" />
+			<span class="brand-copy">
+				<strong>AI Wise Spaces</strong>
+			</span>
+		</a>
+		<nav class="desktop-nav" aria-label="Primary navigation">
+			{navigation.map((item) => (
+				<a href={item.href} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
+			))}
+		</nav>
+		<a class="button button-primary header-cta" href="/#final-cta">Book a Free Audit</a>
+		<details class="mobile-nav" data-mobile-nav>
+			<summary aria-label="Open navigation menu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</summary>
+			<div class="mobile-panel">
+				{navigation.map((item) => (
+					<a href={item.href} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
+				))}
+				<a class="button button-primary" href="/#final-cta">Book a Free Audit</a>
+			</div>
+		</details>
+	</div>
+</header>
+
+<script>
+	const mobileNav = document.querySelector('[data-mobile-nav]');
+
+	if (mobileNav instanceof HTMLDetailsElement) {
+		const closeMenu = () => {
+			mobileNav.open = false;
+		};
+
+		document.addEventListener('click', (event) => {
+			if (!mobileNav.open) {
+				return;
+			}
+
+			if (!mobileNav.contains(event.target)) {
+				closeMenu();
+			}
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') {
+				closeMenu();
+			}
+		});
+
+		mobileNav.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', closeMenu);
+		});
+	}
+</script>

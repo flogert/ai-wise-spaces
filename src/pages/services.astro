@@ -1,0 +1,57 @@
+---
+import UiIcon from '../components/UiIcon.astro';
+import { process, services } from '../data/siteContent.js';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="AI Services | AI Audits, AI Builds, and Growth Systems | AI Wise Spaces"
+	description="Explore AI Wise Spaces services including AI audits, AI-ready website builds, structured content systems, and technical SEO for AI discovery."
+	keywords="AI services, AI audit, AI website build, technical SEO for AI, structured content strategy"
+>
+	<main class="page-main">
+		<section class="container page-hero">
+			<p class="eyebrow">SERVICES</p>
+			<h1 class="page-title">Simple, effective services for businesses that need to be understood and recommended by AI.</h1>
+			<p class="page-lede">We help businesses improve clarity, trust, and discoverability without turning the work into jargon or unnecessary complexity.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="detail-grid">
+				{services.map((service) => (
+					<article class="detail-card">
+						<div class={`icon-badge icon-${service.icon}`}>
+							<UiIcon name={service.icon} />
+						</div>
+						<p class="case-label">{service.bestFor}</p>
+						<h2>{service.title}</h2>
+						<p>{service.description}</p>
+						<ul class="bullet-list">
+							{service.deliverables.map((item) => <li>{item}</li>)}
+						</ul>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">HOW WE WORK</p>
+					<h2>Each service is scoped to give you a clearer site, not more noise.</h2>
+				</div>
+				<div class="mini-process-grid">
+					{process.map((item) => (
+						<div class="mini-process-step">
+							<div class="timeline-node">
+								<UiIcon name={item.icon} />
+							</div>
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

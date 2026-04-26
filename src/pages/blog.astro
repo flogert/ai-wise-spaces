@@ -1,0 +1,30 @@
+---
+import { blogPosts } from '../data/siteContent.js';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="AI Visibility Blog | AI Wise Spaces"
+	description="Read practical articles on AI visibility, structured content, trust signals, AI-ready websites, and modern SEO strategy."
+	keywords="AI visibility blog, AI SEO insights, structured content, AI-ready website tips"
+>
+	<main class="page-main">
+		<section class="container page-hero">
+			<p class="eyebrow">BLOG</p>
+			<h1 class="page-title">Clear thinking on AI visibility, content structure, and modern web trust.</h1>
+			<p class="page-lede">This is where we publish practical explanations, frameworks, and examples that help businesses understand what AI-ready actually means.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="article-grid">
+				{blogPosts.map((post) => (
+					<article class="stack-card article-card">
+						<p class="case-label">Article idea</p>
+						<h2>{post.title}</h2>
+						<p>{post.summary}</p>
+					</article>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>

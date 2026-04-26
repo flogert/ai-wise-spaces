@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+const {
+	title = 'AI Wise Spaces | AI-Ready Websites for the New Search Era',
+	description = 'AI Wise Spaces builds fast, structured websites that help businesses become visible, understandable, and recommendable across AI assistants and modern search.',
+	keywords = 'AI-ready websites, AI SEO, AI visibility, structured content, Astro website agency, technical SEO, AI discovery',
+	schema,
+} = Astro.props as {
+	title?: string;
+	description?: string;
+	keywords?: string;
+	schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+};
+
+const currentPath = Astro.url.pathname;
+const siteUrl = Astro.site ?? new URL('https://www.aiwisespaces.com');
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const socialImage = new URL('/aiwisespaces.png', siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="512x512" href="/aiwisespaces.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/aiwisespaces.png" />
+		<link rel="canonical" href={canonicalUrl} />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#050816" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:site_name" content="AI Wise Spaces" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:alt" content="AI Wise Spaces glowing document mark" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImage} />
+		<title>{title}</title>
+		{schema && (
+			<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+		)}
+	</head>
+	<body>
+		<div class="page-shell">
+			<SiteHeader currentPath={currentPath} />
+			<slot />
+			<SiteFooter />
+		</div>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+	}
+</style>

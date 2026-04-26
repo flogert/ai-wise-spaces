@@ -1,0 +1,305 @@
+---
+import {
+	faqs,
+	logos,
+	pricing,
+	proofAvatars,
+	process,
+	services,
+	stats,
+} from '../data/siteContent.js';
+import Layout from '../layouts/Layout.astro';
+import UiIcon from '../components/UiIcon.astro';
+
+const renderFormEndpoint = import.meta.env.PUBLIC_RENDER_FORM_ENDPOINT ?? '';
+const renderApiKey = import.meta.env.PUBLIC_RENDER_API_KEY ?? '';
+const homeSchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Organization',
+		name: 'AI Wise Spaces',
+		url: 'https://www.aiwisespaces.com/',
+		logo: 'https://www.aiwisespaces.com/aiwisespaces.png',
+		description:
+			'AI Wise Spaces builds AI-ready websites, technical SEO systems, and structured content that help businesses become visible, understandable, and recommended by AI.',
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: 'AI Wise Spaces',
+		url: 'https://www.aiwisespaces.com/',
+		description:
+			'AI visibility, AI audits, AI website builds, and AI growth systems for modern businesses.',
+	},
+];
+---
+
+<Layout
+	title="AI Wise Spaces | AI-Ready Websites, AI Audits, and Growth Systems"
+	description="AI Wise Spaces helps businesses get recommended by AI with AI audits, AI-ready website builds, structured content, and technical SEO systems."
+	keywords="AI audit, AI-ready website, AI visibility, recommended by AI, technical SEO for AI, Astro website build, AI growth system"
+	schema={homeSchema}
+>
+	<main id="top">
+			<section class="hero-section container">
+				<div class="hero-copy">
+					<p class="eyebrow">AI VISIBILITY. REAL RESULTS.</p>
+					<h1>
+						<span class="hero-line">
+							Make <span class="gradient-text hero-emphasis">Your Business</span>
+						</span>
+						<span class="hero-line hero-line-tight">Visible. Understandable.</span>
+						<strong class="gradient-text hero-strong">Recommended by AI.</strong>
+					</h1>
+					<p class="hero-text">
+						We help businesses build AI-ready websites that are easy for people to trust and
+						 easy for AI assistants to understand, cite, and recommend.
+					</p>
+					<div class="hero-actions">
+						<a class="button button-primary" href="#final-cta">Book a Free Audit</a>
+						<a class="button button-secondary" href="/services">Explore Services</a>
+					</div>
+					<div class="proof-row">
+						<div class="avatar-stack" aria-hidden="true">
+							{proofAvatars.map((avatar) => <span>{avatar}</span>)}
+						</div>
+						<div class="proof-block">
+							<p>Trusted by businesses building their AI visibility</p>
+						</div>
+						<div class="proof-block proof-rating">
+							<span class="proof-stars">★★★★★</span>
+							<span class="proof-label">5.0 from 30+ reviews</span>
+						</div>
+					</div>
+				</div>
+				<div class="hero-visual" aria-hidden="true">
+					<div class="hero-glow"></div>
+					<div class="hero-grid"></div>
+					<div class="orbit-ring orbit-ring-one"></div>
+					<div class="orbit-ring orbit-ring-two"></div>
+					<div class="panel-stack">
+						<div class="panel panel-one"></div>
+						<div class="panel panel-two"></div>
+						<div class="panel panel-three"></div>
+						<div class="panel panel-four"></div>
+						<div class="panel panel-five"></div>
+						<div class="panel panel-six"></div>
+					</div>
+					<div class="node-grid"></div>
+					<div class="floating-card card-ai">Understood by AI Assistants</div>
+					<div class="floating-card card-structured">Structured for Clarity</div>
+					<div class="floating-card card-recommended">Recommended to Your Customers</div>
+				</div>
+			</section>
+
+			<section class="container logo-strip-section">
+				<div class="logo-strip">
+					<p class="eyebrow">TRUSTED BY FORWARD-THINKING BUSINESSES</p>
+					<div class="logo-list">
+						{logos.map((logo) => (
+							<span>
+								<strong>{logo.name}</strong>
+								{logo.sublabel && <small>{logo.sublabel}</small>}
+							</span>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="services" class="container content-section">
+				<div class="services-intro">
+					<div class="section-heading compact services-copy">
+						<p class="eyebrow">OUR SERVICES</p>
+						<h2>
+							Everything Your Business Needs to
+							<span class="gradient-text">Get Seen by AI</span>
+						</h2>
+					</div>
+					<p class="services-summary">
+						From audits to full website builds and content systems, we make your business
+						 AI-ready at every layer.
+					</p>
+				</div>
+				<div class="services-grid">
+					{services.map((service) => (
+						<article class="service-card">
+							<div class={`icon-badge icon-${service.icon}`}>
+								<UiIcon name={service.icon} />
+							</div>
+							<h3>{service.title}</h3>
+							<p>{service.description}</p>
+							<a href="/services">Learn more →</a>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section class="container stats-section">
+				<div class="stats-card">
+					<p class="eyebrow stats-eyebrow">WHY AI VISIBILITY MATTERS</p>
+					<div class="stats-grid">
+						{stats.map((stat) => (
+							<div class="stat-item">
+								<div class={`stat-icon icon-${stat.icon}`}>
+									<UiIcon name={stat.icon} />
+								</div>
+								<strong>{stat.value}</strong>
+								<p>{stat.label}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="process" class="container content-section">
+				<div class="section-heading">
+					<p class="eyebrow">OUR PROCESS</p>
+					<h2>Simple. Strategic. Effective.</h2>
+				</div>
+				<div class="process-timeline">
+					{process.map((item) => (
+						<article class="process-step">
+							<div class="timeline-node">
+								<UiIcon name={item.icon} />
+							</div>
+							<p class="step-number">{item.step}</p>
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="pricing" class="container content-section">
+				<div class="section-heading">
+					<p class="eyebrow">PRICING</p>
+					<h2>Choose the level of AI visibility support you need.</h2>
+				</div>
+				<div class="pricing-grid">
+					{pricing.map((tier) => (
+						<article class={`pricing-card${tier.featured ? ' featured' : ''}`}>
+							<p class="pricing-label">{tier.bestFor}</p>
+							<h3>{tier.name}</h3>
+							<strong class="price">{tier.price}</strong>
+							<ul>
+								{tier.features.map((feature) => <li>{feature}</li>)}
+							</ul>
+							<a class="button button-secondary" href="#final-cta">Book a Free Audit</a>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section class="container content-section">
+				<div class="section-heading">
+					<p class="eyebrow">FAQ</p>
+					<h2>Questions we hear before a project starts.</h2>
+				</div>
+				<div class="faq-list">
+					{faqs.map((faq) => (
+						<details class="faq-item">
+							<summary>{faq.question}</summary>
+							<p>{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</section>
+
+			<section id="final-cta" class="container final-cta-section">
+				<div class="final-cta-card">
+					<p class="eyebrow">READY WHEN YOU ARE</p>
+					<h2>Ready to make your website AI-ready?</h2>
+					<p>
+						Book a free audit and see how clearly AI assistants can understand, cite, and
+						 recommend your business.
+					</p>
+					<form
+						class="audit-form"
+						data-render-form
+						data-endpoint={renderFormEndpoint}
+						data-api-key={renderApiKey}
+					>
+						<div class="form-grid">
+							<label>
+								<span>Name</span>
+								<input type="text" name="name" autocomplete="name" placeholder="Your name" required />
+							</label>
+							<label>
+								<span>Email</span>
+								<input type="email" name="email" autocomplete="email" placeholder="you@business.com" required />
+							</label>
+							<label>
+								<span>Business</span>
+								<input type="text" name="business" autocomplete="organization" placeholder="Business name" required />
+							</label>
+							<label>
+								<span>Website</span>
+								<input type="url" name="website" inputmode="url" placeholder="https://yourwebsite.com" />
+							</label>
+						</div>
+						<label class="form-message">
+							<span>What do you need help with?</span>
+							<textarea name="message" rows="4" placeholder="Tell us about your current website, visibility issues, or goals." required></textarea>
+						</label>
+						<div class="form-actions">
+							<button class="button button-primary" type="submit">Request Free Audit</button>
+							<p class="form-note">Render-ready. Paste your endpoint and API key into `.env` when you are ready.</p>
+						</div>
+						<p class="form-status" data-form-status role="status" aria-live="polite"></p>
+					</form>
+				</div>
+			</section>
+	</main>
+</Layout>
+
+<script>
+	const auditForm = document.querySelector('[data-render-form]');
+
+	if (auditForm instanceof HTMLFormElement) {
+		const statusNode = auditForm.querySelector('[data-form-status]');
+		const submitButton = auditForm.querySelector('button[type="submit"]');
+		const endpoint = auditForm.dataset.endpoint?.trim() ?? '';
+		const apiKey = auditForm.dataset.apiKey?.trim() ?? '';
+
+		auditForm.addEventListener('submit', async (event) => {
+			event.preventDefault();
+
+			if (!(statusNode instanceof HTMLElement) || !(submitButton instanceof HTMLButtonElement)) {
+				return;
+			}
+
+			if (!endpoint || !apiKey) {
+				statusNode.textContent = 'Add your Render endpoint and API key to `.env` before submitting the form.';
+				return;
+			}
+
+			statusNode.textContent = 'Sending your request...';
+			submitButton.disabled = true;
+
+			const formData = new FormData(auditForm);
+			const payload = Object.fromEntries(formData.entries());
+
+			try {
+				const response = await fetch(endpoint, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-API-Key': apiKey,
+					},
+					body: JSON.stringify(payload),
+				});
+
+				if (!response.ok) {
+					throw new Error('Request failed');
+				}
+
+				auditForm.reset();
+				statusNode.textContent = 'Thanks. Your audit request was sent successfully.';
+			} catch {
+				statusNode.textContent = 'The form could not be sent. Check your Render endpoint and API key, then try again.';
+			} finally {
+				submitButton.disabled = false;
+			}
+		});
+	}
+</script>

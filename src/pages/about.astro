@@ -1,0 +1,33 @@
+---
+import { aboutPillars } from '../data/siteContent.js';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="About AI Wise Spaces | AI-Ready Website Strategy"
+	description="Learn how AI Wise Spaces approaches AI-ready websites, structured content, technical SEO, and digital trust for modern search."
+	keywords="about AI Wise Spaces, AI-ready website strategy, technical SEO, AI visibility agency"
+>
+	<main class="page-main">
+		<section class="container page-hero">
+			<p class="eyebrow">ABOUT</p>
+			<h1 class="page-title">We build calm, strategic websites for businesses entering the AI discovery era.</h1>
+			<p class="page-lede">AI Wise Spaces combines technical SEO, structured content, and conversion-focused design to help businesses become easier to trust and easier for AI systems to recommend.</p>
+		</section>
+
+		<section class="container page-section two-column-callout">
+			<div class="about-card">
+				<p>We focus on the parts of a website that actually affect visibility: what the business does, how clearly that is explained, how trustworthy it looks, and how technically easy it is for machines to interpret.</p>
+				<p>That means less dependence on bloated tooling and more attention to semantic structure, service-page clarity, fast performance, and useful content.</p>
+			</div>
+			<div class="info-stack">
+				{aboutPillars.map((pillar) => (
+					<article class="stack-card">
+						<h2>{pillar.title}</h2>
+						<p>{pillar.text}</p>
+					</article>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>

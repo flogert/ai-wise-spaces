@@ -1,0 +1,23 @@
+---
+const { name, class: className } = Astro.props;
+
+const iconPaths = {
+	search: '<circle cx="11" cy="11" r="5"></circle><path d="M16 16L21 21"></path>',
+	window:
+		'<rect x="4" y="5" width="18" height="14" rx="2"></rect><path d="M4 9H22"></path><path d="M8 7H8.01"></path><path d="M11 7H11.01"></path>',
+	document:
+		'<path d="M8 3H15L20 8V21H8z"></path><path d="M15 3V8H20"></path><path d="M11 13H17"></path><path d="M11 17H17"></path>',
+	gear:
+		'<circle cx="12" cy="12" r="3.2"></circle><path d="M19.4 15a1 1 0 0 0 .2 1.1l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1 1 0 0 0-1.1-.2 1 1 0 0 0-.6.9V20a2 2 0 1 1-4 0v-.2a1 1 0 0 0-.7-.9 1 1 0 0 0-1.1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1 1 0 0 0 .2-1.1 1 1 0 0 0-.9-.6H4a2 2 0 1 1 0-4h.2a1 1 0 0 0 .9-.7 1 1 0 0 0-.2-1.1l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1 1 0 0 0 1.1.2h.1a1 1 0 0 0 .6-.9V4a2 2 0 1 1 4 0v.2a1 1 0 0 0 .6.9 1 1 0 0 0 1.1-.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1 1 0 0 0-.2 1.1v.1a1 1 0 0 0 .9.6H20a2 2 0 1 1 0 4h-.2a1 1 0 0 0-.9.6z"></path>',
+	chart: '<path d="M4 19H20"></path><path d="M7 16V10"></path><path d="M12 16V6"></path><path d="M17 16V12"></path><path d="M7 10L12 6L17 12"></path>',
+	star: '<path d="M12 3L14.8 8.7L21 9.5L16.5 13.8L17.7 20L12 16.8L6.3 20L7.5 13.8L3 9.5L9.2 8.7Z"></path>',
+	shield: '<path d="M12 3L19 6V12C19 16.4 16.1 19.8 12 21C7.9 19.8 5 16.4 5 12V6Z"></path><path d="M9.5 12L11.3 13.8L14.8 10.3"></path>',
+	bulb: '<path d="M9 18H15"></path><path d="M10 22H14"></path><path d="M12 2a7 7 0 0 0-4 12.8c.7.5 1 1 1 1.7V17h6v-.5c0-.7.3-1.2 1-1.7A7 7 0 0 0 12 2Z"></path>',
+	code: '<path d="M9 18L3 12L9 6"></path><path d="M15 6L21 12L15 18"></path>',
+	trend: '<path d="M4 18H20"></path><path d="M6 15L10 11L13 14L18 8"></path><path d="M14 8H18V12"></path>',
+};
+
+const markup = iconPaths[name] ?? '';
+---
+
+<svg class={className} viewBox="0 0 24 24" aria-hidden="true" set:html={markup}></svg>

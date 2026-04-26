@@ -1,0 +1,32 @@
+---
+import { caseStudies } from '../data/siteContent.js';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="AI Visibility Case Studies | AI Wise Spaces"
+	description="See AI visibility case studies showing how structured content, clearer site architecture, and technical SEO improve understanding and trust."
+	keywords="AI visibility case studies, structured content examples, technical SEO results, AI-ready websites"
+>
+	<main class="page-main">
+		<section class="container page-hero">
+			<p class="eyebrow">CASE STUDIES</p>
+			<h1 class="page-title">Example outcomes for businesses adapting to the new search era.</h1>
+			<p class="page-lede">These use cases show the kinds of clarity, structure, and trust improvements that help businesses become more understandable to both people and AI systems.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="case-grid">
+				{caseStudies.map((study) => (
+					<article class="case-card">
+						<p class="case-label">{study.industry}</p>
+						<h2>{study.title}</h2>
+						<p><strong>Problem:</strong> {study.problem}</p>
+						<p><strong>Solution:</strong> {study.solution}</p>
+						<p><strong>Result example:</strong> {study.result}</p>
+					</article>
+				))}
+			</div>
+		</section>
+	</main>
+</Layout>
