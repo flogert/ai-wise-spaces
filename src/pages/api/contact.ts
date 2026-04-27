@@ -30,7 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
 			);
 		}
 
-		const result = await resend.emails.send({
+		const { data, error } = await resend.emails.send({
 			from: 'AI Wise Spaces <contact@stolese.resend.app>',
 			to: [toEmail],
 			subject: `New AI Wise Spaces lead from ${name}`,
@@ -44,9 +44,20 @@ export const POST: APIRoute = async ({ request }) => {
 			`,
 		});
 
-		console.log('Resend result:', result);
+		if (error) {
+			console.error('Resend error:', error);
+			return Response.json(
+				{ message: 'Resend rejected the email.', error },
+				{ status: 500 },
+			);
+		}
 
-		return Response.json({ message: 'Message sent successfully.' });
+		console.log('Resend success:', data);
+
+		return Response.json({
+			message: 'Message sent successfully.',
+			resendId: data?.id,
+		});
 	} catch (error) {
 		console.error('Contact API crashed:', error);
 
