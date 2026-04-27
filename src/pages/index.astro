@@ -8,8 +8,52 @@ import {
 	services,
 	stats,
 } from '../data/siteContent.js';
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
 import Layout from '../layouts/Layout.astro';
 import UiIcon from '../components/UiIcon.astro';
+
+const heroStories = [
+	{
+		id: 'clarity',
+		title: 'Clarify The Offer',
+		text: 'Show Lancaster-area buyers and AI systems exactly what you do, where you work, and why they should trust your business.',
+	},
+	{
+		id: 'authority',
+		title: 'Build Local Authority',
+		text: 'Layer in service structure, local proof, and semantic signals that strengthen visibility across Pennsylvania searches and AI answers.',
+	},
+	{
+		id: 'convert',
+		title: 'Capture Better Leads',
+		text: 'Turn a generic brochure site into a local growth system that attracts better-fit inquiries and moves buyers faster.',
+	},
+];
+
+function getPricingDisplay(tier: { name: string; price: string }) {
+	if (tier.name === 'AI Builds') {
+		return {
+			prefix: 'Starting from',
+			amount: '$1,500',
+			cycle: '/project',
+		};
+	}
+
+	if (tier.name === 'AI Growth System') {
+		return {
+			prefix: '',
+			amount: '$450',
+			cycle: '/month',
+		};
+	}
+
+	return {
+		prefix: '',
+		amount: tier.price,
+		cycle: '/project',
+	};
+}
+
 const homeSchema = [
 	{
 		'@context': 'https://schema.org',
@@ -18,7 +62,22 @@ const homeSchema = [
 		url: 'https://www.aiwisespaces.com/',
 		logo: 'https://www.aiwisespaces.com/aiwisespaces.png',
 		description:
-			'AI Wise Spaces builds AI-ready websites, technical SEO systems, and structured content that help businesses become visible, understandable, and recommended by AI.',
+			'AI Wise Spaces builds AI-optimized websites, machine-readable content systems, and semantic clarity for businesses that want to be understood and recommended by AI in Lancaster, Pennsylvania, and beyond.',
+		areaServed: ['Lancaster, PA', 'Pennsylvania'],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'ProfessionalService',
+		name: 'AI Wise Spaces',
+		url: 'https://www.aiwisespaces.com/',
+		image: 'https://www.aiwisespaces.com/aiwisespaces.png',
+		description:
+			'AI marketing help, AI-optimized websites, local SEO structure, and visibility systems for businesses in Lancaster PA and across Pennsylvania.',
+		areaServed: [
+			{ '@type': 'City', name: 'Lancaster' },
+			{ '@type': 'AdministrativeArea', name: 'Pennsylvania' },
+		],
+		serviceType: ['AI-optimized websites', 'Local SEO strategy', 'Structured content systems'],
 	},
 	{
 		'@context': 'https://schema.org',
@@ -26,71 +85,31 @@ const homeSchema = [
 		name: 'AI Wise Spaces',
 		url: 'https://www.aiwisespaces.com/',
 		description:
-			'AI visibility, AI audits, AI website builds, and AI growth systems for modern businesses.',
+			'AI visibility systems, Lancaster PA SEO support, structured content, and AI-optimized website builds for modern businesses.',
 	},
 ];
 ---
 
 <Layout
-	title="AI Wise Spaces | AI-Ready Websites, AI Audits, and Growth Systems"
-	description="AI Wise Spaces helps businesses get recommended by AI with AI audits, AI-ready website builds, structured content, and technical SEO systems."
-	keywords="AI audit, AI-ready website, AI visibility, recommended by AI, technical SEO for AI, Astro website build, AI growth system"
+	title="AI Wise Spaces | Lancaster PA AI Websites, SEO, and Growth Systems"
+	description="AI Wise Spaces helps Lancaster PA and Pennsylvania businesses improve AI visibility with AI-optimized websites, local SEO structure, semantic clarity, and lead-capture systems."
+	keywords="Lancaster PA SEO, Lancaster PA marketing agency, Pennsylvania local SEO, AI visibility, AI-optimized website, structured content, semantic clarity, recommended by AI, AI growth system"
 	schema={homeSchema}
 >
 	<main id="main-content" tabindex="-1">
 			<section class="hero-section container">
 				<div class="hero-copy">
-					<p class="eyebrow">AI VISIBILITY. REAL RESULTS.</p>
+					<p class="eyebrow">AI VISIBILITY. STRUCTURED FOR TRUST.</p>
 					<h1>
-						id="contact-form"
-						class="audit-form"
-						<span class="hero-line hero-line-tight">Visible. Understandable.</span>
-						<strong class="gradient-text hero-strong">Recommended by AI.</strong>
+						<span class="hero-line hero-line-tight">Websites Designed to Be</span>
+						<strong class="gradient-text hero-strong">Understood and Recommended by AI.</strong>
 					</h1>
 					<p class="hero-text">
-						We help businesses build AI-ready websites that are easy for people to trust and
-						<p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-						 easy for AI assistants to understand, cite, and recommend.
+						We build AI-optimized websites with structured content, semantic clarity, and
+						lead-capture systems that help businesses become visible across recommendation surfaces.
 					</p>
 					<div class="hero-actions">
-						<a class="button button-primary" href="#final-cta">Book a Free Audit</a>
-
-<script>
-	const form = document.querySelector('#contact-form');
-	const status = document.querySelector('#form-status');
-
-	form?.addEventListener('submit', async (event) => {
-		event.preventDefault();
-
-		if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) {
-			return;
-		}
-
-		status.textContent = 'Sending...';
-
-		const formData = new FormData(form);
-
-		try {
-			const response = await fetch('/api/contact', {
-				method: 'POST',
-				body: formData,
-			});
-
-			const data = await response.json().catch(() => ({}));
-
-			if (!response.ok) {
-				status.textContent = typeof data.message === 'string' ? data.message : 'Something went wrong.';
-				return;
-			}
-
-			status.textContent = 'Message sent successfully!';
-			form.reset();
-		} catch (error) {
-			console.error(error);
-			status.textContent = 'Could not send message. Please try again.';
-		}
-	});
-</script>
+						<a class="button button-primary" href="#final-cta">Book an AI Visibility Audit</a>
 						<a class="button button-secondary" href="/services">Explore Services</a>
 					</div>
 					<div class="proof-row">
@@ -98,7 +117,7 @@ const homeSchema = [
 							{proofAvatars.map((avatar) => <span>{avatar}</span>)}
 						</div>
 						<div class="proof-block">
-							<p>Trusted by businesses building their AI visibility</p>
+							<p>Trusted by businesses improving AI visibility and AI presence</p>
 						</div>
 						<div class="proof-block proof-rating">
 							<span class="proof-stars">★★★★★</span>
@@ -108,21 +127,29 @@ const homeSchema = [
 				</div>
 				<div class="hero-visual" aria-hidden="true">
 					<div class="hero-glow"></div>
-					<div class="hero-grid"></div>
-					<div class="orbit-ring orbit-ring-one"></div>
-					<div class="orbit-ring orbit-ring-two"></div>
-					<div class="panel-stack">
+					<div class="panel-stack" data-active-story="clarity">
 						<div class="panel panel-one"></div>
 						<div class="panel panel-two"></div>
 						<div class="panel panel-three"></div>
 						<div class="panel panel-four"></div>
 						<div class="panel panel-five"></div>
 						<div class="panel panel-six"></div>
+						<div class="story-card-stack" data-story-stack>
+							{heroStories.map((story, index) => (
+								<button
+									type="button"
+									class={`story-card${index === 0 ? ' is-active' : ''}`}
+									data-story-trigger
+									data-story-id={story.id}
+									aria-pressed={index === 0 ? 'true' : 'false'}
+								>
+									<span class="story-card-step">0{index + 1}</span>
+									<strong>{story.title}</strong>
+									<small>{story.text}</small>
+								</button>
+							))}
+						</div>
 					</div>
-					<div class="node-grid"></div>
-					<div class="floating-card card-ai">Understood by AI Assistants</div>
-					<div class="floating-card card-structured">Structured for Clarity</div>
-					<div class="floating-card card-recommended">Recommended to Your Customers</div>
 				</div>
 			</section>
 
@@ -133,7 +160,7 @@ const homeSchema = [
 						{logos.map((logo) => (
 							<span>
 								<strong>{logo.name}</strong>
-								{logo.sublabel && <small>{logo.sublabel}</small>}
+								<small>{logo.location}</small>
 							</span>
 						))}
 					</div>
@@ -146,12 +173,12 @@ const homeSchema = [
 						<p class="eyebrow">OUR SERVICES</p>
 						<h2>
 							Everything Your Business Needs to
-							<span class="gradient-text">Get Seen by AI</span>
+							<span class="gradient-text">Improve AI Visibility</span>
 						</h2>
 					</div>
 					<p class="services-summary">
-						From audits to full website builds and content systems, we make your business
-						 AI-ready at every layer.
+						From audits to structured content systems, we make your business machine-readable
+						 and easier for AI to interpret at every layer.
 					</p>
 				</div>
 				<div class="services-grid">
@@ -207,20 +234,36 @@ const homeSchema = [
 			<section id="pricing" class="container content-section">
 				<div class="section-heading">
 					<p class="eyebrow">PRICING</p>
-					<h2>Choose the level of AI visibility support you need.</h2>
+					<h2>Choose the level of AI visibility support your business needs.</h2>
 				</div>
 				<div class="pricing-grid">
-					{pricing.map((tier) => (
+					{pricing.map((tier) => {
+						const pricingDisplay = getPricingDisplay(tier);
+
+						return (
 						<article class={`pricing-card${tier.featured ? ' featured' : ''}`}>
-							<p class="pricing-label">{tier.bestFor}</p>
-							<h3>{tier.name}</h3>
-							<strong class="price">{tier.price}</strong>
-							<ul>
+							<div class="pricing-head">
+								<p class="pricing-label">{tier.featured ? 'Popular' : tier.priceNote}</p>
+								<h3>{tier.name}</h3>
+								<p class="pricing-summary">{tier.bestFor}</p>
+							</div>
+							<div class="pricing-price-row">
+								{pricingDisplay.prefix && <span class="pricing-prefix">{pricingDisplay.prefix}</span>}
+								<strong class="price">{pricingDisplay.amount}</strong>
+								<span class="pricing-cycle">{pricingDisplay.cycle}</span>
+							</div>
+							<div class="pricing-section-label pricing-section-label-muted">What you get</div>
+							<ul class="pricing-perks">
+								{tier.perks.map((perk) => <li>{perk}</li>)}
+							</ul>
+							<div class="pricing-section-label pricing-section-label-muted">Includes</div>
+							<ul class="pricing-features">
 								{tier.features.map((feature) => <li>{feature}</li>)}
 							</ul>
-							<a class="button button-secondary" href="#final-cta">Book a Free Audit</a>
+							<a class="button button-primary" href="#final-cta">Book a Free Audit</a>
 						</article>
-					))}
+						);
+					})}
 				</div>
 			</section>
 
@@ -239,84 +282,29 @@ const homeSchema = [
 				</div>
 			</section>
 
-			<section id="final-cta" class="container final-cta-section">
-				<div class="final-cta-card">
-					<p class="eyebrow">READY WHEN YOU ARE</p>
-					<h2>Ready to make your website AI-ready?</h2>
-					<p>
-						Book a free audit and see how clearly AI assistants can understand, cite, and
-						 recommend your business.
-					</p>
-					<form
-						id="contact-form"
-						class="audit-form"
-					>
-						<div class="form-grid">
-							<label>
-								<span>Name</span>
-								<input type="text" name="name" autocomplete="name" placeholder="Your name" required />
-							</label>
-							<label>
-								<span>Email</span>
-								<input type="email" name="email" autocomplete="email" placeholder="you@business.com" required />
-							</label>
-							<label>
-								<span>Business</span>
-								<input type="text" name="business" autocomplete="organization" placeholder="Business name" />
-							</label>
-							<label>
-								<span>Website</span>
-								<input type="url" name="website" inputmode="url" placeholder="https://yourwebsite.com" />
-							</label>
-						</div>
-						<label class="form-message">
-							<span>What do you need help with?</span>
-							<textarea name="message" rows="4" placeholder="Tell us about your current website, visibility issues, or goals." required></textarea>
-						</label>
-						<div class="form-actions">
-							<button class="button button-primary" type="submit">Request Free Audit</button>
-							<p class="form-note">Requests are delivered privately through our secure contact endpoint.</p>
-						</div>
-						<p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-					</form>
-				</div>
-			</section>
+			<ContactSubmissionSection />
 	</main>
-</Layout>
+	<script is:inline>
+		const storyStack = document.querySelector('[data-story-stack]');
+		const panelStack = document.querySelector('.panel-stack');
+		const storyButtons = Array.from(document.querySelectorAll('[data-story-trigger]'));
 
-<script>
-	const form = document.querySelector('#contact-form');
-	const status = document.querySelector('#form-status');
+		if (storyStack && panelStack && storyButtons.length > 0) {
+			storyButtons.forEach((button) => {
+				button.addEventListener('click', () => {
+					const storyId = button.getAttribute('data-story-id');
+					if (!storyId) {
+						return;
+					}
 
-	form?.addEventListener('submit', async (event) => {
-		event.preventDefault();
-
-		if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) {
-			return;
-		}
-
-		status.textContent = 'Sending...';
-
-		const formData = new FormData(form);
-
-		try {
-			const response = await fetch('/api/contact', {
-				method: 'POST',
-				body: formData,
+					panelStack.setAttribute('data-active-story', storyId);
+					storyButtons.forEach((candidate) => {
+						const isActive = candidate === button;
+						candidate.classList.toggle('is-active', isActive);
+						candidate.setAttribute('aria-pressed', String(isActive));
+					});
+				});
 			});
-
-			const data = await response.json().catch(() => ({}));
-
-			if (!response.ok) {
-				status.textContent = typeof data.message === 'string' ? data.message : 'Something went wrong.';
-				return;
-			}
-
-			status.textContent = 'Message sent successfully!';
-			form.reset();
-		} catch (error) {
-			console.error(error);
-			status.textContent = 'Could not send message. Please try again.';
 		}
-	});
-</script>
+	</script>
+</Layout>

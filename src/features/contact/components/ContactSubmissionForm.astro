@@ -1,0 +1,28 @@
+<form id="contact-form" class="audit-form">
+	<div class="form-grid">
+		<label>
+			<span>Name</span>
+			<input type="text" name="name" autocomplete="name" placeholder="Your name" required />
+		</label>
+		<label>
+			<span>Email</span>
+			<input type="email" name="email" autocomplete="email" placeholder="you@business.com" required />
+		</label>
+		<label>
+			<span>Business</span>
+			<input type="text" name="business" autocomplete="organization" placeholder="Business name" />
+		</label>
+		<label>
+			<span>Website</span>
+			<input type="url" name="website" inputmode="url" placeholder="https://yourwebsite.com" />
+		</label>
+	</div>
+	<label class="form-message">
+		<span>What inquiry should we review?</span>
+		<textarea name="message" rows="4" placeholder="Tell us about your AI visibility goals, website clarity issues, or recommendation gaps."></textarea>
+	</label>
+	<div class="form-actions">
+		<button class="button button-primary" type="submit">Submit Inquiry</button>
+	</div>
+	<p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+</form>

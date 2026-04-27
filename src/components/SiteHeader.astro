@@ -2,8 +2,9 @@
 import { navigation } from '../data/siteContent.js';
 
 const { currentPath = '/' } = Astro.props;
+type NavigationItem = (typeof navigation)[number];
 
-const isActive = (item) => Boolean(item.match && currentPath === item.match);
+const isActive = (item: NavigationItem) => Boolean(item.match && currentPath === item.match);
 const mobileMenuId = 'primary-mobile-menu';
 ---
 
@@ -13,6 +14,7 @@ const mobileMenuId = 'primary-mobile-menu';
 			<img class="brand-logo" src="/aiwisespaces.png" alt="AI Wise Spaces logo" />
 			<span class="brand-copy">
 				<strong>AI Wise Spaces</strong>
+				<small>AI visibility systems</small>
 			</span>
 		</a>
 		<nav class="desktop-nav" aria-label="Primary navigation">
@@ -24,9 +26,9 @@ const mobileMenuId = 'primary-mobile-menu';
 		<details class="mobile-nav" data-mobile-nav>
 			<summary aria-label="Toggle navigation menu" aria-controls={mobileMenuId} aria-expanded="false">
 				<span class="sr-only">Open navigation menu</span>
-				<span></span>
-				<span></span>
-				<span></span>
+				<span class="burger-line burger-line-top"></span>
+				<span class="burger-line burger-line-middle"></span>
+				<span class="burger-line burger-line-bottom"></span>
 			</summary>
 			<div class="mobile-panel" id={mobileMenuId}>
 				{navigation.map((item) => (
@@ -63,7 +65,7 @@ const mobileMenuId = 'primary-mobile-menu';
 				return;
 			}
 
-			if (!mobileNav.contains(event.target)) {
+			if (!(event.target instanceof Node) || !mobileNav.contains(event.target)) {
 				closeMenu();
 			}
 		});

@@ -1,6 +1,10 @@
+---
+import { navigation } from '../data/siteContent.js';
+---
+
 <footer class="site-footer">
 	<div class="container footer-grid">
-		<div>
+		<div class="footer-brand-column">
 			<a href="/" class="brand-mark footer-brand" aria-label="AI Wise Spaces home">
 				<img class="brand-logo" src="/aiwisespaces.png" alt="AI Wise Spaces logo" />
 				<span class="brand-copy">
@@ -8,8 +12,24 @@
 					<small>Visible. Understandable. Recommended.</small>
 				</span>
 			</a>
+			<p>AI-optimized websites, structured content systems, and AI visibility strategy for modern businesses.</p>
 		</div>
-		<p>Fast Astro websites, structured content systems, and AI visibility strategy for modern businesses.</p>
-		<p>© 2026 AI Wise Spaces. Built for the new search era.</p>
+		<nav class="footer-links" aria-label="Footer navigation">
+			<strong>Navigate</strong>
+			{navigation.map((item) => (
+				<a href={item.href}>{item.label}</a>
+			))}
+		</nav>
+		<div class="footer-links footer-contact-links">
+			<strong>Contact</strong>
+			<a href="/#final-cta">Submit Inquiry</a>
+			<a href="mailto:contact@aiwisespaces.com">contact@aiwisespaces.com</a>
+			<a href="/services">View Service Offerings</a>
+		</div>
+		<div class="footer-meta">
+			<strong>Built For</strong>
+			<p>Businesses that want the best-case scenario: to be trusted faster, recommended more often, and converted through clear AI visibility.</p>
+			<p>© 2026 AI Wise Spaces. Built for the new search era.</p>
+		</div>
 	</div>
 </footer>

@@ -1,8 +1,8 @@
 export const navigation = [
 	{ label: 'Services', href: '/services', match: '/services' },
-	{ label: 'Process', href: '/#process' },
+	{ label: 'Process', href: '/process', match: '/process' },
 	{ label: 'Case Studies', href: '/case-studies', match: '/case-studies' },
-	{ label: 'Pricing', href: '/#pricing' },
+	{ label: 'Pricing', href: '/pricing', match: '/pricing' },
 	{ label: 'About', href: '/about', match: '/about' },
 	{ label: 'Blog', href: '/blog', match: '/blog' },
 ];
@@ -10,12 +10,12 @@ export const navigation = [
 export const proofAvatars = ['AL', 'BM', 'CR', 'DS'];
 
 export const logos = [
-	{ name: 'Nexora', sublabel: '' },
-	{ name: 'BrightPath', sublabel: 'Solutions' },
-	{ name: 'Elevate', sublabel: 'Digital' },
-	{ name: 'Pulse', sublabel: 'Fitness' },
-	{ name: 'CoreBuild', sublabel: 'Construction' },
-	{ name: 'Lumen', sublabel: 'Health' },
+	{ name: 'Stoltzfus Tile', location: 'Lancaster, PA' },
+	{ name: "Tiff's Coffee Bar", location: 'Lititz, PA' },
+	{ name: 'Fuji Health Spa', location: 'Lancaster, PA' },
+	{ name: 'BrightPath Solutions', location: 'Harrisburg, PA' },
+	{ name: 'CoreBuild Construction', location: 'York, PA' },
+	{ name: 'Lumen Health', location: 'Reading, PA' },
 ];
 
 export const services = [
@@ -23,52 +23,56 @@ export const services = [
 		icon: 'search',
 		title: 'AI Visibility Audit',
 		description:
-			'We analyze how AI systems read and interpret your website and give you a clear action plan.',
-		bestFor: 'Best for businesses that need clarity before investing further.',
+			'We measure AI readiness, semantic clarity, local search signals, and content structure so Lancaster and Pennsylvania businesses can see where recommendation surfaces are being won or lost.',
+		bestFor: 'Best for Lancaster-area businesses that need clarity before investing further.',
 		deliverables: [
 			'AI-readiness review of your current website',
-			'Schema, speed, and trust-signal assessment',
-			'Competitor visibility snapshot',
-			'Clear action plan with next priorities',
+			'Lancaster and Pennsylvania local visibility assessment',
+			'Machine-readable design and trust-signal assessment',
+			'Competitor recommendation-surface snapshot',
+			'Clear action plan with AI visibility priorities',
 		],
 	},
 	{
 		icon: 'window',
 		title: 'AI-Ready Website Build',
 		description:
-			'Lightning-fast, SEO-optimized websites built with Astro. Structured, semantic, and built for AI discovery.',
-		bestFor: 'Best for businesses ready to replace a slow or unclear site.',
+			'Lightning-fast websites built for machine-readable design, semantic clarity, local SEO relevance, and recommendation by AI systems.',
+		bestFor: 'Best for Pennsylvania businesses ready to replace a slow or unclear site.',
 		deliverables: [
 			'Custom Astro site architecture',
-			'Clear service-page hierarchy and messaging',
-			'Conversion-focused layout and calls to action',
-			'Performance, SEO, and AI-readable markup',
+			'Location-aware service-page structure for Lancaster PA SEO',
+			'Clear service-page hierarchy and knowledge fit',
+			'Lead-capture layout and calls to action',
+			'Performance, semantic structure, and AI-readable markup',
 		],
 	},
 	{
 		icon: 'document',
 		title: 'Structured Content Strategy',
 		description:
-			'We create content that answers real questions, earns trust, and gets cited by AI assistants.',
-		bestFor: 'Best for brands that need clearer authority and more useful content.',
+			'We create structured content that favors meaning over keywords and gives AI systems clear signals to cite, recommend, and connect to local buying intent.',
+		bestFor: 'Best for brands that need clearer authority, stronger Lancaster relevance, and more useful content.',
 		deliverables: [
+			'Lancaster-focused service-page messaging frameworks',
 			'Service-page messaging frameworks',
 			'FAQ and knowledge content planning',
-			'Content briefs shaped around real search intent',
-			'Citeable page structures for AI and SEO',
+			'Content briefs shaped around real user intent',
+			'Citeable page structures for AI visibility',
 		],
 	},
 	{
 		icon: 'gear',
-		title: 'Technical SEO for AI Discovery',
+		title: 'AI Presence Systems',
 		description:
-			'From schema to site speed, we handle the technical foundation that AI systems depend on.',
-		bestFor: 'Best for sites that already have content but weak technical foundations.',
+			'From schema to internal structure, we improve the technical foundations that strengthen AI presence across recommendation surfaces and local search results.',
+		bestFor: 'Best for sites that already have content but weak technical foundations or weak local discoverability.',
 		deliverables: [
-			'Technical SEO cleanup and diagnostics',
+			'AI presence diagnostics and technical cleanup',
+			'Local entity and internal-linking improvements',
 			'Structured data and internal-linking improvements',
 			'Performance tuning for key templates',
-			'Ongoing technical recommendations',
+			'Ongoing technical recommendations and retryable delivery workflows',
 		],
 	},
 ];
@@ -84,26 +88,26 @@ export const process = [
 	{
 		step: '01',
 		icon: 'search',
-		title: 'Discover & Audit',
-		description: 'We audit your website, content, and technical structure for AI readiness.',
+		title: 'Audit The Revenue Surface',
+		description: 'We inspect your website, authority signals, and recommendation surfaces to uncover the fastest path to stronger AI visibility.',
 	},
 	{
 		step: '02',
 		icon: 'bulb',
-		title: 'Strategy & Plan',
-		description: 'We create a tailored roadmap to improve visibility across AI systems.',
+		title: 'Design The Best-Case Journey',
+		description: 'We define the highest-value customer path, then shape messaging, structure, and trust signals around that outcome.',
 	},
 	{
 		step: '03',
 		icon: 'code',
-		title: 'Implement & Build',
-		description: 'We optimize, build, and structure your website and content for AI and SEO.',
+		title: 'Build With Authority',
+		description: 'We implement machine-readable pages, structured content, and polished interaction details that look premium and perform clearly.',
 	},
 	{
 		step: '04',
 		icon: 'trend',
-		title: 'Optimize & Grow',
-		description: 'We monitor, refine, and scale your visibility for long-term growth.',
+		title: 'Refine Toward Recommendation',
+		description: 'We refine the system around what earns recommendation, better lead capture, and the strongest possible buying scenario for your customer.',
 	},
 ];
 
@@ -138,30 +142,122 @@ export const caseStudies = [
 export const aboutPillars = [
 	{
 		title: 'Clarity first',
-		text: 'We simplify what a business does so people and AI systems can understand it quickly.',
+		text: 'We simplify what a business does so people and AI systems can understand it quickly and recommend it accurately.',
 	},
 	{
 		title: 'Structure that lasts',
-		text: 'We prefer fast, durable, semantic websites over fragile, over-engineered marketing stacks.',
+		text: 'We prefer fast, durable, machine-readable websites over fragile, over-engineered marketing stacks.',
 	},
 	{
 		title: 'Business outcomes over hype',
-		text: 'Every page and content system is built to support trust, recommendation, and conversion.',
+		text: 'Every page and content system is built to support trust, recommendation surfaces, and lead capture.',
 	},
+];
+
+export const glossaryTerms = [
+	{
+		term: 'AI Visibility',
+		definition: 'The likelihood that a business is surfaced or recommended by AI systems.',
+		example: 'Appearing in ChatGPT or voice assistant suggestions.',
+	},
+	{
+		term: 'AI Presence',
+		definition: 'The overall footprint of a business across AI-consumable content sources.',
+		example: 'Website, structured data, and external knowledge mentions working together.',
+	},
+	{
+		term: 'AI-Optimized Website',
+		definition: 'A website intentionally structured for machine understanding and recommendation.',
+		example: 'Clean hierarchy, schema, semantic clarity, and clear service pages.',
+	},
+	{
+		term: 'Structured Content',
+		definition: 'Content formatted for machine parsing, not just for humans.',
+		example: 'FAQs, headings, schema markup, and answer-focused service pages.',
+	},
+	{
+		term: 'Semantic Clarity',
+		definition: 'How easily meaning can be interpreted by AI systems.',
+		example: 'Clear service descriptions without vague marketing language.',
+	},
+	{
+		term: 'Lead',
+		definition: 'A potential client who expresses interest through a structured inquiry.',
+		example: 'A business owner submitting a contact submission.',
+	},
+	{
+		term: 'Qualified Lead',
+		definition: 'A lead that meets business criteria after review.',
+		example: 'A business ready to invest in optimization.',
+	},
+	{
+		term: 'Recommendation Surface',
+		definition: 'A place where AI may suggest a business.',
+		example: 'Chat interfaces, voice assistants, and AI answer panels.',
+	},
+	{
+		term: 'Knowledge Fit',
+		definition: 'How well a business aligns with the structures AI uses to model expertise.',
+		example: 'Clear relationships between services, FAQs, and authority signals.',
+	},
+	{
+		term: 'Contact Submission',
+		definition: 'A structured inquiry sent through the website.',
+		example: 'Name, email, business, and inquiry sent to the contact route.',
+	},
+];
+
+export const businessRules = [
+	'A contact submission must include a valid email address.',
+	'A contact submission must include a non-empty inquiry.',
+	'A lead becomes a qualified lead only after manual review.',
+	'All structured content should prioritize clarity over persuasion.',
+	'Every page should contribute to AI visibility, not only human UX.',
+	'Email delivery failures must be logged and be retryable.',
+];
+
+export const domainEvents = [
+	'ContactSubmitted',
+	'ContactValidated',
+	'ContactRejected',
+	'LeadCaptured',
+	'EmailQueued',
+	'EmailSent',
+	'EmailRejected',
+	'EmailReceived',
+	'LeadReviewed',
+	'LeadQualified',
+];
+
+export const commands = [
+	'SubmitContactForm',
+	'ValidateContactForm',
+	'CaptureLead',
+	'SendLeadNotification',
+	'RetryEmailDelivery',
+	'ReceiveInboundEmail',
+	'QualifyLead',
+	'ReplyToLead',
+];
+
+export const valueTerms = [
+	{ term: 'AI Readiness', definition: 'How prepared a website is to be consumed by AI systems.' },
+	{ term: 'Machine-Readable Design', definition: 'Designing content for AI parsing first and humans second.' },
+	{ term: 'Content Signals', definition: 'Structured indicators that help AI interpret a business.' },
 ];
 
 export const blogPosts = [
 	{
 		title: 'What makes a website AI-ready?',
-		summary: 'A straightforward explanation of the structural and trust signals that help AI assistants interpret your business accurately.',
+		summary: 'A straightforward explanation of the structural signals, semantic clarity, and knowledge fit that help AI systems interpret your business accurately.',
 	},
 	{
-		title: 'Why clarity now matters as much as rankings',
-		summary: 'How AI search changes the value of messaging, semantic structure, and answer-focused content.',
+		title: 'Why semantic clarity now matters as much as rankings',
+		summary: 'How AI discovery changes the value of messaging, semantic structure, and answer-focused content.',
 	},
 	{
-		title: 'The difference between SEO content and citeable content',
-		summary: 'How to create pages that are not only searchable, but understandable and quotable by AI systems.',
+		title: 'The difference between generic content and citeable structured content',
+		summary: 'How to create pages that are not only discoverable, but understandable and quotable by AI systems.',
 	},
 ];
 
@@ -169,36 +265,57 @@ export const pricing = [
 	{
 		name: 'AI Audit',
 		price: '$150',
-		bestFor: 'Best for businesses that need clarity before rebuilding.',
+		priceNote: 'One-time clarity sprint',
+		bestFor: 'Best for businesses that want a low-risk first move with clear upside.',
+		perks: [
+			'Pinpoint the visibility gaps costing you local leads',
+			'Get Lancaster-ready messaging and structure recommendations',
+			'Leave with a ranked action plan instead of vague advice',
+		],
 		features: [
 			'AI-readiness review',
-			'Schema and technical SEO analysis',
+			'Schema and AI presence analysis',
 			'Content structure recommendations',
 			'Action roadmap and priority scoring',
+			'Best-case visibility opportunity summary',
 		],
 	},
 	{
 		name: 'AI Builds',
 		price: 'Starting from $1,500',
-		bestFor: 'Most Popular',
+		priceNote: 'Custom build engagement',
+		bestFor: 'Best scenario: premium rebuild for authority, trust, and lead capture.',
+		perks: [
+			'Turn your site into a cleaner local sales asset',
+			'Present services with stronger trust and conversion signals',
+			'Launch with a site built to be found and understood faster',
+		],
 		features: [
 			'Custom Astro website',
-			'Conversion-focused copy structure',
+			'Lead-capture copy structure',
 			'AI-readable semantic markup',
-			'Performance and SEO foundations',
+			'Performance and semantic foundations',
 			'Launch support and QA',
+			'High-trust customer journey design',
 		],
 		featured: true,
 	},
 	{
 		name: 'AI Growth System',
 		price: '$450 per month',
-		bestFor: 'Best for brands investing in ongoing authority and growth.',
+		priceNote: 'Ongoing monthly partnership',
+		bestFor: 'Best for brands scaling recommendation share month after month.',
+		perks: [
+			'Keep improving visibility in Lancaster and across Pennsylvania',
+			'Compound authority with structured content and local relevance',
+			'Gain ongoing support instead of one-and-done delivery',
+		],
 		features: [
 			'Content planning and briefs',
 			'Page and FAQ expansion',
 			'Competitor monitoring',
 			'Ongoing technical improvements',
+			'Continuous visibility refinement for best-case lead flow',
 		],
 	},
 ];
@@ -212,7 +329,17 @@ export const faqs = [
 	{
 		question: 'How is this different from traditional SEO?',
 		answer:
-			'Traditional SEO focuses on rankings. AI visibility also depends on clarity, entity signals, semantic structure, trust, and content that can be cited confidently.',
+			'Traditional SEO focuses on rankings. AI visibility also depends on semantic clarity, entity signals, trust, and structured content that can be cited confidently.',
+	},
+	{
+		question: 'Do you help Lancaster PA businesses with SEO and AI visibility?',
+		answer:
+			'Yes. We help Lancaster-area and Pennsylvania businesses improve local SEO structure, service-page clarity, and AI visibility so they are easier to find and easier to trust.',
+	},
+	{
+		question: 'Can you improve local visibility without replacing the whole site?',
+		answer:
+			'Yes. We can improve local service pages, location signals, internal linking, schema, and FAQs on an existing site when a full rebuild is not the best move.',
 	},
 	{
 		question: 'Can you improve my existing website?',
@@ -222,7 +349,7 @@ export const faqs = [
 	{
 		question: 'Do I need a blog?',
 		answer:
-			'Not always. What matters is whether your site answers real customer questions clearly and supports your authority with structured, useful content.',
+			'Not always. What matters is whether your site answers real lead questions clearly and supports your authority with structured, useful content.',
 	},
 	{
 		question: 'How long does an AI visibility audit take?',

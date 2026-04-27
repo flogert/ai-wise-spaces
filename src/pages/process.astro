@@ -1,0 +1,47 @@
+---
+import UiIcon from '../components/UiIcon.astro';
+import { process } from '../data/siteContent.js';
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="AI Wise Spaces Process | Lancaster PA AI Website and SEO Workflow"
+	description="See how AI Wise Spaces guides Lancaster PA and Pennsylvania businesses from audit to launch with a clear AI visibility, website, and local SEO process."
+	keywords="Lancaster PA website process, local SEO process, AI visibility workflow, Pennsylvania marketing process"
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">PROCESS</p>
+			<h1 class="page-title">A clear process from AI visibility audit to launch and refinement.</h1>
+			<p class="page-lede">Every engagement is designed to help Lancaster PA and Pennsylvania businesses move from unclear messaging to stronger trust, cleaner structure, and better-fit inquiries.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">HOW IT WORKS</p>
+					<h2>We keep the workflow simple so the business outcome stays obvious.</h2>
+				</div>
+				<p class="page-lede">The goal is not more marketing noise. The goal is to make your business easier to understand, easier to trust, and easier to recommend.</p>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="process-timeline">
+				{process.map((item) => (
+					<article class="process-step">
+						<div class="timeline-node">
+							<UiIcon name={item.icon} />
+						</div>
+						<p class="step-number">{item.step}</p>
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

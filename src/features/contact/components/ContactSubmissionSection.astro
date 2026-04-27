@@ -1,0 +1,19 @@
+---
+import ContactSubmissionForm from './ContactSubmissionForm.astro';
+import { contactSubmissionSectionContent } from './contactSubmissionSectionContent.ts';
+---
+
+<section id="final-cta" class="container final-cta-section">
+	<div class="final-cta-card">
+		<p class="eyebrow">{contactSubmissionSectionContent.eyebrow}</p>
+		<h2>{contactSubmissionSectionContent.title}</h2>
+		<p>{contactSubmissionSectionContent.description}</p>
+		<ContactSubmissionForm />
+	</div>
+</section>
+
+<script>
+	import { enhanceContactForm } from '../services/enhanceContactForm.ts';
+
+	enhanceContactForm();
+</script>

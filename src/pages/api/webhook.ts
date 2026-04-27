@@ -1,17 +1,11 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { receiveWebhookEvent } from '../../features/contact/server/receiveWebhookEvent.ts';
 
 export const POST: APIRoute = async ({ request }) => {
 	try {
-		const payload = await request.json();
-
-		console.log('Webhook received:', payload);
-
-		const event = payload.type;
-		const email = payload.data?.to;
-
-		console.log('Event:', event, 'Email:', email);
+		await receiveWebhookEvent(request);
 
 		return new Response('OK', { status: 200 });
 	} catch (error) {

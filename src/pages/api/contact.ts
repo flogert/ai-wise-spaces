@@ -1,6 +1,18 @@
 export const prerender = false;
 import type { APIRoute } from 'astro';
-import { Resend } from 'resend';
+import {
+	createContactSubmission,
+	validateContactSubmission,
+} from '../../features/contact/domain/contactSubmission.ts';
+import {
+	contactRejectedResponse,
+	contactSubmissionServerErrorResponse,
+	emailRejectedResponse,
+	inquirySubmittedResponse,
+	methodNotAllowedResponse,
+	missingEmailSettingsResponse,
+} from '../../features/contact/server/contactRouteResponses.ts';
+import { sendLeadNotification } from '../../features/contact/server/sendLeadNotification.ts';
 
 export const POST: APIRoute = async ({ request }) => {
 	try {
@@ -9,65 +21,55 @@ export const POST: APIRoute = async ({ request }) => {
 
 		if (!apiKey || !toEmail) {
 			console.error('Missing env variables');
-			return Response.json(
-				{ message: 'Server email settings are missing.' },
-				{ status: 500 },
-			);
+			return missingEmailSettingsResponse();
 		}
 
-		const resend = new Resend(apiKey);
 		const formData = await request.formData();
+		const contactSubmission = createContactSubmission(formData);
+		const validationResult = validateContactSubmission(contactSubmission);
 
-		const name = String(formData.get('name') || '').trim();
-		const email = String(formData.get('email') || '').trim();
-		const business = String(formData.get('business') || '').trim();
-		const message = String(formData.get('message') || '').trim();
-
-		if (!name || !email || !message) {
-			return Response.json(
-				{ message: 'Please fill out name, email, and message.' },
-				{ status: 400 },
-			);
+		if (!validationResult.ok) {
+			console.error('ContactRejected', {
+				reason: validationResult.reason,
+				email: contactSubmission.email,
+			});
+			return contactRejectedResponse(validationResult.message);
 		}
 
-		const { data, error } = await resend.emails.send({
-			from: 'AI Wise Spaces <contact@aiwisespaces.com>',
-			to: [toEmail],
-			subject: `New AI Wise Spaces lead from ${name}`,
-			replyTo: email,
-			html: `
-				<h2>New Contact Form Submission</h2>
-				<p><strong>Name:</strong> ${name}</p>
-				<p><strong>Email:</strong> ${email}</p>
-				<p><strong>Business:</strong> ${business}</p>
-				<p><strong>Message:</strong> ${message}</p>
-			`,
+		console.log('ContactValidated', {
+			email: contactSubmission.email,
+			business: contactSubmission.business,
+		});
+		console.log('EmailQueued', {
+			email: contactSubmission.email,
+			business: contactSubmission.business,
 		});
 
-		if (error) {
-			console.error('Resend error:', error);
-			return Response.json(
-				{ message: 'Resend rejected the email.', error },
-				{ status: 500 },
-			);
+		const notificationResult = await sendLeadNotification({
+			apiKey,
+			toEmail,
+			contactSubmission: validationResult.contactSubmission,
+		});
+
+		if (!notificationResult.ok) {
+			console.error('EmailRejected', notificationResult.error);
+			return emailRejectedResponse(notificationResult.message);
 		}
 
-		console.log('Resend success:', data);
-
-		return Response.json({
-			message: 'Message sent successfully.',
-			resendId: data?.id,
+		console.log('LeadCaptured', {
+			email: validationResult.contactSubmission.email,
+			business: validationResult.contactSubmission.business,
 		});
+		console.log('EmailSent', { resendId: notificationResult.resendId });
+
+		return inquirySubmittedResponse(notificationResult.resendId);
 	} catch (error) {
-		console.error('Contact API crashed:', error);
+		console.error('ContactSubmissionCrashed', error);
 
-		return Response.json(
-			{ message: 'Contact form server error.' },
-			{ status: 500 },
-		);
+		return contactSubmissionServerErrorResponse();
 	}
 };
 
 export const GET: APIRoute = async () => {
-	return Response.json({ message: 'Method not allowed.' }, { status: 405 });
+	return methodNotAllowedResponse();
 };

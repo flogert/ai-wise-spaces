@@ -1,3 +1,8 @@
+---
+name: ai wise spaces
+description: Build a premium, fast, SEO-focused Astro + Vite website for AI Wise Spaces, helping businesses become visible, understandable, and recommended by AI assistants.
+---
+
 # AI Wise Spaces Website Build Skill
 
 ## Role

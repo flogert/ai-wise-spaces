@@ -1,0 +1,77 @@
+---
+import { pricing } from '../data/siteContent.js';
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import Layout from '../layouts/Layout.astro';
+
+function getPricingDisplay(tier: { name: string; price: string }) {
+	if (tier.name === 'AI Builds') {
+		return {
+			prefix: 'Starting from',
+			amount: '$1,500',
+			cycle: '/project',
+		};
+	}
+
+	if (tier.name === 'AI Growth System') {
+		return {
+			prefix: '',
+			amount: '$450',
+			cycle: '/month',
+		};
+	}
+
+	return {
+		prefix: '',
+		amount: tier.price,
+		cycle: '/project',
+	};
+}
+---
+
+<Layout
+	title="AI Wise Spaces Pricing | Lancaster PA AI Website and SEO Packages"
+	description="Review AI Wise Spaces pricing for Lancaster PA and Pennsylvania businesses, from one-time audits to website builds and ongoing AI visibility support."
+	keywords="Lancaster PA pricing, website pricing Lancaster, local SEO packages Pennsylvania, AI visibility pricing"
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">PRICING</p>
+			<h1 class="page-title">Choose the level of AI visibility support your business needs.</h1>
+			<p class="page-lede">From a low-risk audit to a full build or monthly growth support, each tier is designed to help local businesses in Lancaster PA and across Pennsylvania improve clarity, trust, and lead flow.</p>
+		</section>
+
+		<section class="container page-section">
+			<div class="pricing-grid">
+				{pricing.map((tier) => {
+					const pricingDisplay = getPricingDisplay(tier);
+
+					return (
+						<article class={`pricing-card${tier.featured ? ' featured' : ''}`}>
+							<div class="pricing-head">
+								<p class="pricing-label">{tier.featured ? 'Popular' : tier.priceNote}</p>
+								<h3>{tier.name}</h3>
+								<p class="pricing-summary">{tier.bestFor}</p>
+							</div>
+							<div class="pricing-price-row">
+								{pricingDisplay.prefix && <span class="pricing-prefix">{pricingDisplay.prefix}</span>}
+								<strong class="price">{pricingDisplay.amount}</strong>
+								<span class="pricing-cycle">{pricingDisplay.cycle}</span>
+							</div>
+							<div class="pricing-section-label pricing-section-label-muted">What you get</div>
+							<ul class="pricing-perks">
+								{tier.perks.map((perk) => <li>{perk}</li>)}
+							</ul>
+							<div class="pricing-section-label pricing-section-label-muted">Includes</div>
+							<ul class="pricing-features">
+								{tier.features.map((feature) => <li>{feature}</li>)}
+							</ul>
+							<a class="button button-primary" href="/#final-cta">Book a Free Audit</a>
+						</article>
+					);
+				})}
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

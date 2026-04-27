@@ -1,32 +1,68 @@
 ---
-import { aboutPillars } from '../data/siteContent.js';
+import { process, services } from '../data/siteContent.js';
+import UiIcon from '../components/UiIcon.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-	title="About AI Wise Spaces | AI-Ready Website Strategy"
-	description="Learn how AI Wise Spaces approaches AI-ready websites, structured content, technical SEO, and digital trust for modern search."
-	keywords="about AI Wise Spaces, AI-ready website strategy, technical SEO, AI visibility agency"
+	title="About AI Wise Spaces | How We Improve Websites and AI Discoverability"
+	description="Learn the process AI Wise Spaces uses to improve websites, strengthen trust, and increase AI discoverability for local businesses."
+	keywords="improve website discoverability, AI discoverability process, website improvement process, AI-ready website strategy"
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">ABOUT</p>
-			<h1 class="page-title">We build calm, strategic websites for businesses entering the AI discovery era.</h1>
-			<p class="page-lede">AI Wise Spaces combines technical SEO, structured content, and conversion-focused design to help businesses become easier to trust and easier for AI systems to recommend.</p>
+			<h1 class="page-title">How we improve websites so people and AI systems can understand them faster.</h1>
+			<p class="page-lede">Our work is focused on one outcome: making websites clearer, more trustworthy, and easier for AI systems to interpret, surface, and recommend.</p>
 		</section>
 
 		<section class="container page-section two-column-callout">
 			<div class="about-card">
-				<p>We focus on the parts of a website that actually affect visibility: what the business does, how clearly that is explained, how trustworthy it looks, and how technically easy it is for machines to interpret.</p>
-				<p>That means less dependence on bloated tooling and more attention to semantic structure, service-page clarity, fast performance, and useful content.</p>
+				<p>We start by identifying where a website is unclear, where trust is weak, and where structure makes it difficult for AI tools to understand what the business offers.</p>
+				<p>From there, we improve messaging, page structure, service clarity, local relevance, and lead capture so the website performs better for both buyers and recommendation systems.</p>
 			</div>
 			<div class="info-stack">
-				{aboutPillars.map((pillar) => (
+				{services.map((service) => (
 					<article class="stack-card">
-						<h2>{pillar.title}</h2>
-						<p>{pillar.text}</p>
+						<h2>{service.title}</h2>
+						<p>{service.description}</p>
 					</article>
 				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">OUR PROCESS</p>
+				<h2>The sequence we use to improve website clarity and AI discoverability.</h2>
+			</div>
+			<div class="process-timeline">
+				{process.map((item) => (
+					<article class="process-step">
+						<div class="timeline-node">
+							<UiIcon name={item.icon} />
+						</div>
+						<p class="step-number">{item.step}</p>
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">WHAT CHANGES</p>
+					<h2>Every improvement is designed to make the website easier to parse, trust, and act on.</h2>
+				</div>
+				<ul>
+					<li>Service pages become clearer and more specific.</li>
+					<li>Local signals are stronger for Lancaster and Pennsylvania searches.</li>
+					<li>Content structure becomes easier for AI systems to cite and recommend.</li>
+					<li>Calls to action and lead capture paths become simpler and more persuasive.</li>
+					<li>The site gains a more durable foundation for long-term visibility.</li>
+				</ul>
 			</div>
 		</section>
 	</main>
