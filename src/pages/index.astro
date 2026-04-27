@@ -125,7 +125,7 @@ const homeSchema = [
 						</div>
 					</div>
 				</div>
-				<div class="hero-visual" aria-hidden="true">
+				<div class="hero-visual" role="group" aria-label="Website improvement story cards">
 					<div class="hero-glow"></div>
 					<div class="panel-stack" data-active-story="clarity">
 						<div class="panel panel-one"></div>
@@ -284,7 +284,7 @@ const homeSchema = [
 
 			<ContactSubmissionSection />
 	</main>
-	<script is:inline>
+	<script>
 		const storyStack = document.querySelector('[data-story-stack]');
 		const panelStack = document.querySelector('.panel-stack');
 		const storyButtons = Array.from(document.querySelectorAll('[data-story-trigger]'));

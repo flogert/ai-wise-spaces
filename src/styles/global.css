@@ -29,6 +29,9 @@
 }
 
 html {
+	margin: 0;
+	width: 100%;
+	min-height: 100%;
 	background:
 		radial-gradient(circle at top, rgba(79, 124, 255, 0.16), transparent 32%),
 		radial-gradient(circle at 82% 18%, rgba(124, 58, 237, 0.2), transparent 20%),
@@ -37,6 +40,9 @@ html {
 }
 
 body {
+	margin: 0;
+	width: 100%;
+	min-height: 100%;
 	background:
 		radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.08), transparent 22%),
 		radial-gradient(circle at 80% 0%, rgba(167, 139, 250, 0.14), transparent 24%);
@@ -106,6 +112,13 @@ textarea:focus-visible {
 img {
 	max-width: 100%;
 	display: block;
+}
+
+article h1,
+aside h1,
+nav h1,
+section h1 {
+	font-size: 2em;
 }
 
 .page-shell {
