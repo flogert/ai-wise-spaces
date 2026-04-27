@@ -6,7 +6,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self' https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https:; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self' https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https:; object-src 'none'; script-src 'self' 'sha256-0SmpTo9Spke6T4CN38Zb3Uei7RCuKgRtpvuhFrRK6cg=' 'sha256-heZCtq5vuKm8BB0S1K61xbimKxBR69Fr3kSJcXsdIS8=' 'sha256-mzVV1ctc5lCmbFqQsMSmrXq8EK5mT0mXcwVfdk0wohE='; style-src 'self' https://fonts.googleapis.com; upgrade-insecure-requests"
         },
         {
           "key": "Cross-Origin-Opener-Policy",
