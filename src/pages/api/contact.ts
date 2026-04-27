@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
 		}
 
 		const { data, error } = await resend.emails.send({
-			from: 'AI Wise Spaces <contact@stolese.resend.app>',
+			from: 'AI Wise Spaces <contact@aiwisespaces.com>',
 			to: [toEmail],
 			subject: `New AI Wise Spaces lead from ${name}`,
 			replyTo: email,
