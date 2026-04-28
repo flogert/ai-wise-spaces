@@ -1,0 +1,52 @@
+---
+const { label = 'Start with quick AI audit' } = Astro.props;
+---
+
+<div class="curvy-arrow-guide" aria-hidden="true">
+	<svg
+		width="220"
+		height="160"
+		viewBox="0 0 220 160"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		class="curvy-arrow-svg"
+	>
+		<defs>
+			<linearGradient id="arrowGradient" x1="20" y1="20" x2="190" y2="140">
+				<stop stop-color="#2563eb"></stop>
+				<stop offset="1" stop-color="#4e9cff"></stop>
+			</linearGradient>
+
+			<filter id="glow">
+				<feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
+				<feMerge>
+					<feMergeNode in="blur"></feMergeNode>
+					<feMergeNode in="SourceGraphic"></feMergeNode>
+				</feMerge>
+			</filter>
+		</defs>
+
+		<path
+			d="M24 138 C72 138, 110 132, 142 110 C170 92, 190 62, 198 26"
+			stroke="url(#arrowGradient)"
+			stroke-width="6"
+			stroke-linecap="round"
+			stroke-dasharray="14 10"
+			filter="url(#glow)"
+		>
+			<animate attributeName="stroke-dashoffset" from="0" to="-48" dur="2.6s" repeatCount="indefinite"></animate>
+		</path>
+		<path
+			d="M182 34 L198 26 L204 44"
+			stroke="url(#arrowGradient)"
+			stroke-width="6"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			stroke-dasharray="14 10"
+			filter="url(#glow)"
+		>
+			<animate attributeName="stroke-dashoffset" from="0" to="-48" dur="2.6s" repeatCount="indefinite"></animate>
+		</path>
+	</svg>
+	<span class="curvy-arrow-label">{label}</span>
+</div>

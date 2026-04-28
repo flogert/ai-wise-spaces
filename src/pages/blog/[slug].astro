@@ -9,18 +9,22 @@ export function getStaticPaths() {
 	}));
 }
 
-const { post } = Astro.props;
+const post = Astro.props.post ?? blogPosts.find((entry) => entry.slug === Astro.params.slug);
+const pageTitle = post ? `${post.title} | AI Wise Spaces` : 'Article Not Found | AI Wise Spaces';
+const pageDescription = post?.summary ?? 'The requested article could not be found.';
 ---
 
 <Layout
-	title={`${post.title} | AI Wise Spaces`}
-	description={post.summary}
-	keywords={`${post.title}, local service business blog, website visibility advice`}
+	title={pageTitle}
+	description={pageDescription}
+	keywords={post ? `${post.title}, local service business blog, website visibility advice` : 'local service business blog'}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
+		{post ? (
+			<>
 		<section class="container page-hero">
 			<p class="eyebrow">{post.category}</p>
-			<h1 class="page-title">{post.title}</h1>
+			<h1 class="page-title"><span class="title-accent">{post.title}</span></h1>
 			<p class="page-lede">{post.summary}</p>
 		</section>
 
@@ -44,5 +48,15 @@ const { post } = Astro.props;
 		<section class="container page-section">
 			<a class="button button-secondary" href="/blog">Back to Articles</a>
 		</section>
+			</>
+		) : (
+			<section class="container page-section">
+				<div class="page-band">
+					<h1 class="page-title">Article not found</h1>
+					<p class="page-lede">This article could not be found. Browse the blog for available posts.</p>
+					<a class="button button-secondary" href="/blog">Back to Articles</a>
+				</div>
+			</section>
+		)}
 	</main>
 </Layout>

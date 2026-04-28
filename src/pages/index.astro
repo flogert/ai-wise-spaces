@@ -132,6 +132,29 @@ const homeSchema = [
 		],
 	},
 ];
+
+const quickAuditChecks = [
+	{
+		icon: 'search',
+		title: 'AI Visibility',
+		description: 'How easily AI tools can find and understand your business.',
+	},
+	{
+		icon: 'shield',
+		title: 'Trust & Credibility',
+		description: 'Signals that build trust with customers and AI systems.',
+	},
+	{
+		icon: 'document',
+		title: 'Content Structure',
+		description: 'How well your site is organized and explains what you do.',
+	},
+	{
+		icon: 'chart',
+		title: 'Recommendation Potential',
+		description: 'Your likelihood of being recommended over competitors.',
+	},
+];
 ---
 
 <Layout
@@ -153,7 +176,7 @@ const homeSchema = [
 					</p>
 					<div class="hero-actions">
 						<a class="button button-primary" href="/book-a-free-audit">Get Your Free AI Visibility Audit</a>
-						<a class="button button-secondary" href="/services">See How We Help</a>
+						<a class="button button-secondary hero-help-button" href="/services">See How We Help</a>
 					</div>
 					<div class="proof-row">
 						<div class="avatar-stack" aria-hidden="true">
@@ -168,7 +191,22 @@ const homeSchema = [
 						</div>
 					</div>
 				</div>
-				<QuickAuditSidebar />
+				<div class="hero-spotlight" aria-label="AI visibility visual explanation">
+					<div class="hero-spotlight-copy">
+						<p class="hero-spotlight-kicker">AI Search</p>
+						<p class="hero-spotlight-title">AI Wise Spaces</p>
+						<p class="hero-spotlight-kicker">Better Leads</p>
+					</div>
+					<figure class="hero-spotlight-figure">
+						<img
+							class="hero-spotlight-image"
+							src="/mission.png"
+							alt="AI Wise Spaces mission graphic showing AI platforms and website systems connected through one optimized digital presence"
+							loading="eager"
+						/>
+					</figure>
+				</div>
+				<QuickAuditSidebar checks={quickAuditChecks} />
 			</section>
 
 			<section class="container logo-strip-section">
@@ -251,7 +289,7 @@ const homeSchema = [
 			<section id="pricing" class="container content-section">
 				<div class="section-heading">
 					<p class="eyebrow">PRICING</p>
-					<h2>Choose the support level that fits your next growth move.</h2>
+					<h2>Choose the support level that fits your <span class="title-accent">next growth move.</span></h2>
 				</div>
 				<div class="pricing-grid">
 					{pricing.map((tier) => {

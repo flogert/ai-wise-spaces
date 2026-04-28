@@ -9,18 +9,22 @@ export function getStaticPaths() {
 	}));
 }
 
-const { study } = Astro.props;
+const study = Astro.props.study ?? caseStudies.find((entry) => entry.slug === Astro.params.slug);
+const pageTitle = study ? `${study.title} | AI Wise Spaces Case Study` : 'Case Study Not Found | AI Wise Spaces';
+const pageDescription = study?.summary ?? 'The requested case study could not be found.';
 ---
 
 <Layout
-	title={`${study.title} | AI Wise Spaces Case Study`}
-	description={study.summary}
-	keywords={`${study.title}, case study, local service business website improvement`}
+	title={pageTitle}
+	description={pageDescription}
+	keywords={study ? `${study.title}, case study, local service business website improvement` : 'case study, local service business website improvement'}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
+		{study ? (
+			<>
 		<section class="container page-hero">
 			<p class="eyebrow">CASE STUDY</p>
-			<h1 class="page-title">{study.title}</h1>
+			<h1 class="page-title"><span class="title-accent">{study.title}</span></h1>
 			<p class="page-lede">{study.summary}</p>
 		</section>
 
@@ -56,5 +60,15 @@ const { study } = Astro.props;
 		<section class="container page-section">
 			<a class="button button-secondary" href="/case-studies">Back to Case Studies</a>
 		</section>
+			</>
+		) : (
+			<section class="container page-section">
+				<div class="page-band">
+					<h1 class="page-title">Case study not found</h1>
+					<p class="page-lede">This case study could not be found. Browse the available case studies instead.</p>
+					<a class="button button-secondary" href="/case-studies">Back to Case Studies</a>
+				</div>
+			</section>
+		)}
 	</main>
 </Layout>

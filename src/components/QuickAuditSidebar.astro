@@ -1,3 +1,15 @@
+---
+import UiIcon from './UiIcon.astro';
+
+const { checks = [] } = Astro.props as {
+	checks?: Array<{
+		icon: 'search' | 'shield' | 'document' | 'chart';
+		title: string;
+		description: string;
+	}>;
+};
+---
+
 <aside class="hero-sidebar quick-audit-sidebar" aria-label="Quick website score preview">
 	<div class="quick-audit-header">
 		<p class="eyebrow">QUICK SNEAK PEEK</p>
@@ -17,18 +29,26 @@
 		<p id="quick-audit-status" class="form-status" role="status" aria-live="polite"></p>
 	</form>
 	<div class="quick-audit-stage">
-		<figure id="quick-audit-mission" class="quick-audit-mission-panel">
-			<img
-				class="quick-audit-mission-image"
-				src="/mission.png"
-				alt="AI Wise Spaces mission graphic showing AI platforms and website systems connected through one optimized digital presence"
-				loading="eager"
-			/>
-			<figcaption class="quick-audit-mission-copy">
-				<p class="quick-audit-mission-label">Our mission</p>
-				<p>Build clear, fast, AI-readable websites that help local businesses earn trust, get discovered, and win more qualified leads.</p>
-			</figcaption>
-		</figure>
+		<div id="quick-audit-mission" class="quick-audit-mission-panel">
+			<div class="quick-audit-checks-heading">
+				<span class="quick-audit-checks-line" aria-hidden="true"></span>
+				<p>We Check What Matters</p>
+				<span class="quick-audit-checks-line" aria-hidden="true"></span>
+			</div>
+			<div class="quick-audit-checks-list">
+				{checks.map((check) => (
+					<div class="quick-audit-check-item">
+						<div class={`quick-audit-check-icon quick-audit-check-icon-${check.icon}`}>
+							<UiIcon name={check.icon} />
+						</div>
+						<div class="quick-audit-check-copy">
+							<strong>{check.title}</strong>
+							<p>{check.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
 		<div id="quick-audit-result" class="quick-audit-result" hidden>
 			<div class="quick-audit-score-row">
 				<div class="quick-audit-score-copy">
