@@ -11,23 +11,24 @@ const { checks = [] } = Astro.props as {
 ---
 
 <aside class="hero-sidebar quick-audit-sidebar" aria-label="Quick website score preview">
-	<div class="quick-audit-header">
-		<p class="eyebrow">QUICK SNEAK PEEK</p>
-		<h2>See if Google and AI tools can recommend your business.</h2>
-		<p>Enter your URL for a fast score preview. This is not the full paid audit.</p>
-	</div>
-	<form id="quick-audit-form" class="quick-audit-form">
-		<div class="quick-audit-entry-row">
-			<label>
-				<span>Website URL</span>
-				<input type="text" name="websiteUrl" inputmode="url" placeholder="yourwebsite.com" required />
-			</label>
-			<div class="quick-audit-actions">
-				<button class="button button-preview-score" type="submit">Preview My Score</button>
-			</div>
+	<div class="quick-audit-intro-card">
+		<div class="quick-audit-header">
+			<p class="eyebrow">QUICK SNEAK PEEK</p>
+			<h2>Preview how AI models read your website.</h2>
 		</div>
-		<p id="quick-audit-status" class="form-status" role="status" aria-live="polite"></p>
-	</form>
+		<form id="quick-audit-form" class="quick-audit-form">
+			<div class="quick-audit-entry-row">
+				<label>
+					<span>Website URL</span>
+					<input type="text" name="websiteUrl" inputmode="url" placeholder="yourwebsite.com" required />
+				</label>
+				<div class="quick-audit-actions">
+					<button class="button button-preview-score" type="submit">Preview My Score</button>
+				</div>
+			</div>
+			<p id="quick-audit-status" class="form-status" role="status" aria-live="polite"></p>
+		</form>
+	</div>
 	<div class="quick-audit-stage">
 		<div id="quick-audit-mission" class="quick-audit-mission-panel">
 			<div class="quick-audit-checks-heading">
@@ -55,7 +56,7 @@ const { checks = [] } = Astro.props as {
 					<p class="quick-audit-label">Estimated score</p>
 					<strong id="quick-audit-overall">0/100</strong>
 					<p id="quick-audit-summary" class="quick-audit-model-note">
-						Preview based on live page signals that affect visibility in Google, ChatGPT, Perplexity, Gemini, and other AI search tools.
+						Preview blends live page structure, crawl readiness, and AI-readability signals across Google, ChatGPT, Claude, Perplexity, and Gemini.
 					</p>
 				</div>
 				<div class="quick-audit-metrics">
@@ -63,7 +64,7 @@ const { checks = [] } = Astro.props as {
 					<span id="quick-audit-conversion">Conversion: 0</span>
 				</div>
 			</div>
-			<p id="quick-audit-issue" class="quick-audit-note"></p>
+			<p id="quick-audit-issue" class="quick-audit-note">Many sites miss files and signals like llms.txt, schema, FAQ structure, and crawl guidance that help AI tools understand, trust, and recommend them.</p>
 			<a id="quick-audit-cta" class="button button-secondary" href="/book-a-free-audit">
 				Request Free Website Review
 			</a>

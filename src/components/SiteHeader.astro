@@ -4,7 +4,7 @@ import { navigation } from '../data/siteContent.js';
 const { currentPath = '/' } = Astro.props;
 type NavigationItem = (typeof navigation)[number];
 
-const isActive = (item: NavigationItem) => Boolean(item.match && currentPath === item.match);
+const isActive = (item: NavigationItem) => Boolean(item.match && currentPath.startsWith(item.match));
 const mobileMenuId = 'primary-mobile-menu';
 ---
 
@@ -14,15 +14,16 @@ const mobileMenuId = 'primary-mobile-menu';
 			<img class="brand-logo" src="/aiwisespaces.png" alt="AI Wise Spaces logo" />
 			<span class="brand-copy">
 				<strong>AI Wise Spaces</strong>
-				<small>Local visibility systems</small>
 			</span>
 		</a>
 		<nav class="desktop-nav" aria-label="Primary navigation">
 			{navigation.map((item) => (
-				<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
+				<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>
+					<span>{item.label}</span>
+				</a>
 			))}
 		</nav>
-		<a class="button button-primary header-cta" href="/book-a-free-audit">Book a Free Audit</a>
+		<a class="button button-primary header-cta" href="/book-a-free-audit">Get Your Free Audit</a>
 		<details class="mobile-nav" data-mobile-nav>
 			<summary aria-label="Toggle navigation menu" aria-controls={mobileMenuId} aria-expanded="false">
 				<span class="sr-only">Open navigation menu</span>
@@ -32,9 +33,11 @@ const mobileMenuId = 'primary-mobile-menu';
 			</summary>
 			<div class="mobile-panel" id={mobileMenuId}>
 				{navigation.map((item) => (
-					<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>{item.label}</a>
+					<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>
+						<span>{item.label}</span>
+					</a>
 				))}
-				<a class="button button-primary" href="/book-a-free-audit">Book a Free Audit</a>
+				<a class="button button-primary" href="/book-a-free-audit">Get Your Free Audit</a>
 			</div>
 		</details>
 	</div>

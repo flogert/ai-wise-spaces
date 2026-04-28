@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 
@@ -58,5 +59,6 @@ const socialImage = new URL('/aiwisespaces.png', siteUrl).toString();
 			<slot />
 			<SiteFooter />
 		</div>
+		<Analytics />
 	</body>
 </html>

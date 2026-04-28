@@ -128,11 +128,11 @@ form?.addEventListener('submit', async (event) => {
 		}
 
 		if (issue instanceof HTMLElement) {
-			issue.textContent = 'Free review requests get simple website improvement notes. The full Visibility Audit is the paid $150 option.';
+			issue.textContent = 'Many sites miss files and signals like llms.txt, schema, FAQ structure, and crawl guidance that help AI tools understand, trust, and recommend them.';
 		}
 
 		if (summary instanceof HTMLElement) {
-			summary.textContent = audit.summary;
+			summary.textContent = 'Preview blends live page structure, crawl readiness, and AI-readability signals across Google, ChatGPT, Claude, Perplexity, and Gemini.';
 		}
 
 		if (cta instanceof HTMLAnchorElement) {

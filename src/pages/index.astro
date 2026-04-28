@@ -167,27 +167,37 @@ const quickAuditChecks = [
 			<section class="hero-section container">
 				<div class="hero-copy">
 					<p class="eyebrow">GOOGLE SEARCH. AI SEARCH. BETTER LEADS.</p>
-					<h1>
-						<span class="hero-line hero-line-tight">We Help Local Service Businesses</span>
-						<strong class="gradient-text hero-strong">Show Up in Google and AI Search.</strong>
-					</h1>
+					<div class="hero-title-block">
+						<h1>
+							<span class="hero-line hero-line-tight">Help Your Business</span>
+							<strong class="gradient-text hero-strong">Show Up in AI Search.</strong>
+						</h1>
+					</div>
 					<p class="hero-text">
 						From contractors and salons to restaurants, gyms, yoga studios, photographers, and coffee shops, we structure your website so customers and AI tools can understand, trust, and recommend your business.
 					</p>
 					<div class="hero-actions">
-						<a class="button button-primary" href="/book-a-free-audit">Get Your Free AI Visibility Audit</a>
-						<a class="button button-secondary hero-help-button" href="/services">See How We Help</a>
+						<a class="button button-primary hero-primary-button" href="/book-a-free-audit">
+							<span class="button-icon-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+							<span>Get Your Free AI Visibility Audit</span>
+						</a>
+						<a class="button button-secondary hero-help-button" href="/services">
+							<span class="button-icon-play" aria-hidden="true"></span>
+							<span>See How We Help</span>
+						</a>
 					</div>
 					<div class="proof-row">
 						<div class="avatar-stack" aria-hidden="true">
 							{proofAvatars.map((avatar) => <span>{avatar}</span>)}
 						</div>
-						<div class="proof-block">
-							<p>Trusted by local businesses improving visibility, trust, and lead flow</p>
-						</div>
-						<div class="proof-block proof-rating">
-							<span class="proof-stars">★★★★★</span>
-							<span class="proof-label">5.0 from 30+ reviews</span>
+						<div class="proof-copy-row">
+							<div class="proof-block">
+								<p>Trusted by local businesses improving visibility, trust, and lead flow</p>
+							</div>
+							<div class="proof-block proof-rating">
+								<span class="proof-stars">★★★★★</span>
+								<span class="proof-label">5.0 from 30+ reviews</span>
+							</div>
 						</div>
 					</div>
 				</div>
