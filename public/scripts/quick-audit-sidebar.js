@@ -23,24 +23,24 @@ function normalizeWebsiteUrl(value) {
 	return `https://${trimmed}`;
 }
 
-function setPreviewButtonTone(score) {
-	if (!(submitButton instanceof HTMLButtonElement)) {
+function setScoreTone(score) {
+	if (!(overall instanceof HTMLElement)) {
 		return;
 	}
 
-	submitButton.classList.remove('is-good', 'is-mid', 'is-bad');
+	overall.classList.remove('is-good', 'is-mid', 'is-bad');
 
 	if (score >= 75) {
-		submitButton.classList.add('is-good');
+		overall.classList.add('is-good');
 		return;
 	}
 
 	if (score >= 55) {
-		submitButton.classList.add('is-mid');
+		overall.classList.add('is-mid');
 		return;
 	}
 
-	submitButton.classList.add('is-bad');
+	overall.classList.add('is-bad');
 }
 
 async function requestQuickAudit(websiteUrl) {
@@ -113,11 +113,11 @@ form?.addEventListener('submit', async (event) => {
 			statusMessage.textContent = 'Preview generated.';
 		}
 
-		setPreviewButtonTone(scores.overall);
-
 		if (overall instanceof HTMLElement) {
 			overall.textContent = `${scores.overall}/100`;
 		}
+
+		setScoreTone(scores.overall);
 
 		if (localSeo instanceof HTMLElement) {
 			localSeo.textContent = `Local SEO: ${scores.localSeo}/100`;
@@ -148,7 +148,7 @@ form?.addEventListener('submit', async (event) => {
 		showResultPanel();
 	} catch (error) {
 		console.error(error);
-		setPreviewButtonTone(0);
+		setScoreTone(0);
 		showMissionPanel();
 		if (statusMessage instanceof HTMLElement) {
 			statusMessage.textContent = error instanceof Error ? error.message : 'Preview unavailable.';
