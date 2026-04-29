@@ -1,7 +1,10 @@
 ---
 import ContactSubmissionSection from '../../features/contact/components/ContactSubmissionSection.astro';
+import PageAnswerSummary from '../../components/PageAnswerSummary.astro';
 import { process, serviceAreas, services } from '../../data/siteContent.js';
 import Layout from '../../layouts/Layout.astro';
+
+export const prerender = true;
 
 export function getStaticPaths() {
 	return serviceAreas.map((area) => ({
@@ -53,6 +56,25 @@ const pageSchema = [
 		})),
 	},
 ];
+
+const pageSummaryItems = [
+	{
+		label: 'Local fit',
+		detail: `${area.city} businesses that need stronger service clarity, local trust, and better lead flow from the website.`,
+	},
+	{
+		label: 'What usually needs work',
+		detail: area.problems.join(' '),
+	},
+	{
+		label: 'What improves performance',
+		detail: `Clearer service pages, stronger local relevance, and simpler next steps for buyers in and around ${area.city}.`,
+	},
+	{
+		label: 'Nearby context',
+		detail: `This city page also considers how buyers compare providers across nearby markets like ${area.nearby.join(', ')}.`,
+	},
+];
 ---
 
 <Layout
@@ -67,6 +89,17 @@ const pageSchema = [
 			<h1 class="page-title">Get more local jobs with a <span class="title-accent">better website</span> in {area.city}, {area.state}.</h1>
 			<p class="page-lede">{area.intro} We focus on contractors, roofers, plumbers, and other local service businesses that need a clearer offer and stronger lead flow.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="location-summary-title"
+			title={`What this ${area.city} page is meant to answer.`}
+			intro={`This summary helps local buyers and answer engines understand the city-specific fit before moving into service detail for ${area.city}.`}
+			items={pageSummaryItems}
+			actions={[
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="page-band">

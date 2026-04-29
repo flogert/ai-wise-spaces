@@ -14,7 +14,7 @@ import {
 } from '../../features/contact/server/contactRouteResponses.ts';
 import { sendLeadNotification } from '../../features/contact/server/sendLeadNotification.ts';
 
-const DEFAULT_CONTACT_TO_EMAIL = 'flogertbardhi@gmail.com';
+const DEFAULT_CONTACT_TO_EMAIL = 'flogert@aiwisespaces.com';
 
 export const POST: APIRoute = async ({ request }) => {
 	try {

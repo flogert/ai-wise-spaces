@@ -1,14 +1,43 @@
 ---
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import UiIcon from '../components/UiIcon.astro';
 import { process } from '../data/siteContent.js';
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
 import Layout from '../layouts/Layout.astro';
+
+const processSummaryItems = [
+	{
+		label: 'Starting point',
+		detail: 'We look for the gaps that make a business hard to understand or trust online.',
+	},
+	{
+		label: 'Middle of the work',
+		detail: 'We clarify the offer, improve the pages, and remove friction from the next step.',
+	},
+	{
+		label: 'Technical layer',
+		detail: 'We support structure, local SEO, and AI-readability so visibility and trust work together.',
+	},
+	{
+		label: 'Business goal',
+		detail: 'Better-fit inquiries, stronger conversion, and a website that supports long-term growth instead of dragging it down.',
+	},
+];
+
+const processSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: 'Website marketing process',
+	description:
+		'AI Wise Spaces guides local businesses from website audit to clearer messaging, stronger local SEO, and better lead flow.',
+};
 ---
 
 <Layout
 	title="Website Marketing Process | From Website Audit to Better Leads"
 	description="See how AI Wise Spaces guides contractors and local service businesses from website audit to clearer messaging, stronger local SEO, and better lead flow."
 	keywords="website marketing process Lancaster, contractor SEO workflow, local service website strategy, website audit to leads"
+	schema={processSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
@@ -16,6 +45,17 @@ import Layout from '../layouts/Layout.astro';
 			<h1 class="page-title">A clear process from website audit to <span class="title-accent">better local leads.</span></h1>
 			<p class="page-lede">Every engagement is designed to help contractors and local service businesses move from unclear messaging to stronger trust, cleaner structure, and better-fit inquiries.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="process-summary-title"
+			title="What the process is meant to accomplish."
+			intro="This is the short version of the workflow a prospect or answer engine needs before diving into the step-by-step details."
+			items={processSummaryItems}
+			actions={[
+				{ label: 'View services', href: '/services', variant: 'secondary' },
+				{ label: 'Book a free audit', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="page-band">

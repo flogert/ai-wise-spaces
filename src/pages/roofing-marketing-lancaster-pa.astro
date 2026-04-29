@@ -1,5 +1,6 @@
 ---
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import Layout from '../layouts/Layout.astro';
 
 const faqItems = [
@@ -43,6 +44,25 @@ const pageSchema = [
 		})),
 	},
 ];
+
+const pageSummaryItems = [
+	{
+		label: 'Who this helps',
+		detail: 'Lancaster roofing businesses that want more estimate requests from organic search without leaning on paid ads.',
+	},
+	{
+		label: 'What usually needs fixing',
+		detail: 'Generic copy, weak proof, unclear service pages, and missing next-step clarity.',
+	},
+	{
+		label: 'What improves outcomes',
+		detail: 'Stronger service intent, more trust, and clearer paths from page visit to estimate request.',
+	},
+	{
+		label: 'Best next step',
+		detail: 'Use this page to assess fit, then request a review if the same problems show up on your current site.',
+	},
+];
 ---
 
 <Layout
@@ -58,19 +78,16 @@ const pageSchema = [
 			<p class="page-lede">We help Lancaster roofers fix weak website messaging, service pages, and local SEO so more homeowners call when they need an estimate.</p>
 		</section>
 
-		<section class="container page-section">
-			<div class="page-band">
-				<div class="section-heading compact">
-					<p class="eyebrow">SIMPLE EXPLANATION</p>
-					<h2>What this page is really about.</h2>
-				</div>
-				<ul class="bullet-list">
-					<li>Clearer roofing service pages so homeowners know what you do.</li>
-					<li>Local SEO that helps Lancaster buyers find and trust your business.</li>
-					<li>Calls to action that turn visits into estimate requests.</li>
-				</ul>
-			</div>
-		</section>
+		<PageAnswerSummary
+			id="roofing-summary-title"
+			title="What this roofing page is meant to answer."
+			intro="A short summary helps local buyers and answer engines understand the business problem and the likely fix before reading deeper."
+			items={pageSummaryItems}
+			actions={[
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="section-heading">

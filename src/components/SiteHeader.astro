@@ -11,7 +11,15 @@ const mobileMenuId = 'primary-mobile-menu';
 <header class="site-header">
 	<div class="container nav-bar">
 		<a href="/" class="brand-mark" aria-label="AI Wise Spaces home">
-			<img class="brand-logo" src="/aiwisespaces.png" alt="AI Wise Spaces logo" />
+			<img
+				class="brand-logo"
+				src="/aiwisespaces.png"
+				alt="AI Wise Spaces logo"
+				width="180"
+				height="180"
+				loading="eager"
+				decoding="async"
+			/>
 			<span class="brand-copy">
 				<strong>AI Wise Spaces</strong>
 			</span>
@@ -31,14 +39,14 @@ const mobileMenuId = 'primary-mobile-menu';
 				<span class="burger-line burger-line-middle"></span>
 				<span class="burger-line burger-line-bottom"></span>
 			</summary>
-			<div class="mobile-panel" id={mobileMenuId}>
+			<nav class="mobile-panel" id={mobileMenuId} aria-label="Mobile navigation">
 				{navigation.map((item) => (
 					<a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class:list={[isActive(item) && 'is-active']}>
 						<span>{item.label}</span>
 					</a>
 				))}
 				<a class="button button-primary" href="/book-a-free-audit">Get Your Free Audit</a>
-			</div>
+			</nav>
 		</details>
 	</div>
 </header>

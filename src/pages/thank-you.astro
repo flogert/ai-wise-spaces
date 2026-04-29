@@ -1,11 +1,39 @@
 ---
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import Layout from '../layouts/Layout.astro';
+
+const thankYouSummaryItems = [
+	{
+		label: 'Status',
+		detail: 'Your inquiry was received and is ready for review.',
+	},
+	{
+		label: 'What happens next',
+		detail: 'AI Wise Spaces reviews the submission details and follows up using the contact information you provided.',
+	},
+	{
+		label: 'What you can do now',
+		detail: 'You can keep exploring services, pricing, and process pages while you wait for a response.',
+	},
+	{
+		label: 'Expected outcome',
+		detail: 'The follow-up clarifies fit, priorities, and whether a lighter review or deeper website work makes sense.',
+	},
+];
+
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: 'Thank you',
+	description: 'Confirmation page for a submitted contact inquiry to AI Wise Spaces.',
+};
 ---
 
 <Layout
 	title="Thank You | AI Wise Spaces"
 	description="Thanks for reaching out to AI Wise Spaces. Your contact submission has been received."
 	keywords="AI Wise Spaces thank you"
+	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
@@ -13,6 +41,17 @@ import Layout from '../layouts/Layout.astro';
 			<h1 class="page-title">Your inquiry has been <span class="title-accent">submitted.</span></h1>
 			<p class="page-lede">We received your contact submission and will follow up at the email address you provided.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="thank-you-summary-title"
+			title="What this confirmation means."
+			intro="A short confirmation block makes the next step obvious and keeps the post-submit experience from feeling like a dead end."
+			items={thankYouSummaryItems}
+			actions={[
+				{ label: 'Explore services', href: '/services', variant: 'primary' },
+				{ label: 'Back to home', href: '/', variant: 'secondary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="page-band">

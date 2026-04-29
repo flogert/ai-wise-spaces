@@ -1,7 +1,43 @@
 ---
 import { pricing } from '../data/siteContent.js';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
 import Layout from '../layouts/Layout.astro';
+
+const pricingSummaryItems = [
+	{
+		label: 'Entry point',
+		detail: 'Start with the lower-risk audit if you need clarity before committing to bigger website work.',
+	},
+	{
+		label: 'Most common fit',
+		detail: 'The rebuild is for businesses with outdated sites that make selling harder than it should be.',
+	},
+	{
+		label: 'Ongoing support',
+		detail: 'Monthly support is for businesses that want continued refinement after the foundation is fixed.',
+	},
+	{
+		label: 'Decision shortcut',
+		detail: 'If your site is unclear and underperforming, the audit identifies the fastest route to more trust and better leads.',
+	},
+];
+
+const pricingSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'OfferCatalog',
+	name: 'AI Wise Spaces pricing',
+	itemListElement: pricing.map((tier) => ({
+		'@type': 'Offer',
+		name: tier.name,
+		description: tier.bestFor,
+		priceSpecification: {
+			'@type': 'PriceSpecification',
+			priceCurrency: 'USD',
+			price: tier.name === 'Website Rebuild' ? '1500' : tier.name === 'Growth System' ? '450' : tier.price.replace(/[^\d.]/g, ''),
+		},
+	})),
+};
 
 function getPricingDisplay(tier: { name: string; price: string }) {
 	if (tier.name === 'Website Rebuild') {
@@ -32,13 +68,25 @@ function getPricingDisplay(tier: { name: string; price: string }) {
 	title="Website Pricing for Contractors | Lancaster SEO, Websites, and Lead Systems"
 	description="Review AI Wise Spaces pricing for contractors and local service businesses in Lancaster and across Pennsylvania, from focused audits to website rebuilds and ongoing growth support."
 	keywords="contractor website pricing Lancaster, roofer marketing pricing Lancaster PA, plumber website audit cost, local SEO pricing Pennsylvania, website rebuild pricing contractors"
+	schema={pricingSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">PRICING</p>
-			<h1 class="page-title">Choose the level of website help your <span class="title-accent">business needs next.</span></h1>
-			<p class="page-lede">From a low-risk audit to a full rebuild or monthly growth support, each tier is designed to help local businesses improve clarity, trust, and lead flow.</p>
+			<h1 class="page-title">Choose the level of website help your <span class="title-accent">business actually needs next.</span></h1>
+			<p class="page-lede">From a low-risk audit to a full rebuild or monthly refinement, each option is framed to help you buy the next right step instead of overcommitting early.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="pricing-summary-title"
+			title="How to choose the right pricing tier."
+			intro="Buyers usually need a simple decision framework before they need feature lists. This section provides that framework directly."
+			items={pricingSummaryItems}
+			actions={[
+				{ label: 'Compare services', href: '/services', variant: 'secondary' },
+				{ label: 'Start with a free review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="pricing-grid">

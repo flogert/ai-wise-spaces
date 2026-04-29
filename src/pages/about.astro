@@ -1,13 +1,47 @@
 ---
 import { aboutPillars, process, services } from '../data/siteContent.js';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import UiIcon from '../components/UiIcon.astro';
 import Layout from '../layouts/Layout.astro';
+
+const aboutSummaryItems = [
+	{
+		label: 'Operating principle',
+		detail: 'Make the business easier to understand, trust, and contact before adding more marketing complexity.',
+	},
+	{
+		label: 'How we differ',
+		detail: 'The work stays practical, lead-focused, and grounded in site structure instead of vague agency promises.',
+	},
+	{
+		label: 'Who benefits most',
+		detail: 'Businesses with good real-world service quality but weak digital presentation and weak conversion flow.',
+	},
+	{
+		label: 'Expected result',
+		detail: 'A site that explains the offer better, earns trust faster, and creates stronger local buying momentum.',
+	},
+];
+
+const aboutSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'AboutPage',
+	name: 'About AI Wise Spaces',
+	description:
+		'AI Wise Spaces helps local service businesses improve website messaging, local SEO, and lead generation with practical, focused work.',
+	mainEntity: {
+		'@type': 'Organization',
+		name: 'AI Wise Spaces',
+		url: 'https://aiwisespaces.com',
+	},
+};
 ---
 
 <Layout
 	title="About AI Wise Spaces | Website Marketing for Contractors and Local Service Businesses"
 	description="Learn how AI Wise Spaces helps contractors and local service businesses improve website messaging, local SEO, and lead generation without agency fluff."
 	keywords="about AI Wise Spaces, contractor website marketing Lancaster, local service business SEO help, website lead generation process"
+	schema={aboutSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
@@ -15,6 +49,17 @@ import Layout from '../layouts/Layout.astro';
 			<h1 class="page-title">We help local service businesses turn weak websites into <span class="title-accent">better lead systems.</span></h1>
 			<p class="page-lede">Our work is focused on one outcome: making websites clearer, more trustworthy, and more likely to turn local traffic into calls, form fills, and booked jobs.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="about-summary-title"
+			title="What AI Wise Spaces is optimizing for."
+			intro="This is the shortest accurate explanation of how the business thinks about website performance, trust, and lead quality."
+			items={aboutSummaryItems}
+			actions={[
+				{ label: 'See the process', href: '/process', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section two-column-callout">
 			<div class="page-band about-intro-card">

@@ -1,5 +1,6 @@
 ---
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import Layout from '../layouts/Layout.astro';
 
 const faqItems = [
@@ -43,6 +44,25 @@ const pageSchema = [
 		})),
 	},
 ];
+
+const pageSummaryItems = [
+	{
+		label: 'Who this helps',
+		detail: 'Pennsylvania contractors who need better lead quality from a site that explains services and geography clearly.',
+	},
+	{
+		label: 'What creates better leads',
+		detail: 'Clear service positioning, stronger proof, and pages aligned to real buyer intent instead of generic branding language.',
+	},
+	{
+		label: 'Why this matters',
+		detail: 'The website should filter for better-fit jobs and make it easier for local buyers to trust the business quickly.',
+	},
+	{
+		label: 'Best next step',
+		detail: 'If your site gets traffic but weak inquiries, a review can identify the highest-leverage fixes first.',
+	},
+];
 ---
 
 <Layout
@@ -58,19 +78,16 @@ const pageSchema = [
 			<p class="page-lede">We help Pennsylvania contractors fix weak messaging, unclear service pages, and local SEO gaps so the website does a better job of bringing in qualified leads.</p>
 		</section>
 
-		<section class="container page-section">
-			<div class="page-band">
-				<div class="section-heading compact">
-					<p class="eyebrow">SIMPLE EXPLANATION</p>
-					<h2>What creates better contractor leads.</h2>
-				</div>
-				<ul class="bullet-list">
-					<li>A clear headline that explains what you do and where you work.</li>
-					<li>Service pages that match real search intent.</li>
-					<li>Trust signals and calls to action that make it easy to reach out.</li>
-				</ul>
-			</div>
-		</section>
+		<PageAnswerSummary
+			id="contractor-summary-title"
+			title="What this contractor page is meant to answer."
+			intro="A direct summary helps buyers, search engines, and answer engines understand the fit before moving into deeper page detail."
+			items={pageSummaryItems}
+			actions={[
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="section-heading">

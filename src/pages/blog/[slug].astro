@@ -1,6 +1,9 @@
 ---
+import PageAnswerSummary from '../../components/PageAnswerSummary.astro';
 import { blogPosts } from '../../data/siteContent.js';
 import Layout from '../../layouts/Layout.astro';
+
+export const prerender = true;
 
 export function getStaticPaths() {
 	return blogPosts.map((post) => ({
@@ -12,12 +15,27 @@ export function getStaticPaths() {
 const post = Astro.props.post ?? blogPosts.find((entry) => entry.slug === Astro.params.slug);
 const pageTitle = post ? `${post.title} | AI Wise Spaces` : 'Article Not Found | AI Wise Spaces';
 const pageDescription = post?.summary ?? 'The requested article could not be found.';
+const pageSchema = post
+	? {
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		headline: post.title,
+		description: post.summary,
+		articleSection: post.category,
+		publisher: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com',
+		},
+	}
+	: undefined;
 ---
 
 <Layout
 	title={pageTitle}
 	description={pageDescription}
 	keywords={post ? `${post.title}, local service business blog, website visibility advice` : 'local service business blog'}
+	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		{post ? (
@@ -27,6 +45,17 @@ const pageDescription = post?.summary ?? 'The requested article could not be fou
 			<h1 class="page-title"><span class="title-accent">{post.title}</span></h1>
 			<p class="page-lede">{post.summary}</p>
 		</section>
+
+		<PageAnswerSummary
+			id="blog-post-summary-title"
+			title="What this article is meant to answer."
+			intro={post.preview}
+			items={post.sections.map((section) => ({ label: section.heading, detail: section.content }))}
+			actions={[
+				{ label: 'Back to articles', href: '/blog', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="page-band">

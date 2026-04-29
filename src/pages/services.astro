@@ -1,4 +1,5 @@
 ---
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import UiIcon from '../components/UiIcon.astro';
 import { process, serviceAreas, services } from '../data/siteContent.js';
 import Layout from '../layouts/Layout.astro';
@@ -20,19 +21,65 @@ const seoPages = [
 		href: '/contractor-leads-pennsylvania',
 	},
 ];
+
+const servicesSummaryItems = [
+	{
+		label: 'Best fit',
+		detail: 'Local service businesses with decent traffic but weak messaging, trust signals, or conversion paths.',
+	},
+	{
+		label: 'Primary outcomes',
+		detail: 'Clearer offers, stronger service pages, better local visibility, and more qualified calls.',
+	},
+	{
+		label: 'What is included',
+		detail: 'Audit work, page structure, local SEO support, content direction, and technical cleanup where it matters.',
+	},
+	{
+		label: 'Recommended next step',
+		detail: 'Start with the audit if you need priorities first, or move into a rebuild if the current site is holding everything back.',
+	},
+];
+
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Website Marketing Services for Local Businesses',
+	serviceType: 'Website strategy, local SEO, content structure, and AI visibility support',
+	provider: {
+		'@type': 'Organization',
+		name: 'AI Wise Spaces',
+		url: 'https://aiwisespaces.com',
+	},
+	areaServed: 'Pennsylvania',
+	description:
+		'AI Wise Spaces helps contractors and local service businesses improve website clarity, local SEO, trust, and lead generation.',
+};
 ---
 
 <Layout
 	title="Contractor Website Marketing Services | Lancaster SEO and Lead Generation"
 	description="Explore AI Wise Spaces services for contractors and local service businesses in Lancaster and across Pennsylvania, including website audits, local SEO, service-page strategy, and rebuilds built to get more calls."
 	keywords="contractor website marketing Lancaster, roofer marketing services Lancaster PA, plumber website help Lancaster, local SEO services Pennsylvania, contractor lead generation website"
+	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">SERVICES</p>
-			<h1 class="page-title">Website marketing services built to get <span class="title-accent">more calls and better local leads.</span></h1>
-			<p class="page-lede">We help contractors, roofers, plumbers, and local service businesses improve website clarity, trust, local SEO, and lead generation without turning the work into jargon or empty marketing talk.</p>
+			<h1 class="page-title">Website marketing services built to get <span class="title-accent">more qualified calls, not more noise.</span></h1>
+			<p class="page-lede">We help contractors, roofers, plumbers, and local service businesses turn unclear websites into clearer offers, stronger local trust, and better-fit leads.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="services-summary-title"
+			title="What these services are designed to fix."
+			intro="This page is structured to answer the practical questions a buyer or AI assistant asks first before recommending a service provider."
+			items={servicesSummaryItems}
+			actions={[
+				{ label: 'See pricing', href: '/pricing', variant: 'secondary' },
+				{ label: 'Request free audit', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="page-band">

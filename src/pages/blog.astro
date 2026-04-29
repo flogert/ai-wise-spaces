@@ -1,12 +1,41 @@
 ---
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import { blogPosts } from '../data/siteContent.js';
 import Layout from '../layouts/Layout.astro';
+
+const blogSummaryItems = [
+	{
+		label: 'Purpose',
+		detail: 'Plain-English articles that explain what improves trust, visibility, and lead flow for service businesses.',
+	},
+	{
+		label: 'Who it helps',
+		detail: 'Business owners comparing options, researching problems, or trying to understand why their site underperforms.',
+	},
+	{
+		label: 'How it supports AEO',
+		detail: 'Each post answers a specific business question clearly enough for both readers and answer engines to follow.',
+	},
+	{
+		label: 'Best next step',
+		detail: 'Read the post that matches your current problem, then move to services or pricing if you need implementation help.',
+	},
+];
+
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Blog',
+	name: 'AI Wise Spaces blog',
+	description:
+		'Practical articles about local SEO, clearer service pages, website trust, and lead generation.',
+};
 ---
 
 <Layout
 	title="Website Marketing Blog | Leads, Local SEO, and Better Service Pages"
 	description="Read practical articles on getting more calls from your website, improving local SEO, and building clearer service pages for contractors and local businesses."
 	keywords="website marketing blog Lancaster, contractor SEO tips, local service business website tips, get more calls from website"
+	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
@@ -14,6 +43,17 @@ import Layout from '../layouts/Layout.astro';
 			<h1 class="page-title">Simple thinking on local SEO, <span class="title-accent">better websites, and more calls.</span></h1>
 			<p class="page-lede">This is where we publish practical explanations, frameworks, and examples that help service businesses understand what actually improves visibility and lead flow.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="blog-summary-title"
+			title="What this blog is designed to answer."
+			intro="This section gives both people and search systems a direct summary of the page's role before the article list begins."
+			items={blogSummaryItems}
+			actions={[
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+				{ label: 'Book a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="article-grid">

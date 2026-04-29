@@ -1,12 +1,41 @@
 ---
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import { serviceAreas } from '../data/siteContent.js';
 import Layout from '../layouts/Layout.astro';
+
+const locationSummaryItems = [
+	{
+		label: 'Coverage area',
+		detail: 'Pennsylvania markets where local service businesses need clearer websites, stronger local trust, and better lead flow.',
+	},
+	{
+		label: 'Best fit',
+		detail: 'Contractors and local businesses competing in city-level markets where generic websites blend in and underperform.',
+	},
+	{
+		label: 'What changes',
+		detail: 'Sharper local messaging, more useful service pages, stronger SEO structure, and a simpler path to inquiry.',
+	},
+	{
+		label: 'How to use this page',
+		detail: 'Choose the city page closest to your service area to see more specific local positioning and fit.',
+	},
+];
+
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'CollectionPage',
+	name: 'AI Wise Spaces service areas',
+	description:
+		'Pennsylvania service areas for AI Wise Spaces website audits, local SEO, and lead-focused website improvements.',
+};
 ---
 
 <Layout
 	title="Website Marketing Help Areas | Lancaster, Harrisburg, York, Allentown, Philadelphia, Reading"
 	description="Explore the Pennsylvania areas AI Wise Spaces serves with website audits, local SEO, and lead-focused website improvements for contractors and service businesses."
 	keywords="Lancaster contractor marketing, Harrisburg website help, York PA local SEO, Allentown website leads, Philadelphia contractor marketing, Reading website help, Pennsylvania local SEO"
+	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
@@ -14,6 +43,17 @@ import Layout from '../layouts/Layout.astro';
 			<h1 class="page-title">Website marketing help for businesses <span class="title-accent">across Pennsylvania.</span></h1>
 			<p class="page-lede">We help contractors and local service businesses in Lancaster, Harrisburg, York, Allentown, Philadelphia, Reading, and nearby Pennsylvania markets improve website clarity, local SEO, and lead flow.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="locations-summary-title"
+			title="How these service area pages help buyers and answer engines."
+			intro="This overview makes it easier to understand geographic fit before getting into city-specific positioning."
+			items={locationSummaryItems}
+			actions={[
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="detail-grid">

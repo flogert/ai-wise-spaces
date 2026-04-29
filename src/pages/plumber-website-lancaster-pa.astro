@@ -1,5 +1,6 @@
 ---
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import Layout from '../layouts/Layout.astro';
 
 const faqItems = [
@@ -43,6 +44,25 @@ const pageSchema = [
 		})),
 	},
 ];
+
+const pageSummaryItems = [
+	{
+		label: 'Who this helps',
+		detail: 'Lancaster plumbers who need more high-intent calls from a clearer, more useful website.',
+	},
+	{
+		label: 'What usually breaks performance',
+		detail: 'Generic service coverage, weak trust signals, and a confusing path from page visit to call.',
+	},
+	{
+		label: 'What improves results',
+		detail: 'Better service depth, stronger proof, and a simpler conversion path for urgent homeowner needs.',
+	},
+	{
+		label: 'Best next step',
+		detail: 'If your current site feels vague or thin, request a review to see what is costing you calls.',
+	},
+];
 ---
 
 <Layout
@@ -58,19 +78,16 @@ const pageSchema = [
 			<p class="page-lede">We help Lancaster plumbers fix weak service pages, confusing messaging, and local SEO gaps so more of the right people call when they need help fast.</p>
 		</section>
 
-		<section class="container page-section">
-			<div class="page-band">
-				<div class="section-heading compact">
-					<p class="eyebrow">SIMPLE EXPLANATION</p>
-					<h2>What improves a plumber website.</h2>
-				</div>
-				<ul class="bullet-list">
-					<li>Separate pages for the services you actually want to rank for.</li>
-					<li>Clear proof and FAQs so homeowners trust you faster.</li>
-					<li>A simpler path from search to call, form, or booked job.</li>
-				</ul>
-			</div>
-		</section>
+		<PageAnswerSummary
+			id="plumber-summary-title"
+			title="What this plumber page is meant to answer."
+			intro="This summary removes the vague marketing layer and explains directly what makes a plumbing website perform better."
+			items={pageSummaryItems}
+			actions={[
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="section-heading">

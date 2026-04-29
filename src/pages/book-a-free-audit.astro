@@ -1,19 +1,59 @@
 ---
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import Layout from '../layouts/Layout.astro';
+
+const auditSummaryItems = [
+	{
+		label: 'What this is',
+		detail: 'A simple entry point for getting outside eyes on clarity, trust, and visibility issues on your current site.',
+	},
+	{
+		label: 'What it is not',
+		detail: 'It is not the full paid audit. It is a lighter review that helps you understand the next move.',
+	},
+	{
+		label: 'Who should use it',
+		detail: 'Businesses that know the site is underperforming but want quick direction before buying deeper work.',
+	},
+	{
+		label: 'Best next move after this',
+		detail: 'If the problems are larger than quick notes can solve, move into the full visibility audit or a rebuild plan.',
+	},
+];
+
+const auditSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: 'Free website review request',
+	description:
+		'Send website details to receive simple improvement notes on clarity, trust, and visibility before purchasing a full audit.',
+};
 ---
 
 <Layout
 	title="Free Website Review Request | Simple Website Improvement Notes"
 	description="Send your website details and get a short set of simple improvement notes. The full Visibility Audit is the paid $150 option."
 	keywords="free website review request, simple website improvement notes, paid visibility audit Lancaster PA, local service business website review"
+	schema={auditSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">FREE WEBSITE REVIEW REQUEST</p>
-			<h1 class="page-title">Send your site and get <span class="title-accent">quick notes on what to improve.</span></h1>
-			<p class="page-lede">This free request sends simple improvement details on what may be hurting clarity, trust, and visibility. The full Visibility Audit is the paid $150 deliverable shown on the pricing page.</p>
+			<h1 class="page-title">Send your site and get <span class="title-accent">quick clarity on what to improve first.</span></h1>
+			<p class="page-lede">This free request surfaces the most obvious problems affecting clarity, trust, and visibility so you can decide whether quick fixes or deeper work is the right next move.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="audit-summary-title"
+			title="What happens after you request a review."
+			intro="Prospects should know exactly what they are getting here, what they are not getting yet, and how to move forward if the site needs more work."
+			items={auditSummaryItems}
+			actions={[
+				{ label: 'See pricing', href: '/pricing', variant: 'secondary' },
+				{ label: 'Compare services', href: '/services', variant: 'secondary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="page-band">

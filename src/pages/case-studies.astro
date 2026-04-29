@@ -1,12 +1,41 @@
 ---
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import { caseStudies } from '../data/siteContent.js';
 import Layout from '../layouts/Layout.astro';
+
+const caseStudySummaryItems = [
+	{
+		label: 'What these show',
+		detail: 'How clearer structure, stronger trust signals, and better page intent improve the usefulness of a website.',
+	},
+	{
+		label: 'Why they matter',
+		detail: 'Examples help buyers understand the kind of transformation they are actually paying for.',
+	},
+	{
+		label: 'What to look for',
+		detail: 'Notice the before-and-after difference in clarity, authority, and how easily a visitor can understand the offer.',
+	},
+	{
+		label: 'Best next step',
+		detail: 'Use these case studies to assess fit, then move to services or pricing if the same issues show up on your site.',
+	},
+];
+
+const pageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'CollectionPage',
+	name: 'AI Wise Spaces case studies',
+	description:
+		'Examples of website clarity, structure, and trust improvements for service businesses.',
+};
 ---
 
 <Layout
 	title="Website Marketing Case Studies | Clearer Websites and Better Lead Flow"
 	description="See examples of how clearer service pages, better structure, and stronger local trust signals improve website performance for service businesses."
 	keywords="website marketing case studies, contractor website examples, local SEO results, service page improvement examples"
+	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
@@ -14,6 +43,17 @@ import Layout from '../layouts/Layout.astro';
 			<h1 class="page-title">Example outcomes for businesses that needed <span class="title-accent">a better website,</span> not more noise.</h1>
 			<p class="page-lede">These use cases show the kinds of clarity, structure, and trust improvements that help service businesses get found more easily and turn more visits into leads.</p>
 		</section>
+
+		<PageAnswerSummary
+			id="case-studies-summary-title"
+			title="What these case studies are proving."
+			intro="Case studies should shorten the buyer's evaluation process, not just decorate the site with vague success language."
+			items={caseStudySummaryItems}
+			actions={[
+				{ label: 'View services', href: '/services', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="case-grid">

@@ -1,0 +1,55 @@
+---
+type SummaryItem = {
+	label: string;
+	detail: string;
+};
+
+type SummaryAction = {
+	label: string;
+	href: string;
+	variant?: 'primary' | 'secondary';
+};
+
+const {
+	eyebrow = 'FAST SUMMARY',
+	title,
+	intro,
+	items = [],
+	actions = [],
+	id,
+} = Astro.props as {
+	eyebrow?: string;
+	title: string;
+	intro?: string;
+	items: SummaryItem[];
+	actions?: SummaryAction[];
+	id?: string;
+};
+---
+
+<section class="container answer-engine-section" aria-labelledby={id}>
+	<div class="answer-engine-card">
+		<div class="section-heading compact answer-engine-heading">
+			<p class="eyebrow">{eyebrow}</p>
+			<h2 id={id}>{title}</h2>
+			{intro && <p>{intro}</p>}
+		</div>
+		<div class="answer-engine-grid">
+			{items.map((item) => (
+				<article class="answer-engine-item">
+					<p class="answer-engine-label">{item.label}</p>
+					<p>{item.detail}</p>
+				</article>
+			))}
+		</div>
+		{actions.length > 0 && (
+			<div class="answer-engine-actions">
+				{actions.map((action) => (
+					<a class={`button ${action.variant === 'secondary' ? 'button-secondary' : 'button-primary'}`} href={action.href}>
+						{action.label}
+					</a>
+				))}
+			</div>
+		)}
+	</div>
+</section>

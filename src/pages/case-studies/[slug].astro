@@ -1,6 +1,9 @@
 ---
+import PageAnswerSummary from '../../components/PageAnswerSummary.astro';
 import { caseStudies } from '../../data/siteContent.js';
 import Layout from '../../layouts/Layout.astro';
+
+export const prerender = true;
 
 export function getStaticPaths() {
 	return caseStudies.map((study) => ({
@@ -12,12 +15,27 @@ export function getStaticPaths() {
 const study = Astro.props.study ?? caseStudies.find((entry) => entry.slug === Astro.params.slug);
 const pageTitle = study ? `${study.title} | AI Wise Spaces Case Study` : 'Case Study Not Found | AI Wise Spaces';
 const pageDescription = study?.summary ?? 'The requested case study could not be found.';
+const pageSchema = study
+	? {
+		'@context': 'https://schema.org',
+		'@type': 'CreativeWork',
+		name: study.title,
+		description: study.summary,
+		about: study.industry,
+		publisher: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com',
+		},
+	}
+	: undefined;
 ---
 
 <Layout
 	title={pageTitle}
 	description={pageDescription}
 	keywords={study ? `${study.title}, case study, local service business website improvement` : 'case study, local service business website improvement'}
+	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		{study ? (
@@ -27,6 +45,17 @@ const pageDescription = study?.summary ?? 'The requested case study could not be
 			<h1 class="page-title"><span class="title-accent">{study.title}</span></h1>
 			<p class="page-lede">{study.summary}</p>
 		</section>
+
+		<PageAnswerSummary
+			id="case-study-summary-title"
+			title="What this case study is meant to show."
+			intro={study.solution}
+			items={study.sections.map((section) => ({ label: section.heading, detail: section.content }))}
+			actions={[
+				{ label: 'Back to case studies', href: '/case-studies', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
 
 		<section class="container page-section">
 			<div class="detail-grid">

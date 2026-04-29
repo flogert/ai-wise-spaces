@@ -8,6 +8,7 @@ import {
 	services,
 	stats,
 } from '../data/siteContent.js';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
 import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
 import QuickAuditSidebar from '../components/QuickAuditSidebar.astro';
 import Layout from '../layouts/Layout.astro';
@@ -155,6 +156,25 @@ const quickAuditChecks = [
 		description: 'Your likelihood of being recommended over competitors.',
 	},
 ];
+
+const answerEngineHighlights = [
+	{
+		title: 'Who we help',
+		detail: 'Contractors and local service businesses that want more qualified calls from search, maps, and AI assistants.',
+	},
+	{
+		title: 'What we improve',
+		detail: 'Messaging clarity, service pages, local SEO, structured data, conversion paths, and site speed.',
+	},
+	{
+		title: 'Why it matters',
+		detail: 'Google and AI systems recommend businesses they can understand quickly and trust confidently.',
+	},
+	{
+		title: 'Best next step',
+		detail: 'Start with a free visibility audit to see what is blocking trust, rankings, and lead quality.',
+	},
+];
 ---
 
 <Layout
@@ -232,6 +252,18 @@ const quickAuditChecks = [
 					</div>
 				</div>
 			</section>
+
+			<PageAnswerSummary
+				id="answer-engine-title"
+				title="What AI Wise Spaces does, in plain language."
+				intro="A short, structured summary for busy visitors and answer engines evaluating relevance, trust, and local business fit."
+				items={answerEngineHighlights.map((item) => ({ label: item.title, detail: item.detail }))}
+				actions={[
+					{ label: 'Explore services', href: '#services', variant: 'secondary' },
+					{ label: 'See the process', href: '#process', variant: 'secondary' },
+					{ label: 'Request your audit', href: '/book-a-free-audit', variant: 'primary' },
+				]}
+			/>
 
 			<section id="services" class="container content-section">
 				<div class="services-intro">
