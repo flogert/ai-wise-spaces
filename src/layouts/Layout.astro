@@ -4,22 +4,84 @@ import Analytics from '@vercel/analytics/astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 
+const breadcrumbLabelMap = new Map([
+	['about', 'About'],
+	['blog', 'Blog'],
+	['book-a-free-audit', 'Book A Free Audit'],
+	['case-studies', 'Case Studies'],
+	['contact', 'Contact'],
+	['locations', 'Locations'],
+	['pricing', 'Pricing'],
+	['process', 'Process'],
+	['services', 'Services'],
+	['thank-you', 'Thank You'],
+]);
+
+function toTitleCase(value: string): string {
+	return value
+		.split('-')
+		.filter(Boolean)
+		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+		.join(' ');
+}
+
+function getBreadcrumbLabel(segment: string): string {
+	return breadcrumbLabelMap.get(segment) ?? toTitleCase(segment);
+}
+
 const {
-	title = 'AI Wise Spaces | AI-Optimized Websites for Local Businesses',
-	description = 'AI Wise Spaces builds AI-ready websites that help local businesses become more visible in AI assistants, search engines, and local discovery.',
+	title = 'AI Wise Spaces | AI-Ready Websites for the New Search Era',
+	description = 'AI Wise Spaces builds fast, structured, AI-ready websites that help businesses become easier for people to trust and easier for AI assistants to understand, cite, and recommend.',
 	keywords = 'AI optimized websites, AI visibility, local SEO Lancaster PA, answer engine optimization, AI-ready websites, Astro websites, WordPress alternative, Wix alternative, Squarespace alternative',
+	robots,
+	ogType = 'website',
+	articleSection,
+	socialImagePath = '/aiwisespaces.png',
 	schema,
 } = Astro.props as {
 	title?: string;
 	description?: string;
 	keywords?: string;
+	robots?: string;
+	ogType?: 'website' | 'article';
+	articleSection?: string;
+	socialImagePath?: string;
 	schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 };
 
 const currentPath = Astro.url.pathname;
 const siteUrl = Astro.site ?? new URL('https://aiwisespaces.com');
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
-const socialImage = new URL('/aiwisespaces.png', siteUrl).toString();
+const socialImage = new URL(socialImagePath, siteUrl).toString();
+const shouldEnableTracking = import.meta.env.PROD;
+const robotsContent = robots ?? (import.meta.env.PROD
+	? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+	: 'noindex, nofollow');
+const pathSegments = currentPath.split('/').filter(Boolean);
+const breadcrumbList = pathSegments.map((segment, index) => ({
+	name: getBreadcrumbLabel(segment),
+	item: new URL(`/${pathSegments.slice(0, index + 1).join('/')}`, siteUrl).toString(),
+}));
+const breadcrumbSchema = breadcrumbList.length > 0
+	? {
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: siteUrl.toString(),
+			},
+			...breadcrumbList.map((entry, index) => ({
+				'@type': 'ListItem',
+				position: index + 2,
+				name: entry.name,
+				item: entry.item,
+			})),
+		],
+	}
+	: undefined;
 const schemaItems = [
 	{
 		'@context': 'https://schema.org',
@@ -31,6 +93,10 @@ const schemaItems = [
 		inLanguage: 'en-US',
 		publisher: {
 			'@id': `${siteUrl.toString()}#organization`,
+		},
+		potentialAction: {
+			'@type': 'ReadAction',
+			target: canonicalUrl,
 		},
 	},
 	{
@@ -49,7 +115,9 @@ const schemaItems = [
 			email: 'flogertbardhi@gmail.com',
 			availableLanguage: ['en'],
 		},
+		areaServed: 'Pennsylvania',
 	},
+	...(breadcrumbSchema ? [breadcrumbSchema] : []),
 	...(Array.isArray(schema) ? schema : schema ? [schema] : []),
 ];
 ---
@@ -61,38 +129,54 @@ const schemaItems = [
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/aiwisespaces.png" />
+		<link rel="sitemap" type="application/xml" href={new URL('/sitemap-index.xml', siteUrl).toString()} />
 		<link rel="canonical" href={canonicalUrl} />
+		{shouldEnableTracking && (
+			<>
+				<link rel="preconnect" href="https://www.googletagmanager.com" />
+				<link rel="preconnect" href="https://www.googleadservices.com" />
+			</>
+		)}
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
-		<meta name="robots" content="index, follow" />
+		<meta name="robots" content={robotsContent} />
+		<meta name="googlebot" content={robotsContent} />
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="theme-color" content="#050816" />
 		<meta name="author" content="AI Wise Spaces" />
+		<meta name="application-name" content="AI Wise Spaces" />
 		<meta name="referrer" content="strict-origin-when-cross-origin" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={ogType} />
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:site_name" content="AI Wise Spaces" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:secure_url" content={socialImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="AI Wise Spaces glowing document mark" />
+		{ogType === 'article' && articleSection && <meta property="article:section" content={articleSection} />}
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@aiwisespaces" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={socialImage} />
-		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-18126063191"></script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+		<meta name="twitter:image:alt" content="AI Wise Spaces glowing document mark" />
+		{shouldEnableTracking && (
+			<>
+				<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-18126063191"></script>
+				<script is:inline>
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
 
-			gtag('config', 'AW-18126063191');
-		</script>
+					gtag('config', 'AW-18126063191');
+				</script>
+			</>
+		)}
 		<title>{title}</title>
 		{schemaItems.length > 0 && (
 			<script is:inline type="application/ld+json" set:html={JSON.stringify(schemaItems)}></script>
@@ -105,6 +189,6 @@ const schemaItems = [
 			<slot />
 			<SiteFooter />
 		</div>
-		<Analytics />
+		{shouldEnableTracking && <Analytics />}
 	</body>
 </html>

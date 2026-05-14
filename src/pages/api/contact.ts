@@ -14,17 +14,18 @@ import {
 } from '../../features/contact/server/contactRouteResponses.ts';
 import { sendLeadNotification } from '../../features/contact/server/sendLeadNotification.ts';
 
+function isLocalRequest(request: Request): boolean {
+	const url = new URL(request.url);
+
+	return url.hostname === 'localhost' || url.hostname === '127.0.0.1';
+}
+
 const DEFAULT_CONTACT_TO_EMAIL = 'flogertbardhi@gmail.com';
 
 export const POST: APIRoute = async ({ request }) => {
 	try {
 		const apiKey = import.meta.env.RESEND_API_KEY;
 		const toEmail = import.meta.env.CONTACT_TO_EMAIL || DEFAULT_CONTACT_TO_EMAIL;
-
-		if (!apiKey) {
-			console.error('Missing env variables');
-			return missingEmailSettingsResponse();
-		}
 
 		const formData = await request.formData();
 		const contactSubmission = createContactSubmission(formData);
@@ -46,6 +47,20 @@ export const POST: APIRoute = async ({ request }) => {
 			email: contactSubmission.email,
 			business: contactSubmission.business,
 		});
+
+		if (!apiKey) {
+			if (isLocalRequest(request)) {
+				console.warn('MissingEmailSettingsLocalFallback', {
+					email: validationResult.contactSubmission.email,
+					business: validationResult.contactSubmission.business,
+				});
+
+				return inquirySubmittedResponse('local-dev-noop');
+			}
+
+			console.error('Missing env variables');
+			return missingEmailSettingsResponse();
+		}
 
 		const notificationResult = await sendLeadNotification({
 			apiKey,

@@ -18,8 +18,11 @@ const pageDescription = study?.summary ?? 'The requested case study could not be
 const pageSchema = study
 	? {
 		'@context': 'https://schema.org',
-		'@type': 'CreativeWork',
+		'@type': 'Article',
+		mainEntityOfPage: `https://aiwisespaces.com/case-studies/${study.slug}`,
+		url: `https://aiwisespaces.com/case-studies/${study.slug}`,
 		name: study.title,
+		headline: study.title,
 		description: study.summary,
 		about: study.industry,
 		publisher: {
@@ -35,6 +38,8 @@ const pageSchema = study
 	title={pageTitle}
 	description={pageDescription}
 	keywords={study ? `${study.title}, case study, local service business website improvement` : 'case study, local service business website improvement'}
+	ogType="article"
+	articleSection={study?.industry}
 	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">

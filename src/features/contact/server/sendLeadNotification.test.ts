@@ -37,6 +37,11 @@ describe('sendLeadNotification', () => {
 			ok: true,
 			resendId: 're_test_123',
 		});
+		expect(sendMock).toHaveBeenCalledWith(
+			expect.objectContaining({
+				from: 'AI Wise Spaces <contact@aiwisespaces.com>',
+			})
+		);
 	});
 
 	it('returns a normalized error when the provider rejects the lead notification', async () => {

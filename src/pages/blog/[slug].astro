@@ -19,6 +19,8 @@ const pageSchema = post
 	? {
 		'@context': 'https://schema.org',
 		'@type': 'BlogPosting',
+		mainEntityOfPage: `https://aiwisespaces.com/blog/${post.slug}`,
+		url: `https://aiwisespaces.com/blog/${post.slug}`,
 		headline: post.title,
 		description: post.summary,
 		articleSection: post.category,
@@ -35,6 +37,8 @@ const pageSchema = post
 	title={pageTitle}
 	description={pageDescription}
 	keywords={post ? `${post.title}, local service business blog, website visibility advice` : 'local service business blog'}
+	ogType="article"
+	articleSection={post?.category}
 	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">

@@ -7,6 +7,8 @@ type SendLeadNotificationParams = {
 	contactSubmission: ContactSubmission;
 };
 
+const DEFAULT_CONTACT_FROM_EMAIL = 'contact@aiwisespaces.com';
+
 type SendLeadNotificationResult =
 	| {
 		ok: true;
@@ -36,7 +38,7 @@ export async function sendLeadNotification({
 	const resend = new Resend(apiKey);
 
 	const { data, error } = await resend.emails.send({
-		from: 'AI Wise Spaces <flogertbardhi@gmail.com>',
+		from: `AI Wise Spaces <${DEFAULT_CONTACT_FROM_EMAIL}>`,
 		to: [toEmail],
 		subject: `New AI Wise Spaces lead from ${contactSubmission.name}`,
 		replyTo: contactSubmission.email,
