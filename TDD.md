@@ -74,7 +74,7 @@ Resend integration must verify:
 
 - Successful send response.
 - Failure handling from provider rejection.
-- Correct sender: `contact@aiwisespaces.com`.
+- Correct sender: `flogertbardhi@gmail.com`.
 - Correct subject, reply-to, and HTML payload.
 - Resend acceptance is treated as success only when `error` is absent.
 

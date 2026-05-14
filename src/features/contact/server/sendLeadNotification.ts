@@ -36,7 +36,7 @@ export async function sendLeadNotification({
 	const resend = new Resend(apiKey);
 
 	const { data, error } = await resend.emails.send({
-		from: 'AI Wise Spaces <contact@aiwisespaces.com>',
+		from: 'AI Wise Spaces <flogertbardhi@gmail.com>',
 		to: [toEmail],
 		subject: `New AI Wise Spaces lead from ${contactSubmission.name}`,
 		replyTo: contactSubmission.email,
