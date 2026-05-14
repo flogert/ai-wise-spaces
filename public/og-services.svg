@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">AI Wise Spaces Services</title>
+  <desc id="desc">Services social preview image for AI Wise Spaces.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081321" />
+      <stop offset="100%" stop-color="#14365f" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="72" y="70" width="1056" height="490" rx="28" fill="#0b162b" fill-opacity="0.68" stroke="#31557d" />
+  <text x="114" y="162" fill="#9ec8ff" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="4">SERVICES</text>
+  <text x="114" y="264" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="700">AI Visibility, SEO</text>
+  <text x="114" y="338" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="700">and Website Strategy</text>
+  <text x="114" y="420" fill="#c7d9ef" font-family="Segoe UI, Arial, sans-serif" font-size="30">Audits, rebuilds, service pages, technical SEO, and stronger lead flow.</text>
+</svg>

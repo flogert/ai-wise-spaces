@@ -13,8 +13,11 @@ export function getStaticPaths() {
 }
 
 const post = Astro.props.post ?? blogPosts.find((entry) => entry.slug === Astro.params.slug);
-const pageTitle = post ? `${post.title} | AI Wise Spaces` : 'Article Not Found | AI Wise Spaces';
+const pageTitle = post ? `${post.title} | Blog | AI Wise Spaces` : 'Article Not Found | AI Wise Spaces';
 const pageDescription = post?.summary ?? 'The requested article could not be found.';
+const pageKeywords = post
+	? `${post.title}, ${post.category}, AI visibility blog, local SEO article, website strategy article`
+	: 'AI visibility blog, local SEO article';
 const pageSchema = post
 	? {
 		'@context': 'https://schema.org',
@@ -36,9 +39,10 @@ const pageSchema = post
 <Layout
 	title={pageTitle}
 	description={pageDescription}
-	keywords={post ? `${post.title}, local service business blog, website visibility advice` : 'local service business blog'}
+	keywords={pageKeywords}
 	ogType="article"
 	articleSection={post?.category}
+	socialImagePath="/og-blog.svg"
 	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">

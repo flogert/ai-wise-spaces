@@ -13,8 +13,11 @@ export function getStaticPaths() {
 }
 
 const study = Astro.props.study ?? caseStudies.find((entry) => entry.slug === Astro.params.slug);
-const pageTitle = study ? `${study.title} | AI Wise Spaces Case Study` : 'Case Study Not Found | AI Wise Spaces';
+const pageTitle = study ? `${study.title} | Case Study | AI Wise Spaces` : 'Case Study Not Found | AI Wise Spaces';
 const pageDescription = study?.summary ?? 'The requested case study could not be found.';
+const pageKeywords = study
+	? `${study.title}, ${study.industry} case study, website strategy case study, local SEO case study, AI visibility case study`
+	: 'website strategy case study, local SEO case study';
 const pageSchema = study
 	? {
 		'@context': 'https://schema.org',
@@ -37,9 +40,10 @@ const pageSchema = study
 <Layout
 	title={pageTitle}
 	description={pageDescription}
-	keywords={study ? `${study.title}, case study, local service business website improvement` : 'case study, local service business website improvement'}
+	keywords={pageKeywords}
 	ogType="article"
 	articleSection={study?.industry}
+	socialImagePath="/og-case-studies.svg"
 	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">

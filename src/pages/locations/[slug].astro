@@ -78,9 +78,10 @@ const pageSummaryItems = [
 ---
 
 <Layout
-	title={`${area.city}, ${area.state} Contractor Website Marketing | AI Wise Spaces`}
+	title={`${area.city}, ${area.state} AI Visibility & Website Help | AI Wise Spaces`}
 	description={area.description}
 	keywords={area.keywords}
+	socialImagePath="/og-locations.svg"
 	schema={pageSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
@@ -139,6 +140,35 @@ const pageSummaryItems = [
 							<p>{item.description}</p>
 						</div>
 					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">RELATED PAGES</p>
+					<h2>Explore the next most useful SEO and website pages for {area.city} businesses.</h2>
+				</div>
+				<div class="detail-grid">
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">Commercial next step</p>
+						<h2>Compare services and pricing</h2>
+						<p>See which audit, rebuild, or ongoing support option fits your current website and lead-flow problem.</p>
+						<div class="hero-actions">
+							<a class="button button-secondary" href="/services">See services</a>
+							<a class="button button-secondary" href="/pricing">See pricing</a>
+						</div>
+					</article>
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">Local context</p>
+						<h2>Read more Pennsylvania market pages</h2>
+						<p>Compare nearby city pages and statewide contractor resources to see how local positioning changes by market.</p>
+						<div class="hero-actions">
+							<a class="button button-secondary" href="/locations">View all service areas</a>
+							<a class="button button-secondary" href="/contractor-leads-pennsylvania">Pennsylvania contractor page</a>
+						</div>
+					</article>
 				</div>
 			</div>
 		</section>
