@@ -1,0 +1,173 @@
+---
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
+import Layout from '../layouts/Layout.astro';
+
+const faqItems = [
+	{
+		question: 'What do AI solutions look like for a local business website?',
+		answer: 'For most local businesses, practical AI solutions mean clearer website structure, stronger AEO signals, better service-page content, useful schema, and systems that help search engines and AI tools understand what the business does and who it helps.',
+	},
+	{
+		question: 'Do AI solutions replace SEO for Lancaster County businesses?',
+		answer: 'No. The strongest approach combines AI solutions with local SEO, technical cleanup, and clearer business-page structure so both search engines and answer engines can trust the site faster.',
+	},
+	{
+		question: 'Is this only for new websites?',
+		answer: 'No. We can apply AI solutions to existing websites, including WordPress sites that need stronger service pages, better local trust signals, and a cleaner path from visit to inquiry.',
+	},
+];
+
+const pageSummaryItems = [
+	{
+		label: 'Who this helps',
+		detail: 'Lancaster County and Pennsylvania business owners who want practical AI solutions that improve visibility, trust, and lead flow.',
+	},
+	{
+		label: 'What we mean by AI solutions',
+		detail: 'Clearer website systems, better AI readability, stronger AEO support, structured content, and business pages built to earn more qualified inquiries.',
+	},
+	{
+		label: 'What improves results',
+		detail: 'Faster pages, stronger service hierarchy, better schema, clearer local positioning, and content that answer engines can interpret quickly.',
+	},
+	{
+		label: 'Best next step',
+		detail: 'Start with a review if you need to see whether your current website needs targeted AI solutions support or a larger rebuild.',
+	},
+];
+
+const pageSchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		name: 'AI Solutions for Lancaster County and Pennsylvania Businesses',
+		description: 'AI solutions, AI web marketing, and AEO support for Lancaster County and Pennsylvania businesses that need stronger visibility, trust, and lead flow.',
+		serviceType: 'AI solutions, AI web marketing, Answer Engine Optimization, local SEO, website strategy',
+		areaServed: [
+			{ '@type': 'AdministrativeArea', name: 'Pennsylvania' },
+			{ '@type': 'AdministrativeArea', name: 'Lancaster County' },
+		],
+		provider: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com/',
+		},
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqItems.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
+	},
+];
+---
+
+<Layout
+	title="AI Solutions for Lancaster County and PA Businesses | AI Wise Spaces"
+	description="AI solutions for Lancaster County and Pennsylvania business owners who need stronger AI visibility, AEO support, local SEO, and better lead generation from their websites."
+	keywords="AI solutions Lancaster County, AI solutions Pennsylvania, AI web marketing Lancaster PA, AEO services Pennsylvania, local business AI solutions"
+	socialImagePath="/og-ai-solutions.svg"
+	schema={pageSchema}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">AI SOLUTIONS</p>
+			<h1 class="page-title">Practical AI solutions for <span class="title-accent">local business websites.</span></h1>
+			<p class="page-lede">We help Lancaster County and Pennsylvania business owners apply AI solutions that make their websites easier to understand, easier to trust, and more likely to turn search traffic into qualified leads.</p>
+		</section>
+
+		<PageAnswerSummary
+			id="ai-solutions-summary-title"
+			title="What this AI solutions page is meant to answer."
+			intro="This page explains AI solutions in practical business terms so owners can understand what actually improves visibility, trust, and lead flow."
+			items={pageSummaryItems}
+			actions={[
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+			]}
+		/>
+
+		<section class="container page-section">
+			<div class="detail-grid">
+				<article class="detail-card compact-detail-card">
+					<p class="case-label">AI visibility</p>
+					<h2>Help search engines and AI tools understand your business faster.</h2>
+					<p>That starts with cleaner service pages, stronger internal structure, useful schema, and content that clearly explains what you do, where you work, and why customers should trust you.</p>
+				</article>
+				<article class="detail-card compact-detail-card">
+					<p class="case-label">Lead quality</p>
+					<h2>Use AI solutions to improve the pages that drive real inquiries.</h2>
+					<p>The goal is not vague automation language. The goal is stronger business pages, clearer offers, better local intent, and a path that brings better-fit leads into the business.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">WHAT WE IMPROVE</p>
+					<h2>AI solutions should support the website, not distract from it.</h2>
+				</div>
+				<ul class="bullet-list compact-bullet-list">
+					<li>Clarify service pages and location pages so local buyers can understand the offer quickly.</li>
+					<li>Strengthen AEO, structured data, and on-page signals that improve AI readability.</li>
+					<li>Fix weak trust signals, thin copy, and confusing next steps that reduce conversion quality.</li>
+					<li>Support WordPress upgrades and other rebuild paths when the current setup is holding growth back.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">FAQ</p>
+				<h2>Questions business owners ask about AI solutions.</h2>
+			</div>
+			<div class="faq-list">
+				{faqItems.map((item) => (
+					<details class="faq-item">
+						<summary>{item.question}</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">RELATED PAGES</p>
+					<h2>Go deeper into services, audits, and practical AI-solutions guidance.</h2>
+				</div>
+				<div class="detail-grid">
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">Commercial path</p>
+						<h2>Compare services and reviews</h2>
+						<p>Use the services page and the free review if you need to decide whether your business needs focused AI solutions support or a deeper rebuild.</p>
+						<div class="hero-actions">
+							<a class="button button-secondary" href="/services">See services</a>
+							<a class="button button-secondary" href="/book-a-free-audit">Request a review</a>
+						</div>
+					</article>
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">Topical support</p>
+						<h2>Read the AI solutions article</h2>
+						<p>Use the blog article if you want a plain-English explanation of which AI solutions actually help local businesses improve visibility and lead flow.</p>
+						<div class="hero-actions">
+							<a class="button button-secondary" href="/blog/what-ai-solutions-actually-help-local-businesses-grow">Read the article</a>
+							<a class="button button-secondary" href="/wordpress-website-upgrade-lancaster-pa">See WordPress upgrades</a>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

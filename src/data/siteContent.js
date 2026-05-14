@@ -184,10 +184,11 @@ export const services = [
 		icon: 'window',
 		title: 'Website Rebuild for Local Leads',
 		description:
-			'Fast, clear websites built for local SEO, stronger trust, and better conversion so your business gets more from the traffic it already earns.',
-		bestFor: 'Best for businesses ready to replace a slow, unclear, or outdated site.',
+			'Fast, clear websites built for AI web marketing, local SEO, stronger trust, and better conversion so your business gets more from the traffic it already earns.',
+		bestFor: 'Best for businesses ready to replace a slow, unclear, outdated, or WordPress-heavy site with a stronger business-page system.',
 		deliverables: [
 			'Custom Astro site architecture',
+			'WordPress business-page upgrade planning and migration support',
 			'Location-aware service-page structure for Lancaster PA SEO',
 			'Clear service-page hierarchy and offer structure',
 			'Lead-capture layout and calls to action',
@@ -211,7 +212,7 @@ export const services = [
 		icon: 'gear',
 		title: 'Technical SEO and AI Search Support',
 		description:
-			'From schema to internal links, we improve the technical foundation that helps Google and AI tools understand, trust, and recommend your business.',
+			'From schema to internal links, we improve the technical foundation that helps Google and AI tools understand, trust, and recommend your business, including WordPress business-page upgrades when the current setup is holding you back.',
 		bestFor: 'Best for sites that already have content but weak technical foundations or poor local discoverability.',
 		deliverables: [
 			'Technical diagnostics and cleanup',
@@ -447,23 +448,6 @@ export const domainEvents = [
 	'LeadQualified',
 ];
 
-export const commands = [
-	'SubmitContactForm',
-	'ValidateContactForm',
-	'CaptureLead',
-	'SendLeadNotification',
-	'RetryEmailDelivery',
-	'ReceiveInboundEmail',
-	'QualifyLead',
-	'ReplyToLead',
-];
-
-export const valueTerms = [
-	{ term: 'AI Readiness', definition: 'How prepared a website is to be consumed by AI systems.' },
-	{ term: 'Machine-Readable Design', definition: 'Designing content for AI parsing first and humans second.' },
-	{ term: 'Content Signals', definition: 'Structured indicators that help AI interpret a business.' },
-];
-
 export const blogPosts = [
 	{
 		slug: 'how-contractors-get-more-leads-from-their-website',
@@ -525,6 +509,27 @@ export const blogPosts = [
 			{
 				heading: 'AI visibility is still a website clarity problem',
 				content: 'Most of the work is not exotic. It is the same work that makes a website more useful for buyers: clearer structure, cleaner intent, and better trust signals.',
+			},
+		],
+	},
+	{
+		slug: 'what-ai-solutions-actually-help-local-businesses-grow',
+		category: 'AI solutions',
+		title: 'What AI solutions actually help local businesses grow',
+		summary: 'A practical explanation of which AI solutions improve local visibility, website trust, and lead flow for service businesses.',
+		preview: 'Most local businesses do not need AI hype. They need AI solutions that strengthen service pages, support AEO, and make the website easier to trust and easier to use.',
+		sections: [
+			{
+				heading: 'Start with the pages that already influence revenue',
+				content: 'The strongest AI solutions usually improve the service pages, FAQs, local signals, and internal structure that already affect whether buyers call, inquire, or move on.',
+			},
+			{
+				heading: 'AI solutions should make the site easier to understand',
+				content: 'Structured content, stronger headings, clearer local context, and better schema all help both search engines and answer engines understand what the business does and who it helps.',
+			},
+			{
+				heading: 'Lead flow still matters more than novelty',
+				content: 'If an AI solution does not improve clarity, trust, or the path to inquiry, it is probably noise. The useful work is the work that helps better-fit visitors become real leads.',
 			},
 		],
 	},

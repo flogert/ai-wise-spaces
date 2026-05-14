@@ -26,7 +26,7 @@ const pricingSummaryItems = [
 const pricingSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'OfferCatalog',
-	name: 'AI Wise Spaces pricing',
+	name: 'AI Wise Spaces pricing and AI solutions offers',
 	itemListElement: pricing.map((tier) => ({
 		'@type': 'Offer',
 		name: tier.name,
@@ -65,16 +65,16 @@ function getPricingDisplay(tier: { name: string; price: string }) {
 ---
 
 <Layout
-	title="Pricing | AI Visibility, SEO & Website Services | AI Wise Spaces"
-	description="Review pricing for AI visibility audits, website rebuilds, and ongoing growth support for contractors and local service businesses across Pennsylvania."
-	keywords="website pricing, AI visibility audit pricing, local SEO pricing, contractor website pricing, website rebuild pricing"
+	title="Pricing | AI Solutions, SEO & Website Services | AI Wise Spaces"
+	description="Review pricing for AI solutions audits, website rebuilds, WordPress upgrades, and ongoing growth support for contractors and local service businesses across Pennsylvania."
+	keywords="website pricing, AI solutions pricing, local SEO pricing, contractor website pricing, website rebuild pricing, WordPress upgrade pricing"
 	schema={pricingSchema}
 >
 	<main id="main-content" class="page-main" tabindex="-1">
 		<section class="container page-hero">
 			<p class="eyebrow">PRICING</p>
 			<h1 class="page-title">Choose the level of website help your <span class="title-accent">business actually needs next.</span></h1>
-			<p class="page-lede">From a low-risk audit to a full rebuild or monthly refinement, each option is framed to help you buy the next right step instead of overcommitting early.</p>
+			<p class="page-lede">From a low-risk audit to a full rebuild, WordPress upgrade path, or monthly refinement, each option is framed to help you buy the next right step instead of overcommitting early.</p>
 		</section>
 
 		<PageAnswerSummary

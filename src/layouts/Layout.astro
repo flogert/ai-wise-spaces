@@ -3,18 +3,24 @@ import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteSupportStrip from '../components/SiteSupportStrip.astro';
 
 const breadcrumbLabelMap = new Map([
 	['about', 'About'],
+	['ai-solutions-lancaster-pa', 'AI Solutions'],
 	['blog', 'Blog'],
 	['book-a-free-audit', 'Book A Free Audit'],
 	['case-studies', 'Case Studies'],
 	['contact', 'Contact'],
+	['contractor-leads-pennsylvania', 'Pennsylvania Contractors'],
 	['locations', 'Locations'],
+	['plumber-website-lancaster-pa', 'Lancaster Plumbers'],
 	['pricing', 'Pricing'],
 	['process', 'Process'],
+	['roofing-marketing-lancaster-pa', 'Lancaster Roofers'],
 	['services', 'Services'],
 	['thank-you', 'Thank You'],
+	['wordpress-website-upgrade-lancaster-pa', 'WordPress Upgrade'],
 ]);
 
 function toTitleCase(value: string): string {
@@ -30,9 +36,9 @@ function getBreadcrumbLabel(segment: string): string {
 }
 
 const {
-	title = 'AI Wise Spaces | AI-Ready Websites for the New Search Era',
-	description = 'AI Wise Spaces builds fast, structured, AI-ready websites that help businesses become easier for people to trust and easier for AI assistants to understand, cite, and recommend.',
-	keywords = 'AI optimized websites, AI visibility, local SEO Lancaster PA, answer engine optimization, AI-ready websites, Astro websites, WordPress alternative, Wix alternative, Squarespace alternative',
+	title = 'AI Wise Spaces | AI Solutions and AI-Ready Websites for the New Search Era',
+	description = 'AI Wise Spaces builds fast, structured AI solutions and AI-ready websites that help businesses become easier for people to trust and easier for AI assistants to understand, cite, and recommend.',
+	keywords = 'AI solutions, AI optimized websites, AI visibility, local SEO Lancaster PA, answer engine optimization, AI-ready websites, Astro websites, WordPress alternative, Wix alternative, Squarespace alternative',
 	robots,
 	ogType = 'website',
 	articleSection,
@@ -54,6 +60,7 @@ const siteUrl = Astro.site ?? new URL('https://aiwisespaces.com');
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const socialImage = new URL(socialImagePath, siteUrl).toString();
 const shouldEnableTracking = import.meta.env.PROD;
+const shouldShowSupportStrip = !['/', '/book-a-free-audit', '/thank-you'].includes(currentPath);
 const robotsContent = robots ?? (import.meta.env.PROD
 	? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 	: 'noindex, nofollow');
@@ -108,7 +115,7 @@ const schemaItems = [
 		logo: socialImage,
 		image: socialImage,
 		description:
-			'AI Wise Spaces builds AI-ready websites and local visibility systems that help service businesses get found, trusted, and recommended.',
+			'AI Wise Spaces builds AI-ready websites, practical AI solutions, and local visibility systems that help service businesses get found, trusted, and recommended.',
 		contactPoint: {
 			'@type': 'ContactPoint',
 			contactType: 'sales',
@@ -187,6 +194,7 @@ const schemaItems = [
 		<div class="page-shell">
 			<SiteHeader currentPath={currentPath} />
 			<slot />
+			{shouldShowSupportStrip && <SiteSupportStrip currentPath={currentPath} />}
 			<SiteFooter />
 		</div>
 		{shouldEnableTracking && <Analytics />}

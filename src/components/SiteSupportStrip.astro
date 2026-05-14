@@ -1,0 +1,52 @@
+---
+const { currentPath = '/' } = Astro.props as {
+	currentPath?: string;
+};
+
+const supportCards = [
+	{
+		eyebrow: 'AI SOLUTIONS',
+		title: 'Need practical AI support for your website?',
+		description: 'See how AI solutions, AEO, clearer service pages, and local SEO can improve visibility and lead flow without generic hype.',
+		href: '/ai-solutions-lancaster-pa',
+		buttonLabel: 'Explore AI solutions',
+	},
+	{
+		eyebrow: 'WORDPRESS UPGRADES',
+		title: 'Still running on a slow or bloated WordPress setup?',
+		description: 'Review the upgrade path for business pages that need better performance, cleaner structure, and stronger lead flow.',
+		href: '/wordpress-website-upgrade-lancaster-pa',
+		buttonLabel: 'See upgrade path',
+	},
+	{
+		eyebrow: 'FREE REVIEW',
+		title: 'Need the fastest next step?',
+		description: 'Start with a simple review if you need to know what is hurting trust, search visibility, or conversion quality first.',
+		href: '/book-a-free-audit',
+		buttonLabel: 'Request a free review',
+	},
+];
+
+const visibleCards = supportCards.filter((card) => card.href !== currentPath).slice(0, 2);
+---
+
+{visibleCards.length > 0 && (
+	<section class="container page-section" aria-labelledby="site-support-strip-title">
+		<div class="page-band">
+			<div class="section-heading compact">
+				<p class="eyebrow">NEXT STEP</p>
+				<h2 id="site-support-strip-title">Use the strongest next page for your current website problem.</h2>
+			</div>
+			<div class="detail-grid">
+				{visibleCards.map((card) => (
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">{card.eyebrow}</p>
+						<h2>{card.title}</h2>
+						<p>{card.description}</p>
+						<a class="button button-secondary" href={card.href}>{card.buttonLabel}</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+)}

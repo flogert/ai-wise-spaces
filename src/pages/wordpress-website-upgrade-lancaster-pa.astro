@@ -1,0 +1,173 @@
+---
+import ContactSubmissionSection from '../features/contact/components/ContactSubmissionSection.astro';
+import PageAnswerSummary from '../components/PageAnswerSummary.astro';
+import Layout from '../layouts/Layout.astro';
+
+const faqItems = [
+	{
+		question: 'Can you upgrade an existing WordPress website without losing the business pages that already matter?',
+		answer: 'Yes. We can audit the current WordPress site, identify the pages worth keeping, and rebuild the service-page structure into a faster, clearer system designed for AI search, AEO, and local lead flow.',
+	},
+	{
+		question: 'Is this only for Lancaster County businesses?',
+		answer: 'Lancaster County is a core focus, but we also work with Pennsylvania business owners who need stronger business pages, cleaner service-page structure, and better AI web marketing performance.',
+	},
+	{
+		question: 'Why do WordPress business pages underperform so often?',
+		answer: 'Many WordPress sites become plugin-heavy, slow, and hard to maintain. Over time, the business pages turn generic, the service hierarchy gets messy, and the site becomes harder for both buyers and AI tools to trust quickly.',
+	},
+];
+
+const pageSummaryItems = [
+	{
+		label: 'Who this helps',
+		detail: 'Lancaster County and Pennsylvania business owners with WordPress sites that feel slow, generic, or weak at turning business pages into leads.',
+	},
+	{
+		label: 'What usually needs work',
+		detail: 'Business pages that are too thin, weak service hierarchy, plugin-heavy performance issues, and unclear calls to action.',
+	},
+	{
+		label: 'What improves results',
+		detail: 'Clearer service-page structure, faster performance, stronger local SEO, and better AEO signals for AI search and answer engines.',
+	},
+	{
+		label: 'Best next step',
+		detail: 'Request a review if you need to understand whether your WordPress site should be improved page by page or rebuilt into a cleaner system.',
+	},
+];
+
+const pageSchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		name: 'WordPress Website Upgrade for Lancaster County and Pennsylvania Businesses',
+		description: 'WordPress website upgrade help for business owners who need stronger service pages, faster performance, cleaner local SEO, and better AI web marketing and AI solutions results.',
+		serviceType: 'WordPress website upgrade, AI web marketing, AI solutions, Answer Engine Optimization, local SEO, service-page strategy',
+		areaServed: [
+			{ '@type': 'AdministrativeArea', name: 'Pennsylvania' },
+			{ '@type': 'AdministrativeArea', name: 'Lancaster County' },
+		],
+		provider: {
+			'@type': 'Organization',
+			name: 'AI Wise Spaces',
+			url: 'https://aiwisespaces.com/',
+		},
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqItems.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer,
+			},
+		})),
+	},
+];
+---
+
+<Layout
+	title="WordPress Website Upgrade | AI Solutions for Lancaster County & PA Business Pages | AI Wise Spaces"
+	description="Upgrade your WordPress website into a faster, clearer business-page system built for Lancaster County and Pennsylvania business owners who need better AI visibility, AI solutions support, AEO, and lead flow."
+	keywords="WordPress website upgrade Lancaster County, WordPress business pages Pennsylvania, WordPress SEO upgrade, AEO WordPress pages, AI web marketing WordPress, AI solutions WordPress"
+	socialImagePath="/og-services.svg"
+	schema={pageSchema}
+>
+	<main id="main-content" class="page-main" tabindex="-1">
+		<section class="container page-hero">
+			<p class="eyebrow">WORDPRESS UPGRADE</p>
+			<h1 class="page-title">Upgrade your WordPress business pages into a <span class="title-accent">faster lead system.</span></h1>
+			<p class="page-lede">We help Lancaster County and Pennsylvania business owners move beyond slow, generic WordPress business pages and into a clearer website structure built for AI web marketing, AEO, local SEO, and better lead flow.</p>
+		</section>
+
+		<PageAnswerSummary
+			id="wordpress-upgrade-summary-title"
+			title="What this WordPress upgrade page is meant to answer."
+			intro="This summary helps business owners quickly understand whether the current WordPress site needs lighter page-level improvements or a deeper structural rebuild."
+			items={pageSummaryItems}
+			actions={[
+				{ label: 'Request a review', href: '/book-a-free-audit', variant: 'primary' },
+				{ label: 'See services', href: '/services', variant: 'secondary' },
+			]}
+		/>
+
+		<section class="container page-section">
+			<div class="detail-grid">
+				<article class="detail-card compact-detail-card">
+					<p class="case-label">Why WordPress owners get stuck</p>
+					<h2>Plugin-heavy pages make business sites harder to trust.</h2>
+					<p>When a site depends on too many plugins, builders, and patched-together templates, the business pages often become slower, harder to maintain, and less effective at converting real buyers.</p>
+				</article>
+				<article class="detail-card compact-detail-card">
+					<p class="case-label">What we improve</p>
+					<h2>We rebuild the business pages that actually influence calls and leads.</h2>
+					<p>That usually means a stronger service-page hierarchy, cleaner local intent, better proof, faster performance, and clearer calls to action for both search engines and AI tools.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">WHAT AN UPGRADE LOOKS LIKE</p>
+					<h2>The goal is not a prettier dashboard. The goal is stronger business pages.</h2>
+				</div>
+				<ul class="bullet-list compact-bullet-list">
+					<li>Clarify the most important service pages and location pages first.</li>
+					<li>Remove weak structure that makes the site hard to trust or hard to maintain.</li>
+					<li>Improve AI-readability, local SEO, and AEO signals across the pages that drive leads.</li>
+					<li>Give Lancaster County and Pennsylvania business owners a cleaner path from search visit to inquiry.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="section-heading">
+				<p class="eyebrow">FAQ</p>
+				<h2>Questions WordPress website owners usually ask.</h2>
+			</div>
+			<div class="faq-list">
+				{faqItems.map((item) => (
+					<details class="faq-item">
+						<summary>{item.question}</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+
+		<section class="container page-section">
+			<div class="page-band">
+				<div class="section-heading compact">
+					<p class="eyebrow">RELATED PAGES</p>
+					<h2>Use these pages to compare the upgrade path, pricing, and audit entry point.</h2>
+				</div>
+				<div class="detail-grid">
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">Commercial fit</p>
+						<h2>Compare services and pricing</h2>
+						<p>See whether your WordPress site needs an audit, a rebuild, or ongoing technical support to improve the business pages that matter.</p>
+						<div class="hero-actions">
+							<a class="button button-secondary" href="/services">See services</a>
+							<a class="button button-secondary" href="/pricing">See pricing</a>
+						</div>
+					</article>
+					<article class="detail-card compact-detail-card">
+						<p class="case-label">Start with clarity</p>
+						<h2>Request a WordPress review</h2>
+						<p>Use the free review page if you want to see whether your current WordPress business pages need lighter improvements or a larger structural upgrade.</p>
+						<div class="hero-actions">
+							<a class="button button-secondary" href="/book-a-free-audit">Request a review</a>
+							<a class="button button-secondary" href="/contractor-leads-pennsylvania">See the PA contractor page</a>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<ContactSubmissionSection />
+	</main>
+</Layout>

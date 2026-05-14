@@ -14,6 +14,7 @@ export function getStaticPaths() {
 }
 
 const { area } = Astro.props;
+const countyLabel = area.city === 'Lancaster' ? 'Lancaster County' : `${area.city} and nearby Pennsylvania markets`;
 
 const faqItems = [
 	{
@@ -34,9 +35,10 @@ const pageSchema = [
 	{
 		'@context': 'https://schema.org',
 		'@type': 'Service',
-		name: `Contractor Website Marketing in ${area.city}, ${area.state}`,
+		name: `AI Solutions, AI Web Marketing, and AEO Help in ${area.city}, ${area.state}`,
 		areaServed: { '@type': 'City', name: area.city },
-		description: area.description,
+		description: `AI solutions, AI web marketing, and local SEO help for ${area.city}, ${area.state} businesses that need stronger visibility, trust, and lead flow.`,
+		serviceType: 'AI solutions, AI web marketing, Answer Engine Optimization, local SEO, website strategy',
 		provider: {
 			'@type': 'Organization',
 			name: 'AI Wise Spaces',
@@ -78,9 +80,9 @@ const pageSummaryItems = [
 ---
 
 <Layout
-	title={`${area.city}, ${area.state} AI Visibility & Website Help | AI Wise Spaces`}
-	description={area.description}
-	keywords={area.keywords}
+	title={`${area.city}, ${area.state} AI Solutions, SEO & Website Help | AI Wise Spaces`}
+	description={`AI solutions, AI web marketing, and website help for ${area.city}, ${area.state} businesses that want stronger local visibility, AEO support, and better lead flow.`}
+	keywords={`${area.keywords}, AI solutions ${area.city} ${area.state}, AI solutions ${area.city} businesses`}
 	socialImagePath="/og-locations.svg"
 	schema={pageSchema}
 >
@@ -88,13 +90,13 @@ const pageSummaryItems = [
 		<section class="container page-hero">
 			<p class="eyebrow">{area.city.toUpperCase()}</p>
 			<h1 class="page-title">Get more local jobs with a <span class="title-accent">better website</span> in {area.city}, {area.state}.</h1>
-			<p class="page-lede">{area.intro} We focus on contractors, roofers, plumbers, and other local service businesses that need a clearer offer and stronger lead flow.</p>
+			<p class="page-lede">{area.intro} We focus on {countyLabel} business owners who need stronger AI web marketing, AEO visibility, clearer offers, and better lead flow.</p>
 		</section>
 
 		<PageAnswerSummary
 			id="location-summary-title"
 			title={`What this ${area.city} page is meant to answer.`}
-			intro={`This summary helps local buyers and answer engines understand the city-specific fit before moving into service detail for ${area.city}.`}
+			intro={`This summary helps local buyers and answer engines understand the city-specific AI web marketing and AEO fit before moving into service detail for ${area.city}.`}
 			items={pageSummaryItems}
 			actions={[
 				{ label: 'See services', href: '/services', variant: 'secondary' },
@@ -157,7 +159,7 @@ const pageSummaryItems = [
 						<p>See which audit, rebuild, or ongoing support option fits your current website and lead-flow problem.</p>
 						<div class="hero-actions">
 							<a class="button button-secondary" href="/services">See services</a>
-							<a class="button button-secondary" href="/pricing">See pricing</a>
+							<a class="button button-secondary" href="/ai-solutions-lancaster-pa">See AI solutions</a>
 						</div>
 					</article>
 					<article class="detail-card compact-detail-card">

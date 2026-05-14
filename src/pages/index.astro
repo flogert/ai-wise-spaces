@@ -47,13 +47,16 @@ const homeSchema = [
 		url: 'https://aiwisespaces.com',
 		image: 'https://aiwisespaces.com/aiwisespaces.png',
 		description:
-			'AI Wise Spaces builds AI-optimized websites that help local businesses become more visible in AI assistants, search engines, and local discovery.',
-		areaServed: ['Lancaster PA', 'York PA', 'Harrisburg PA', 'Reading PA', 'Allentown PA', 'West Chester PA', 'King of Prussia PA', 'Wilmington DE', 'United States'],
+			'AI Wise Spaces provides AI web marketing, AI solutions, Answer Engine Optimization, and website strategy for Lancaster County and Pennsylvania business owners who want stronger visibility and better leads.',
+		areaServed: ['Lancaster County PA', 'Lancaster PA', 'York PA', 'Harrisburg PA', 'Reading PA', 'Allentown PA', 'West Chester PA', 'King of Prussia PA', 'Pennsylvania', 'United States'],
 		serviceType: [
+			'AI web marketing',
+			'AI solutions for local businesses',
 			'AI-ready website development',
 			'AI visibility optimization',
 			'Local SEO',
 			'Answer Engine Optimization',
+			'AEO strategy for local businesses',
 			'Website migration from WordPress',
 			'Website migration from Wix',
 			'Website migration from Squarespace',
@@ -62,8 +65,11 @@ const homeSchema = [
 			'robots.txt optimization',
 		],
 		knowsAbout: [
+			'AI web marketing',
+			'AI solutions',
 			'AI search visibility',
 			'Answer Engine Optimization',
+			'AEO for Lancaster County businesses',
 			'Local SEO',
 			'Astro websites',
 			'Tailwind CSS websites',
@@ -78,7 +84,7 @@ const homeSchema = [
 					'@type': 'Service',
 					name: 'AI Visibility Audit',
 					description:
-						'An audit that checks whether a local business website is structured for AI discovery and local recommendations.',
+						'An audit for Lancaster County and Pennsylvania business owners that checks whether a website is structured for AI discovery, answer engines, and local recommendations.',
 				},
 			},
 			{
@@ -87,7 +93,7 @@ const homeSchema = [
 					'@type': 'Service',
 					name: 'AI-Ready Website Development',
 					description:
-						'Custom website development focused on fast performance, structured content, local visibility, and AI-readable pages.',
+						'Custom website development focused on AI web marketing, fast performance, structured content, local visibility, and AI-readable pages.',
 				},
 			},
 		],
@@ -100,7 +106,7 @@ const homeSchema = [
 		url: 'https://aiwisespaces.com',
 		logo: 'https://aiwisespaces.com/aiwisespaces.png',
 		description:
-			'AI Wise Spaces helps businesses upgrade from traditional website builders to AI-optimized websites.',
+			'AI Wise Spaces helps Lancaster County and Pennsylvania business owners improve AI visibility, AI solutions readiness, AEO readiness, and lead generation with clearer websites and local search strategy.',
 	},
 	{
 		'@context': 'https://schema.org',
@@ -127,7 +133,7 @@ const homeSchema = [
 				name: 'Do you help local businesses show up in AI search?',
 				acceptedAnswer: {
 					'@type': 'Answer',
-					text: 'Yes. AI Wise Spaces improves website structure, schema, content clarity, local pages, and AI-readable files to improve local AI visibility.',
+					text: 'Yes. AI Wise Spaces helps Lancaster County and Pennsylvania business owners improve website structure, schema, content clarity, local pages, and AI-readable files so they can compete better in AI search and answer engine results.',
 				},
 			},
 		],
@@ -160,11 +166,11 @@ const quickAuditChecks = [
 const answerEngineHighlights = [
 	{
 		title: 'Who we help',
-		detail: 'Contractors and local service businesses that want more qualified calls from search, maps, and AI assistants.',
+		detail: 'Lancaster County and Pennsylvania business owners who want more qualified calls from Google search, AI search, maps, and answer engines.',
 	},
 	{
 		title: 'What we improve',
-		detail: 'Messaging clarity, service pages, local SEO, structured data, conversion paths, and site speed.',
+		detail: 'AI web marketing signals, AEO readiness, service pages, local SEO, structured data, conversion paths, site speed, and WordPress business-page upgrades.',
 	},
 	{
 		title: 'Why it matters',
@@ -178,24 +184,24 @@ const answerEngineHighlights = [
 ---
 
 <Layout
-	title="AI Wise Spaces | AI-Ready Websites for the New Search Era"
-	description="AI Wise Spaces builds fast, structured, AI-ready websites that help businesses become easier for people to trust and easier for AI assistants to understand, cite, and recommend."
-	keywords="AI optimized websites, AI visibility, local SEO Lancaster PA, answer engine optimization, AI-ready websites, Astro websites, WordPress alternative, Wix alternative, Squarespace alternative"
+	title="AI Wise Spaces | AI Solutions, AI Web Marketing, and AI-Ready Websites"
+	description="AI Wise Spaces helps Lancaster County and Pennsylvania business owners improve AI web marketing, AI solutions, AEO readiness, local SEO, and lead generation with fast, structured websites."
+	keywords="AI solutions Lancaster County, AI web marketing Pennsylvania, answer engine optimization Pennsylvania, AEO Lancaster PA, AI visibility for business owners, local SEO Pennsylvania"
 	socialImagePath="/og-default.svg"
 	schema={homeSchema}
 >
 	<main id="main-content" tabindex="-1">
 			<section class="hero-section container">
 				<div class="hero-copy">
-					<p class="eyebrow">GOOGLE SEARCH. AI SEARCH. BETTER LEADS.</p>
+					<p class="eyebrow">AI WEB MARKETING FOR LANCASTER COUNTY AND PA BUSINESSES</p>
 					<div class="hero-title-block">
 						<h1>
 							<span class="hero-line hero-line-tight">Help Your Business</span>
-							<strong class="gradient-text hero-strong">Show Up in AI Search.</strong>
+							<strong class="gradient-text hero-strong">Win More AEO Searches.</strong>
 						</h1>
 					</div>
 					<p class="hero-text">
-						From contractors and salons to restaurants, gyms, yoga studios, photographers, and coffee shops, we structure your website so customers and AI tools can understand, trust, and recommend your business.
+						We help Lancaster County and Pennsylvania business owners improve AI web marketing, local SEO, and answer-engine visibility, including WordPress website upgrades for business pages that need stronger performance and clearer lead flow.
 					</p>
 					<div class="hero-actions">
 						<a class="button button-primary hero-primary-button" href="/book-a-free-audit">
@@ -257,11 +263,11 @@ const answerEngineHighlights = [
 			<PageAnswerSummary
 				id="answer-engine-title"
 				title="What AI Wise Spaces does, in plain language."
-				intro="A short, structured summary for busy visitors and answer engines evaluating relevance, trust, and local business fit."
+				intro="A short, structured summary for Lancaster County and Pennsylvania business owners comparing AI web marketing, AI solutions, AEO, and local SEO support."
 				items={answerEngineHighlights.map((item) => ({ label: item.title, detail: item.detail }))}
 				actions={[
 					{ label: 'Explore services', href: '#services', variant: 'secondary' },
-					{ label: 'See the process', href: '#process', variant: 'secondary' },
+					{ label: 'Explore AI solutions', href: '/ai-solutions-lancaster-pa', variant: 'secondary' },
 					{ label: 'Request your audit', href: '/book-a-free-audit', variant: 'primary' },
 				]}
 			/>
@@ -276,7 +282,7 @@ const answerEngineHighlights = [
 						</h2>
 					</div>
 					<p class="services-summary">
-						From audits to service pages and technical cleanup, we help local service businesses turn their website into a clearer, more trusted sales tool for Google and AI search.
+						From audits to service pages, AI solutions, WordPress upgrades, and technical cleanup, we help local service businesses turn their website into a clearer, more trusted sales tool for Google and AI search.
 					</p>
 				</div>
 				<div class="services-grid">
@@ -290,6 +296,20 @@ const answerEngineHighlights = [
 							<a href="/services">Learn more →</a>
 						</article>
 					))}
+				</div>
+			</section>
+
+			<section class="container content-section">
+				<div class="page-band">
+					<div class="section-heading compact">
+						<p class="eyebrow">WORDPRESS UPGRADES</p>
+						<h2>Business owners on WordPress can upgrade the pages that actually drive leads.</h2>
+					</div>
+					<p class="page-lede">If your WordPress site is slow, hard to maintain, or built on thin business pages, we can restructure and upgrade the pages that matter most for AI search, AEO, and local lead flow.</p>
+					<div class="hero-actions">
+						<a class="button button-secondary" href="/wordpress-website-upgrade-lancaster-pa">See WordPress upgrade path</a>
+						<a class="button button-secondary" href="/book-a-free-audit">Request a WordPress review</a>
+					</div>
 				</div>
 			</section>
 
